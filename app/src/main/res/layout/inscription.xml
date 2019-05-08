@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_inscrire"
             android:layout_weight="1"
-            android:background="@android:color/red"
+            android:background="@color/btn_background"
             android:textColor="@android:color/black"
             />
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_annuler"
             android:layout_weight="1"
-            android:background="@android:color/red"
+            android:background="@color/btn_background"
             android:textColor="@android:color/black"/>
     </LinearLayout>
 </LinearLayout>

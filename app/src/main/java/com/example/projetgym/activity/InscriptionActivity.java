@@ -1,8 +1,10 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+
+import com.example.projetgym.R;
 
 public class InscriptionActivity extends AppCompatActivity {
 

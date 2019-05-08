@@ -1,91 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/backgroundColor"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/titre1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titre_premiereLigne"
-        android:textSize="30sp"
-        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/titre2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titre_deuxiemeLigne"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/titre1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titre_premiereLigne"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"/>
 
-    <ImageView
-        android:id="@+id/logoLogin"
-        android:layout_width="122dp"
-        android:layout_height="191dp"
-        android:src="@drawable/logo"
-        android:contentDescription="@string/mickey"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="35dp"/>
+        <TextView
+            android:id="@+id/titre2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titre_deuxiemeLigne"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp" >
+        <ImageView
+            android:id="@+id/logoLogin"
+            android:layout_width="122dp"
+            android:layout_height="191dp"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/mickey"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="35dp"/>
 
-        <EditText
-            android:id="@+id/identifiant"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:hint="@string/hint_identifiant"
-            android:autofillHints="@string/hint_identifiant"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint"/>
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp" >
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:hint="@string/hint_password"
-            android:autofillHints="@string/hint_password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint"/>
-        
-        <!--Bouton de connexion-->
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/btn_background"
-            android:text="@string/connexion"
-            android:textColor="@color/white"/>
+            <EditText
+                android:id="@+id/identifiant"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:hint="@string/hint_identifiant"
+                android:autofillHints="@string/hint_identifiant"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"/>
 
-        <!--Bouton d'inscription-->
-        <Button
-            android:id="@+id/btnInscrire"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/btn_background"
-            android:text="@string/inscrire"
-            android:textColor="@color/white"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:hint="@string/hint_password"
+                android:autofillHints="@string/hint_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint"/>
 
-    </LinearLayout>
+            <!--Bouton de connexion-->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/btn_background"
+                android:text="@string/connexion"
+                android:textColor="@color/white"/>
+
+            <!--Bouton d'inscription-->
+            <Button
+                android:id="@+id/btnInscrire"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/btn_background"
+                android:text="@string/inscrire"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
 </LinearLayout>
