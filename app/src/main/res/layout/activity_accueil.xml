@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/titreAccueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titre_deuxiemeLigne"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/logoAccueil"
+        android:layout_width="122dp"
+        android:layout_height="191dp"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/mickey"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"/>
+
+    <Button
+        android:id="@+id/btnForfait"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/forfait"
+        android:textColor="@color/white"/>
+
+
+    <Button
+        android:id="@+id/btnCours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/cours"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnRendezVous"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/rendezVous"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnPlan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/plan"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnPreference"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/preference"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnDeconnexion"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_background"
+        android:text="@string/deconnexion"
+        android:textColor="@color/white"/>
+</LinearLayout>
