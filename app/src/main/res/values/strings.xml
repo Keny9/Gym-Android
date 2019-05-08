@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjetGym</string>
+    <string name="titre_plan">Votre plan dentrainement</string>
+    <string name="retour">Retour</string>
+    <string name="plus">+</string>
+
 </resources>
