@@ -62,6 +62,10 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
                 android:text="@string/notif" />
 
             <CheckBox
@@ -69,6 +73,10 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
                 android:text="@string/afficher" />
         </LinearLayout>
 
@@ -89,6 +97,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="22sp"
+                android:onClick = "displayToastMsg"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/button2"
