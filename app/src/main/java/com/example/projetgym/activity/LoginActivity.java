@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         //Verifier si l'utilisateur est deja connecté ou pas
         if(session.isLoggedIn()){
             //L'utilisateur est deja connecter, l'amener a l'accueil
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
             startActivity(intent);
             finish();
         }
@@ -113,13 +113,13 @@ public class LoginActivity extends AppCompatActivity {
                         // Creer la session
                         session.setLogin(true);
 
-                        // Now store the user in SQLite
+                        // Mettre le client dans SQLite
                         JSONObject client = jObj.getJSONObject("client");
                         String identifiant = client.getString("identifiant");
                         String nom = client.getString("nom");
                         String prenom = client.getString("prenom");
                         String idForfait = client.getString("id_forfait");
-                        String dateNaissance = client.getString("date_naisance");
+                        String dateNaissance = client.getString("date_naissance");
                         String courriel = client.getString("courriel");
                         String telephone = client.getString("telephone");
 
@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                         db.ajouterClient(identifiant,nom,prenom,courriel,idForfait,dateNaissance,telephone);
 
                         // Aller à l'accueil
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

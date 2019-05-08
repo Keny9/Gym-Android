@@ -7,4 +7,10 @@
     <string name="connexion">Connexion</string>
     <string name="inscrire">S\'inscrire</string>
     <string name="mickey">Mickey Mouse</string>
+    <string name="forfait">Forfaits</string>
+    <string name="cours">Cours</string>
+    <string name="rendezVous">Rendez-vous</string>
+    <string name="plan">Plan d\'entrainement</string>
+    <string name="preference">Préférences</string>
+    <string name="deconnexion">Se déconnecter</string>
 </resources>
