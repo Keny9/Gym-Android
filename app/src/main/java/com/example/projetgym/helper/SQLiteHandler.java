@@ -44,7 +44,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_ID = "identifiant";
     private static final String KEY_NAME = "nom";
     private static final String KEY_PRENOM = "prenom";
-    private static final String KEY_EMAIL = "email";
+    private static final String KEY_EMAIL = "courriel";
     private static final String KEY_IDFORFAIT = "id_forfait";
     private static final String KEY_DATENAISSANCE = "date_naissance";
     private static final String KEY_TELEPHONE = "telephone";
