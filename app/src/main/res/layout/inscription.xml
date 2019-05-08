@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/inscription_global_layout"
-    android:weightSum="12">
+    android:weightSum="12"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/insc_contenu"
@@ -12,7 +13,8 @@
         android:weightSum="10"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
         <EditText
             android:id="@+id/identifiant"
             android:layout_height="wrap_content"
@@ -84,13 +86,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_inscrire"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@android:color/red"
+            android:textColor="@android:color/black"
+            />
+
+        <Space android:layout_height="5dp"
+            android:layout_width="1dp"></Space>
 
         <Button
             android:id="@+id/btn_annuler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_annuler"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@android:color/red"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 </LinearLayout>

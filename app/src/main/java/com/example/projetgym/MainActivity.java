@@ -21,4 +21,9 @@ public class MainActivity extends AppCompatActivity {
         int padding_in_px = (int) (padding_in_dp * scale + 0.5f);
         content.setPadding(padding_in_px,padding_in_px,padding_in_px,padding_in_px);
     }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//    }
 }
