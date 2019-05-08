@@ -3,6 +3,7 @@ package com.example.projetgym;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import android.view.View;
 
 public class preferences extends AppCompatActivity {
 
@@ -18,8 +19,7 @@ public class preferences extends AppCompatActivity {
         toast.show();
 
     }
-
-    public void displayToastMsg() {
+    public void displayToastMsg(View v) {
 
         toastMsg("©Mickey Mouse Development Team, All Rights Reserved");
 

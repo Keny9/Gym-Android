@@ -35,7 +35,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="69dp"
                 android:gravity="center"
-                android:text="@string/titre_plan"
+                android:text="@string/categorie"
                 android:textColor="@color/black"
                 android:textSize="23sp"
                 android:textStyle="bold" />
@@ -48,15 +48,6 @@
             android:gravity="center|bottom"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/round_button"
-                android:text="@string/plus"
-                android:textColor="@color/white"
-                android:textSize="46sp" />
 
             <Button
                 android:id="@+id/button"
