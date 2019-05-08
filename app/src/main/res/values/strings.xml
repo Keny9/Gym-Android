@@ -3,5 +3,11 @@
     <string name="titre_plan">Votre plan dentrainement</string>
     <string name="retour">Retour</string>
     <string name="plus">+</string>
+    <string name="preferences">Préférences</string>
+    <string name="politique">Politique de contenu</string>
+    <string name="sauvegarder">Sauvegarder les changements</string>
+    <string name="logo">Logo</string>
+    <string name="notif">Notifications(ON/OFF)</string>
+    <string name="afficher">Afficher Mickey Mouse</string>
 
 </resources>
