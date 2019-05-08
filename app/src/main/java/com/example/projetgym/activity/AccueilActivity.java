@@ -44,11 +44,26 @@ public class AccueilActivity extends AppCompatActivity {
             logoutUser();
         }
 
+        boutonEvenement();
+    }
+
+    private void boutonEvenement(){
+
         //Evenement du click sur le bouton se déconnecter
         btnDeconnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logoutUser();
+            }
+        });
+
+        //Evenement sur le click de rendez-vous
+        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

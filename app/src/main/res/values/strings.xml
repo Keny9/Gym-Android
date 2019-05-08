@@ -13,4 +13,6 @@
     <string name="plan">Plan d\'entrainement</string>
     <string name="preference">Préférences</string>
     <string name="deconnexion">Se déconnecter</string>
+    <string name="titreVosRendezVous">Vos rendez-vous</string>
+    <string name="retour">Retour</string>
 </resources>
