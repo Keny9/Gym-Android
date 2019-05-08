@@ -1,10 +1,12 @@
 package com.example.projetgym;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Exercice_list extends AppCompatActivity {
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.projetgym.activity.AccueilActivity;
+import com.example.projetgym.activity.LoginActivity;
+import com.example.projetgym.app.AppConfig;
+import com.example.projetgym.app.AppController;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cours_list extends AppCompatActivity {
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
     ListView liste;
     String titre[] = {"BBBBBB 1", "Titre 2", "Titre 3"};
@@ -39,7 +57,7 @@ public class Exercice_list extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 if(position == 0){
-                    Toast.makeText(Exercice_list.this, "Ca marche", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Cours_list.this, "Ca marche", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -77,4 +95,5 @@ public class Exercice_list extends AppCompatActivity {
             return row;
         }
     }
+
 }

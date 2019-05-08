@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projetgym.Cours_list;
 import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
@@ -33,6 +34,15 @@ public class AccueilActivity extends AppCompatActivity {
         btnPlan = findViewById(R.id.btnPlan);
         btnPref = findViewById(R.id.btnPreference);
         btnDeconnexion = findViewById(R.id.btnDeconnexion);
+
+        btnCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                startActivity(newActivity);
+                finish();
+            }
+        });
 
         // SQLite databse
         db = new SQLiteHandler(getApplicationContext());

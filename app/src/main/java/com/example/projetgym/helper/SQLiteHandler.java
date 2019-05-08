@@ -24,6 +24,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.projetgym.Evenement;
+
 import java.util.HashMap;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -61,6 +63,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 KEY_TELEPHONE + " TEXT," + KEY_IDFORFAIT + " INTEGER" + ")";
 
         db.execSQL(CREATE_CLIENT_TABLE);
+
+        //Créer la table evenement
+        String CREATE_EVENEMENT_TABLE = "CREATE TABLE evenement" + "(" + "id" + " TEXT PRIMARY KEY," +
+                "id_modele" + " INTEGER," + "id_type" + " INTEGER," + "id_jour" + " INTEGER," + "identifiant_employe" + " TEXT," +
+                "heure" + " INTEGER," + "duree" + " INTEGER," + "prix" + " REAL" + ")";
+
+        db.execSQL(CREATE_EVENEMENT_TABLE);
 
         Log.d(TAG, "Tables de la base de données créés");
     }
@@ -119,6 +128,38 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Fetching user from Sqlite: " + client.toString());
 
         return client;
+    }
+
+    public Evenement getEvenements(){
+        String selectQuery = "SELECT * FROM evenement";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Evenement evenement = new Evenement();
+
+        //Aller a la premiere ligne
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                evenement.setId(cursor.getInt(0));
+                evenement.setModele(cursor.getString(1));
+                evenement.setType(cursor.getString(2));
+                evenement.setJour(cursor.getString(3));
+                evenement.setIdentifiant_employe(cursor.getString(4));
+                evenement.setDate(cursor.getString(5));
+                evenement.setHeure(cursor.getInt(6));
+                evenement.setDuree(cursor.getInt(7));
+                evenement.setPrix(cursor.getFloat(8));
+            }
+        }
+        cursor.close();
+        db.close();
+
+        // return user
+        Log.d(TAG, "Fetching user from Sqlite: " + "AAAAAAAAAAAAAAAAAAAAAAA");
+
+        return evenement;
     }
 
     public void deleteClients(){
