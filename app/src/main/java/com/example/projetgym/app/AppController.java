@@ -1,4 +1,4 @@
-package com.example.projetgym;
+package com.example.projetgym.app;
 
 /****************************************
  Fichier : AppController.java

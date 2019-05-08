@@ -17,11 +17,11 @@ class Connexion{
   private $dbHost = "localhost";
   private $dbUser = "root";
   private $dbPass = "";
-  private $dbName = "gymlocal";
+  private $dbName = "gymcentral";
 
   function __construct() {
     $this->conn = mysqli_connect($this->dbHost, $this->dbUser, $this->dbPass, $this->dbName);
-    mysqli_set_charset($con,"utf8");
+    mysqli_set_charset($this->conn,"utf8");
 
     if ($this->conn->connect_error){
       $this->closeConnexion();
