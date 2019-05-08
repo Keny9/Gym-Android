@@ -15,4 +15,29 @@
     <string name="deconnexion">Se déconnecter</string>
     <string name="titreVosRendezVous">Vos rendez-vous</string>
     <string name="retour">Retour</string>
+    <string name="titre_plan">Votre plan dentrainement</string>
+    <string name="plus">+</string>
+    <string name="preferences">Préférences</string>
+    <string name="politique">Politique de contenu</string>
+    <string name="sauvegarder">Sauvegarder les changements</string>
+    <string name="logo">Logo</string>
+    <string name="notif">Notifications(ON/OFF)</string>
+    <string name="afficher">Afficher Mickey Mouse</string>
+    <string name="categorie">Catégories dexercice</string>
+    <string name="exercice">Les exercices</string>
+    <string name="exerciceprecis">Flexion des avant-bras</string>
+    <string name="exercicesauver">Sauvegarder lexercice</string>
+    <string name="flexion">Image de bicep</string>
+    <string name="description">Pour accomplir cet exercice, vous devez prendre des dumbells et les soulever comme limage le suggeste.</string>
+    <string name="serie">Séries</string>
+    <string name="repetition">Répétitions</string>
+    <string name="pause">Pause</string>
+    <string name="moins">-</string>
+    <string name="nbser">Nombre de séries :</string>
+    <string name="nbrep">Nombre de répétitions :</string>
+    <string name="nbpau">Temps de pause entre séries(min) :</string>
+    <string name="quantite">0</string>
+
+
+
 </resources>
