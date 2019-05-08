@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/backgroundColor"
+    android:background="@drawable/background"
     android:gravity="center_horizontal">
 
     <TextView
@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titre_premiereLigne"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:layout_marginTop="10dp"/>
 
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titre_deuxiemeLigne"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"/>
 
