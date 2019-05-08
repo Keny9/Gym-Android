@@ -3,7 +3,7 @@ package com.example.projetgym.helper;
 /****************************************
  Fichier : SessionManager.java
  Auteur : Karl Boutin
- Fonctionnalité : Pour la connexion de l'utilisateur a l'application
+ Fonctionnalité : Classe qui va gérer la session de l'application
  Date : 2019-05-07
 
  Vérification :
