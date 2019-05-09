@@ -34,6 +34,15 @@ public class AccueilActivity extends AppCompatActivity {
         btnPref = findViewById(R.id.btnPreference);
         btnDeconnexion = findViewById(R.id.btnDeconnexion);
 
+        btnCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                startActivity(newActivity);
+                finish();
+            }
+        });
+
         // SQLite databse
         db = new SQLiteHandler(getApplicationContext());
 
