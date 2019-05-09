@@ -13,6 +13,17 @@
     <string name="btn_inscrire">S\'inscrire</string>
     <string name="btn_annuler">Annuler</string>
 
+    <!--Forfaits-->
+    <string name="forfaits_titre">Les forfaits</string>
+    <string name="btn_forfaits_abonner">S\'abonner au forfait</string>
+    <string name="btn_forfaits_retour">Retour</string>
+
+    <!--Forfait-->
+    <string name="forfait_titre">Forfait</string>
+    <string name="btn_forfait_consulter_les_forfaits">Consulter les forfaits</string>
+    <string name="btn_forfait_renouveler">Renouveler le forfait</string>
+    <string name="btn_forfait_retour">Retour</string>
+
     <string name="titre_premiereLigne">Bienvenue à</string>
     <string name="titre_deuxiemeLigne">Disney\'s Weightland</string>
     <string name="hint_identifiant">Identifiant</string>
