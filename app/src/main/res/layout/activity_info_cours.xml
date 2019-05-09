@@ -37,7 +37,8 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="69dp"
                 android:gravity="center"
-                android:text="@string/preferences"
+                android:textAlignment="center"
+                android:text="@string/LesCours"
                 android:textColor="@color/black"
                 android:textSize="23sp"
                 android:textStyle="bold" />
@@ -53,9 +54,20 @@
                 android:id="@+id/imageCours"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:contentDescription="@string/preferences"
                 app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/nomCours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginEnd="90dp"
+                android:textAlignment="center"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                android:text="@string/afficher" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +83,31 @@
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                    android:text="@string/afficher" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp">
+                <ImageView
+                    android:id="@+id/imageJour"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="25dp"
+
+                    android:contentDescription="@string/preferences"
+                    app:srcCompat="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/jour"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
@@ -82,6 +118,53 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp">
+                <ImageView
+                    android:id="@+id/imageHeure"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="25dp"
+
+                    android:contentDescription="@string/preferences"
+                    app:srcCompat="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/heure"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                    android:text="@string/afficher" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp">
+                <ImageView
+                    android:id="@+id/imagePrix"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="25dp"
+
+                    android:contentDescription="@string/preferences"
+                    app:srcCompat="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/prix"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:button="@null"
+                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                    android:text="@string/afficher" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -92,18 +175,6 @@
             android:gravity="center|bottom"
             android:orientation="vertical">
 
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_regulier"
-                android:text="@string/politique"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:onClick = "displayToastMsg"
-                android:textStyle="bold" />
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
