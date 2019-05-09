@@ -15,17 +15,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Maquette_liste extends AppCompatActivity {
+public class Exercice_list extends AppCompatActivity {
 
     ListView liste;
-    String titre[] = {"Titre 1", "Titre 2", "Titre 3"};
+    String titre[] = {"BBBBBB 1", "Titre 2", "Titre 3"};
     String description[] = {"Texte 1", "Texte 2", "Texte 3"};
     int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.maquette_liste);
+        setContentView(R.layout.exercice_liste);
 
         liste = findViewById(R.id.listView);
 
@@ -39,7 +39,7 @@ public class Maquette_liste extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 if(position == 0){
-                    Toast.makeText(Maquette_liste.this, "Ca marche", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Exercice_list.this, "Ca marche", Toast.LENGTH_LONG).show();
                 }
             }
         });
