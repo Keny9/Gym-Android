@@ -1,4 +1,4 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

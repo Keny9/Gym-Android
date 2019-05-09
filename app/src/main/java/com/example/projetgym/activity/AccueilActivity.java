@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.projetgym.Cours_list;
 import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;

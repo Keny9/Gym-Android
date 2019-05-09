@@ -1,12 +1,12 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.projetgym.R;
+import com.example.projetgym.activity.Evenement;
 
 public class infoCours extends AppCompatActivity {
 
