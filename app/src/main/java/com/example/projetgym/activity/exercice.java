@@ -1,4 +1,4 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.projetgym.R;
 
 public class exercice extends AppCompatActivity {
 

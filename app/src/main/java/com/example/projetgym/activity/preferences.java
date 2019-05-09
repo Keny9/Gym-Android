@@ -1,9 +1,11 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 import android.view.View;
+
+import com.example.projetgym.R;
 
 public class preferences extends AppCompatActivity {
 

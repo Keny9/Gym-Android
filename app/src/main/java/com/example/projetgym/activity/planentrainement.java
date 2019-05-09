@@ -1,4 +1,4 @@
-package com.example.projetgym;
+package com.example.projetgym.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class categorie extends AppCompatActivity {
+import com.example.projetgym.R;
+
+public class planentrainement extends AppCompatActivity {
 
     ListView liste;
     String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};
@@ -27,14 +29,14 @@ public class categorie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorie);
+        setContentView(R.layout.activity_planentrainement);
+        configurePlusButton();
         configureBackButton();
-
 
         liste = findViewById(R.id.listView);
 
         //Créer l'Adapteur
-        categorie.MyAdapter adapter = new categorie.MyAdapter(this, titre, description, image);
+        planentrainement.MyAdapter adapter = new planentrainement.MyAdapter(this, titre, description, image);
         //Attribuer l'Adapteur à la liste
         liste.setAdapter(adapter);
 
@@ -43,21 +45,30 @@ public class categorie extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 if(position == 0){
-                    Toast.makeText(categorie.this, "Ca marche", Toast.LENGTH_LONG).show();
+                    Toast.makeText(planentrainement.this, "Ca marche", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
-    public void configureBackButton()
+    private void configureBackButton()
     {
         Button backButton= (Button) findViewById(R.id.button);
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(categorie.this, planentrainement.class));
+                startActivity(new Intent(planentrainement.this, AccueilActivity.class));
             }
         });
+    }
+    private void configurePlusButton()
+    {
+        Button plusButton= (Button) findViewById(R.id.button2);
+        plusButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(planentrainement.this, categorie.class));
+            }
+    });
     }
 
     class MyAdapter extends ArrayAdapter<String> {

@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".exerciceprecis">
+        <activity android:name=".activity.exerciceprecis">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,14 +23,12 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.AccueilActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-        <activity android:name=".categorie"/>
-        <activity android:name=".exercice"/>
-        <activity android:name=".planentrainement"/>
-        <activity android:name=".preferences"/>
+        <activity android:name=".activity.AccueilActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.categorie"/>
+        <activity android:name=".activity.exercice"/>
+        <activity android:name=".activity.planentrainement"/>
+        <activity android:name=".activity.preferences"/>
     </application>
 
 </manifest>
