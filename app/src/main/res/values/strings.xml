@@ -12,7 +12,6 @@
     <string name="valider_mot_de_passe">Confirmer le mot de passe</string>
     <string name="btn_inscrire">S\'inscrire</string>
     <string name="btn_annuler">Annuler</string>
-
     <string name="titre_premiereLigne">Bienvenue à</string>
     <string name="titre_deuxiemeLigne">Disney\'s Weightland</string>
     <string name="hint_identifiant">Identifiant</string>

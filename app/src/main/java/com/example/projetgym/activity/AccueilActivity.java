@@ -73,7 +73,7 @@ public class AccueilActivity extends AppCompatActivity {
      * et enlève les données de la base de donnée local SQLite de la table client
      * */
     private void logoutUser() {
-        session.setLogin(false);
+        session.setLogin(false,null);
 
         db.deleteClients();
 
