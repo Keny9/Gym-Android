@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<ScrollView android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/background"
-    android:gravity="center_horizontal">
-
-    <TextView
-        android:id="@+id/titre1"
-        android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titre_premiereLigne"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:layout_marginTop="10dp"/>
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/titre2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titre_deuxiemeLigne"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/titre1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titre_premiereLigne"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/titre2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titre_deuxiemeLigne"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/titre2"
@@ -99,4 +102,6 @@
 
         </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
