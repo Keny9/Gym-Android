@@ -10,15 +10,15 @@
 
     if($cours != null){
       $response["error"] = FALSE;
-      $response["evenement"]["id"] = $cours["id"];
-      $response["evenement"]["modele_cours.nom"] = $cours["modele_cours.nom"];
-      $response["evenement"]["type_evenement.nom"] = $cours["type_evenement.nom"];
-      $response["evenement"]["jour_semaine.nom_jour"] = $cours["jour_semaine.nom_jour"];
-      $response["evenement"]["identifiant_employe"] = $cours["identifiant_employe"];
-      $response["evenement"]["date"] = $cours["date"];
-      $response["evenement"]["heure"] = $cours["heure"];
-      $response["evenement"]["duree"] = $cours["duree"];
-      $response["evenement"]["prix"] = $cours["prix"];
+      $response["cours"]["id"] = $cours["id"];
+      $response["cours"]["id_modele"] = $cours["id_modele"];
+      $response["cours"]["id_type"] = $cours["id_type"];
+      $response["cours"]["id_jour"] = $cours["id_jour"];
+      $response["cours"]["identifiant_employe"] = $cours["identifiant_employe"];
+      $response["cours"]["date"] = $cours["date"];
+      $response["cours"]["heure"] = $cours["heure"];
+      $response["cours"]["duree"] = $cours["duree"];
+      $response["cours"]["prix"] = $cours["prix"];
       echo json_encode($response);
     }
     else{

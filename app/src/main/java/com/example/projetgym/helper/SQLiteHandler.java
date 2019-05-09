@@ -23,9 +23,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.util.Log;
-
-import com.example.projetgym.Evenement;
-
 import java.util.HashMap;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -130,36 +127,59 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return client;
     }
 
-    public Evenement getEvenements(){
-        String selectQuery = "SELECT * FROM evenement";
+
+    //Ajouter les cours dans la base de donnée local
+    public void ajouterCours(int id, int id_modele, int id_type, int id_jour, String identifiant_employe, String date, int heure, int duree, double prix ){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("id_modele", id_modele);
+        values.put("id_type", id_type);
+        values.put("id_jour", id_jour);
+        values.put("identifiant_employe", identifiant_employe);
+        values.put("date", date);
+        values.put("heure", heure);
+        values.put("duree", duree);
+        values.put("prix", prix);
+
+        db.insert(TABLE_CLIENT,null,values);
+        db.close();
+
+        Log.d(TAG, "Nouveau cours inséré dans sqlite: " + id);
+    }
+
+    //Get all cours
+    private HashMap<String, String> getCours(){
+        String selectQuery = "SELECT * FROM evenement WHERE id_type = 1";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        Evenement evenement = new Evenement();
+        HashMap<String, String> event = new HashMap<String, String>();
 
         //Aller a la premiere ligne
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
-                evenement.setId(cursor.getInt(0));
-                evenement.setModele(cursor.getString(1));
-                evenement.setType(cursor.getString(2));
-                evenement.setJour(cursor.getString(3));
-                evenement.setIdentifiant_employe(cursor.getString(4));
-                evenement.setDate(cursor.getString(5));
-                evenement.setHeure(cursor.getInt(6));
-                evenement.setDuree(cursor.getInt(7));
-                evenement.setPrix(cursor.getFloat(8));
+                event.put("id", cursor.getString(0));
+                event.put("modele", cursor.getString(1));
+                event.put("type", cursor.getString(2));
+                event.put("jour", cursor.getString(3));
+                event.put("identifiant_employe", cursor.getString(4));
+                event.put("date", cursor.getString(5));
+                event.put("heure", cursor.getString(6));
+                event.put("duree", cursor.getString(7));
+                event.put("prix", cursor.getString(8));
             }
         }
         cursor.close();
         db.close();
 
         // return user
-        Log.d(TAG, "Fetching user from Sqlite: " + "AAAAAAAAAAAAAAAAAAAAAAA");
+        Log.d(TAG, "Fetching user from Sqlite: " + event.toString());
 
-        return evenement;
+        return event;
     }
 
     public void deleteClients(){

@@ -1,5 +1,6 @@
 package com.example.projetgym;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,19 +22,18 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.projetgym.activity.AccueilActivity;
 import com.example.projetgym.activity.LoginActivity;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
+import com.example.projetgym.helper.SQLiteHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Cours_list extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
+//    private ProgressDialog pDialog = new ProgressDialog(this);
+//    private SQLiteHandler db;
 
     ListView liste;
     String titre[] = {"BBBBBB 1", "Titre 2", "Titre 3"};
@@ -42,8 +42,11 @@ public class Cours_list extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    //    db = new SQLiteHandler(getApplicationContext());
+     //   setCours();
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exercice_liste);
+        setContentView(R.layout.cours_liste);
 
         liste = findViewById(R.id.listView);
 
@@ -52,13 +55,16 @@ public class Cours_list extends AppCompatActivity {
         //Attribuer l'Adapteur à la liste
         liste.setAdapter(adapter);
 
+        final Evenement cours = new Evenement(1, "modele","type","jour", "idEmploye", "date", 1,1,1);
+
         //Créer le click listener
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                if(position == 0){
-                    Toast.makeText(Cours_list.this, "Ca marche", Toast.LENGTH_LONG).show();
-                }
+                Intent intent = new Intent(Cours_list.this, infoCours.class);
+                intent.putExtra("Cours", cours);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -95,5 +101,81 @@ public class Cours_list extends AppCompatActivity {
             return row;
         }
     }
+
+
+
+
+//    private void setCours(){
+//
+//        // Tag used to cancel the request
+//        String tag_string_req = "req_login";
+//
+//        pDialog.setMessage("Connexion en cours...");
+//        showDialog();
+//
+//        StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
+//
+//            @Override
+//            public void onResponse(String response) {
+//                Log.d(TAG, "Login Response: " + response.toString());
+//                hideDialog();
+//
+//                try {
+//                    JSONObject jObj = new JSONObject(response);
+//                    boolean error = jObj.getBoolean("error");
+//
+//                    // Check for error node in json
+//                    if (!error) {
+//
+//                        // Mettre les cours dans SQLite
+//                        JSONObject cours = jObj.getJSONObject("cours");
+//                        int id = cours.getInt("id");
+//                        int id_modele = cours.getInt("id_modele");
+//                        int id_type = cours.getInt("id_type");
+//                        int id_jour = cours.getInt("id_jour");
+//                        String identifiant_employe = cours.getString("identifiant_employe");
+//                        String date = cours.getString("date");
+//                        int heure = cours.getInt("heure");
+//                        int duree = cours.getInt("duree");
+//                        double prix = cours.getDouble("prix");
+//
+//
+//                        // Insérer le client dans la table client
+//                        db.ajouterCours(id,id_modele,id_type,id_jour,identifiant_employe,date,heure, duree, prix);
+//
+//                    } else {
+//                        //Erreur dans la connexion, obtenir le message d'erreur
+//                        String errorMsg = jObj.getString("error_msg");
+//                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+//                    }
+//                } catch (JSONException e) {
+//                    // JSON erreur
+//                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(), "Json erreur: " + e.getMessage(), Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e(TAG, "Erreur de connexion: " + error.getMessage());
+//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                hideDialog();
+//            }
+//        });
+//
+//        // Adding request to request queue
+//        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+//    }
+//    private void showDialog() {
+//        if (!pDialog.isShowing())
+//            pDialog.show();
+//    }
+//
+//    private void hideDialog() {
+//        if (pDialog.isShowing())
+//            pDialog.dismiss();
+//    }
 
 }
