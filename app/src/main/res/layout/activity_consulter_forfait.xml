@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/inscription_global_layout"
+    android:weightSum="12"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="38dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="69dp"
+            android:gravity="center"
+            android:text="@string/forfait_titre"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="9">
+        <!-- Insérer info sur forfait -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/insc_bouton"
+        android:layout_weight="2"
+        android:weightSum="3"
+        android:gravity="bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_forfait_renouveler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_forfait_renouveler"
+            android:layout_weight="1"
+            android:background="@color/btn_background"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <Space android:layout_height="5dp"
+            android:layout_width="1dp"></Space>
+
+
+        <Button
+            android:id="@+id/btn_forfait_consulter_les_forfaits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_forfait_consulter_les_forfaits"
+            android:layout_weight="1"
+            android:background="@color/btn_background"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <Space android:layout_height="5dp"
+            android:layout_width="1dp"></Space>
+
+        <Button
+            android:id="@+id/btn_forfait_retour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_forfait_retour"
+            android:layout_weight="1"
+            android:background="@color/btn_background"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

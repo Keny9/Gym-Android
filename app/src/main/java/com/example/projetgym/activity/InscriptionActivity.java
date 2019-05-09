@@ -1,5 +1,6 @@
 package com.example.projetgym.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,9 +37,21 @@ public class InscriptionActivity extends AppCompatActivity {
                 valide += validerConfirmeMotDePsse();
 
                 if(valide != ""){
+                    //TODO Insérer client dans la BD centrale et retour à la page login
                     Toast toast = Toast.makeText(getApplicationContext(), valide, Toast.LENGTH_SHORT);
                     toast.show();
                 }
+            }
+        });
+
+        button = (Button) findViewById(R.id.btn_annuler);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Aller à l'accueil
+                Intent intent = new Intent(InscriptionActivity.this, AccueilActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

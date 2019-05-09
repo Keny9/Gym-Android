@@ -3,7 +3,7 @@
 Fichier : rendezVousClient.php
 Auteur : Karl Boutin
 Fonctionnalité : Classe de gestion des rendez-vous
-Date : 2019-04-15
+Date : 2019-05-08
 
 Vérification :
 Date                  Nom                       Approuvé

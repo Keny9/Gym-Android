@@ -1,4 +1,19 @@
 <?php
+/****************************************
+Fichier : login.php
+Auteur : Karl Boutin
+Fonctionnalité : Connexion a l'application mobile
+Date : 2019-05-08
+
+Vérification :
+Date                  Nom                       Approuvé
+=========================================================
+
+Historique de modifications :
+Date                  Nom                     Description
+=========================================================
+
+****************************************/
   require_once '../client/gestionClient.php';
 
   $gestionClient = new GestionClient();

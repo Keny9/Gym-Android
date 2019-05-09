@@ -4,7 +4,7 @@
   Auteur : Karl Boutin
   Fonctionnalité : Obtenir les rendez-vous du client lorsque le client clic sur
   ses rendez-vous
-  Date : 2019-04-15
+  Date : 2019-05-08
 
   Vérification :
   Date                  Nom                       Approuvé
