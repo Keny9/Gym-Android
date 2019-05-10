@@ -1,14 +1,21 @@
 package com.example.projetgym.activity;
 
 import android.content.Intent;
+import android.graphics.Rect;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projetgym.MainActivity;
 import com.example.projetgym.R;
 
 public class InscriptionActivity extends AppCompatActivity {
@@ -19,8 +26,165 @@ public class InscriptionActivity extends AppCompatActivity {
         setContentView(R.layout.inscription);
 
         setInterfaceInscription();
+        setInputs();
+        setBottomGone();
+        setBoutons();
 
+        //enlève le focus
+        View current = getCurrentFocus();
+        if (current != null) current.clearFocus();
+    }
 
+    /**
+     * Fait en sorte que lorsque le clavier est ouvert, les boutons disparaissent.
+     */
+    private void setBottomGone(){
+        View contentView = (View) findViewById(R.id.inscription_global_layout);
+        // ContentView is the root view of the layout of this activity/fragment
+        contentView.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        View contentView = (View) findViewById(R.id.inscription_global_layout);
+                        LinearLayout ll = (LinearLayout) findViewById(R.id.insc_boutons);
+
+                        Rect r = new Rect();
+                        contentView.getWindowVisibleDisplayFrame(r);
+                        int screenHeight = contentView.getRootView().getHeight();
+
+                        // r.bottom is the position above soft keypad or device button.
+                        // if keypad is shown, the r.bottom is smaller than that before.
+                        int keypadHeight = screenHeight - r.bottom;
+
+                        //Log.d(TAG, "keypadHeight = " + keypadHeight);
+
+                        if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
+                            ll.setVisibility(View.GONE);
+                        }
+                        else {
+                            ll.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * Set les inputs
+     */
+    private void setInputs(){
+        setDateNaissanceInput();
+        setTelephoneInput();
+        setIdentifiantInput();
+        setMotDePasseInput();
+        setValideMotDePasseInput();
+    }
+
+    private void setDateNaissanceInput(){
+        EditText et = (EditText) findViewById(R.id.date_naissance);
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                TextInputLayout til = (TextInputLayout)    findViewById(R.id.til_date_naissance);
+                if (!hasFocus) {
+                    til.setErrorEnabled(false);
+                }else{
+
+                    til.setErrorEnabled(true);
+                    til.setError("Format : jj-mm-aaaa");
+                }
+            }
+        });
+    }
+
+    private void setTelephoneInput(){
+        EditText et = (EditText) findViewById(R.id.telephone);
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                TextInputLayout til = (TextInputLayout)    findViewById(R.id.til_telephone);
+                if (!hasFocus) {
+                    til.setErrorEnabled(false);
+                }else{
+                    til.setErrorEnabled(true);
+                    til.setError("Format : 8191231234");
+                }
+            }
+        });
+    }
+
+    private void setIdentifiantInput(){
+        EditText et = (EditText) findViewById(R.id.identifiant);
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                TextInputLayout til = (TextInputLayout)    findViewById(R.id.til_identifiant);
+                if (!hasFocus) {
+                    til.setErrorEnabled(false);
+                }else{
+                    til.setErrorEnabled(true);
+                    til.setError("Doit contenir au moins 5 caractères.");
+                }
+            }
+        });
+    }
+
+    private void setMotDePasseInput(){
+        EditText et = (EditText) findViewById(R.id.mot_de_passe);
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                TextInputLayout til = (TextInputLayout)    findViewById(R.id.til_mot_de_passe);
+                if (!hasFocus) {
+                    til.setErrorEnabled(false);
+                }else{
+                    til.setErrorEnabled(true);
+                    til.setError("Doit contenir au moins 5 caractères.");
+                }
+            }
+        });
+    }
+
+    private void setValideMotDePasseInput(){
+        EditText et = (EditText) findViewById(R.id.valider_mot_de_passe);
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                TextInputLayout til = (TextInputLayout)    findViewById(R.id.til_valider_mot_de_passe);
+                if (!hasFocus) {
+                    til.setErrorEnabled(false);
+                }else{
+                    til.setErrorEnabled(true);
+                    til.setError("Veuillez re-entrer le mot de passe.");
+                }
+            }
+        });
+    }
+
+    /**
+     * Set certains attributs pour l'affichage
+     */
+    private void setInterfaceInscription(){
+        LinearLayout content = (LinearLayout) findViewById(R.id.insc_contenu);
+        int padding_in_dp = 10;  // 20 dps
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_in_px = (int) (padding_in_dp * scale + 0.5f);
+        content.setPadding(padding_in_px,padding_in_px,padding_in_px,padding_in_px);
+    }
+
+    /**
+     * Set les boutons
+     */
+    private void setBoutons(){
+        setBtnInscrire();
+        setBtnAnnuler();
+    }
+
+    private void setBtnInscrire(){
         Button button = (Button) findViewById(R.id.btn_inscrire);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -43,39 +207,30 @@ public class InscriptionActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        button = (Button) findViewById(R.id.btn_annuler);
+    private void setBtnAnnuler(){
+        Button button = (Button) findViewById(R.id.btn_annuler);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Aller à l'accueil
-                Intent intent = new Intent(InscriptionActivity.this, AccueilActivity.class);
+                Intent intent = new Intent(InscriptionActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
 
-    private void setInterfaceInscription(){
-        LinearLayout content = (LinearLayout) findViewById(R.id.insc_contenu);
-        int padding_in_dp = 10;  // 20 dps
-        final float scale = getResources().getDisplayMetrics().density;
-        int padding_in_px = (int) (padding_in_dp * scale + 0.5f);
-        content.setPadding(padding_in_px,padding_in_px,padding_in_px,padding_in_px);
-    }
-
     public String validerIdentifiant(){
         String temp = "";
-        String erreur = "";
         temp += ((TextView)findViewById(R.id.identifiant)).getText();
 
         if(temp == ""){
-            erreur = "Veuiller entrer un identifiant \n";
-            return erreur;
+            return "Veuiller entrer un identifiant.\n";
         }
         if(temp.length() < 5){
-            erreur = "L'identifiant doit contenir au moins 5 caractères";
-            return "L'identifiant doit contenir au moins 5 caractères\n";
+            return "L'identifiant doit contenir au moins 5 caractères.\n";
         }
         return "";
     }
@@ -136,6 +291,9 @@ public class InscriptionActivity extends AppCompatActivity {
             if (Character.isDigit(temp.charAt(i)) == false) {
                 return "Le numéro de telephone doit contenir seulement des chiffres.\n";
             }
+        }
+        if(sz != 10){
+            return "Le numéro de telephone doit contenir 10 chiffres.\n";
         }
         return "";
     }
