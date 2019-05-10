@@ -52,7 +52,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    //Création des tables
+    /**
+     *  Création des tables
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CLIENT_TABLE = "CREATE TABLE " + TABLE_CLIENT + "(" + KEY_ID + " TEXT PRIMARY KEY," +
@@ -71,7 +73,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Tables de la base de données créés");
     }
 
-    //Mise à jour de la base de donnée
+    /**
+     * Mise à jour de la base de donnée
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //Si la vielle table existe on la drop
@@ -81,8 +85,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //Ajoute le client (utilisateur actuel) dans la base de donnée local
-    public void ajouterClient(String identifiant, String nom,String prenom, String email, String idForfait, String dateNaissance, String telephone){
+    /**
+     *  Ajoute le client (utilisateur actuel) dans la base de donnée local
+     */
+    public void ajouterClient(String identifiant, String nom,String prenom, String email, int idForfait, String dateNaissance, String telephone){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -100,6 +106,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Nouveau client inséré dans sqlite: " + identifiant);
     }
 
+    /**
+     * Retourner les informations du client
+     * @return information du client dans un tableau
+     */
     public HashMap<String, String> getClientDetails(){
         HashMap<String, String> client = new HashMap<String, String>();
         String selectQuery = "SELECT * FROM " + TABLE_CLIENT;

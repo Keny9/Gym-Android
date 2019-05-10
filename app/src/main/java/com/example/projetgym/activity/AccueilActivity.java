@@ -34,6 +34,40 @@ public class AccueilActivity extends AppCompatActivity {
         btnPref = findViewById(R.id.btnPreference);
         btnDeconnexion = findViewById(R.id.btnDeconnexion);
 
+        // SQLite databse
+        db = new SQLiteHandler(getApplicationContext());
+
+        // La session
+        session = new SessionManager(getApplicationContext());
+
+       /* if (!session.isLoggedIn()) {
+            logoutUser();
+        }*/
+
+        boutonEvenement();
+    }
+
+    private void boutonEvenement(){
+
+        //Evenement du click sur le bouton se déconnecter
+        btnDeconnexion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
+
+        //Evenement sur le click de rendez-vous
+        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller a la page des cours
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,21 +77,33 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
-        // SQLite databse
-        db = new SQLiteHandler(getApplicationContext());
-
-        // La session
-        session = new SessionManager(getApplicationContext());
-
-        if (!session.isLoggedIn()) {
-            logoutUser();
-        }
-
-        //Evenement du click sur le bouton se déconnecter
-        btnDeconnexion.setOnClickListener(new View.OnClickListener() {
+        //Consulter les forfaits
+        btnForfait.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                logoutUser();
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller au plan d'entrainement
+        btnPlan.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller a la page des preferences
+        btnPref.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), preferences.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -67,7 +113,7 @@ public class AccueilActivity extends AppCompatActivity {
      * et enlève les données de la base de donnée local SQLite de la table client
      * */
     private void logoutUser() {
-        session.setLogin(false);
+        session.setLogin(false,null);
 
         db.deleteClients();
 

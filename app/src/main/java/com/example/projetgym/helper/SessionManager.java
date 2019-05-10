@@ -37,6 +37,7 @@ public class SessionManager {
     //Shared preference nom du fichier
     private static final String PREF_NAME = "ProjetGymLogin";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
+    private static final String KEY_ID = "Identifiant";
 
     public SessionManager(Context context) {
         this.context = context;
@@ -44,12 +45,14 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void setLogin(boolean isLoggedIn) {
+    public void setLogin(boolean isLoggedIn, String identifiant) {
 
         editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
+        editor.putString(KEY_ID, identifiant);
 
         // commit changes
         editor.commit();
+        editor.apply();
 
         Log.d(TAG, "User login session modified!");
     }
@@ -57,4 +60,6 @@ public class SessionManager {
     public boolean isLoggedIn(){
         return sharedPreferences.getBoolean(KEY_IS_LOGGEDIN, false);
     }
+
+    public String getIdentifiant(){return sharedPreferences.getString(KEY_ID,null);}
 }
