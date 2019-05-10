@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".infoCours"></activity>
+        <activity android:name=".activity.infoCours"></activity>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
             android:label="@string/app_name"
             android:launchMode="singleTop" />
         <activity
-            android:name=".Cours_list"
+            android:name=".activity.Cours_list"
             android:label="@string/app_name"
             android:launchMode="singleTop" />
     </application>

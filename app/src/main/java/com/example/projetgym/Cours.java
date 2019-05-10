@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 //Parcelable permet de facilement transférer l'objet d'une activitée à l'autre
-class Evenement implements Parcelable {
-    private int id;
+public class Cours implements Parcelable {
+    private String id;
     private String modele;
-    private String type;
+    private String description;
     private String jour;
     private String identifiant_employe;
     private String date;
@@ -15,22 +15,23 @@ class Evenement implements Parcelable {
     private int duree;
     private double prix;
 
-    public Evenement(int id, String modele, String type, String jour, String identifiant_employe, String date, int heure, int duree, double prix){
+    public Cours(String id, String modele, String description, String jour, String identifiant_employe, String date, int heure, int duree, double prix){
         setId(id);
         setModele(modele);
-        setType(type);
+        setDescription(description);
         setJour(jour);
         setIdentifiant_employe(identifiant_employe);
         setDate(date);
+        setHeure(heure);
         setDuree(duree);
         setPrix(prix);
     }
 
 
-    protected Evenement(Parcel in) {
-        id = in.readInt();
+    protected Cours(Parcel in) {
+        id = in.readString();
         modele = in.readString();
-        type = in.readString();
+        description = in.readString();
         jour = in.readString();
         identifiant_employe = in.readString();
         date = in.readString();
@@ -39,23 +40,23 @@ class Evenement implements Parcelable {
         prix = in.readDouble();
     }
 
-    public static final Creator<Evenement> CREATOR = new Creator<Evenement>() {
+    public static final Creator<Cours> CREATOR = new Creator<Cours>() {
         @Override
-        public Evenement createFromParcel(Parcel in) {
-            return new Evenement(in);
+        public Cours createFromParcel(Parcel in) {
+            return new Cours(in);
         }
 
         @Override
-        public Evenement[] newArray(int size) {
-            return new Evenement[size];
+        public Cours[] newArray(int size) {
+            return new Cours[size];
         }
     };
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -65,14 +66,6 @@ class Evenement implements Parcelable {
 
     public void setModele(String modele) {
         this.modele = modele;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getJour() {
@@ -130,14 +123,22 @@ class Evenement implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeString(id);
         dest.writeString(modele);
-        dest.writeString(type);
+        dest.writeString(description);
         dest.writeString(jour);
         dest.writeString(identifiant_employe);
         dest.writeString(date);
         dest.writeInt(heure);
         dest.writeInt(duree);
         dest.writeDouble(prix);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

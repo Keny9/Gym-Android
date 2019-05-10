@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -44,129 +45,128 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:gravity="center|top"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageCours"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="30dp"
-                android:contentDescription="@string/preferences"
-                app:srcCompat="@drawable/logo" />
-
-            <TextView
-                android:id="@+id/nomCours"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
-                android:layout_marginEnd="90dp"
-                android:textAlignment="center"
-                android:button="@null"
-                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                android:text="@string/afficher" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp">
-                <ImageView
-                    android:id="@+id/imageDescription"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="25dp"
+                android:layout_height="400dp"
+                android:gravity="center|top"
+                android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageCours"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
                     android:contentDescription="@string/preferences"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
-                    android:id="@+id/description"
+                    android:id="@+id/nomCours"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginEnd="90dp"
                     android:button="@null"
-                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/afficher" />
-            </LinearLayout>
+                    android:text="@string/afficher"
+                    android:textAlignment="center" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp">
-                <ImageView
-                    android:id="@+id/imageJour"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="25dp"
-
-                    android:contentDescription="@string/preferences"
-                    app:srcCompat="@drawable/logo" />
-
-                <TextView
-                    android:id="@+id/jour"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:button="@null"
-                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/afficher" />
-            </LinearLayout>
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp">
 
+                    <ImageView
+                        android:id="@+id/imageDescription"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="25dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp">
-                <ImageView
-                    android:id="@+id/imageHeure"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="25dp"
+                        android:contentDescription="@string/preferences"
+                        app:srcCompat="@drawable/logo" />
 
-                    android:contentDescription="@string/preferences"
-                    app:srcCompat="@drawable/logo" />
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:button="@null"
+                        android:text="@string/afficher" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/heure"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:button="@null"
-                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/afficher" />
-            </LinearLayout>
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp">
-                <ImageView
-                    android:id="@+id/imagePrix"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="25dp"
+                    <ImageView
+                        android:id="@+id/imageJour"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="25dp"
 
-                    android:contentDescription="@string/preferences"
-                    app:srcCompat="@drawable/logo" />
+                        android:contentDescription="@string/preferences"
+                        app:srcCompat="@drawable/logo" />
 
-                <TextView
-                    android:id="@+id/prix"
+                    <TextView
+                        android:id="@+id/jour"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:button="@null"
+                        android:text="@string/afficher" />
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:button="@null"
-                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/afficher" />
-            </LinearLayout>
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp">
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/imageHeure"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="25dp"
+
+                        android:contentDescription="@string/preferences"
+                        app:srcCompat="@drawable/logo" />
+
+                    <TextView
+                        android:id="@+id/heure"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:button="@null"
+                        android:text="@string/afficher" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp">
+
+                    <ImageView
+                        android:id="@+id/imagePrix"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="25dp"
+
+                        android:contentDescription="@string/preferences"
+                        app:srcCompat="@drawable/logo" />
+
+                    <TextView
+                        android:id="@+id/prix"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:button="@null"
+                        android:text="@string/afficher" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_regulier"
-                android:text="@string/sauvegarder"
+                android:text="@string/inscrireCours"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="22sp"
@@ -199,5 +199,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

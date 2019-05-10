@@ -3,34 +3,38 @@
 
   $gestionClient = new GestionEvenement();
 
-  //json response array
-  $response = array("error" => FALSE);
+  //JSON response array
+   $response = array();
 
-    $cours = $gestionClient->getAllCours();
+    $result = $gestionClient->getAllCours();
 
-    if($cours != null){
-      $response["error"] = FALSE;
-      $response["cours"]["id"] = $cours["id"];
-      $response["cours"]["id_modele"] = $cours["id_modele"];
-      $response["cours"]["id_type"] = $cours["id_type"];
-      $response["cours"]["id_jour"] = $cours["id_jour"];
-      $response["cours"]["identifiant_employe"] = $cours["identifiant_employe"];
-      $response["cours"]["date"] = $cours["date"];
-      $response["cours"]["heure"] = $cours["heure"];
-      $response["cours"]["duree"] = $cours["duree"];
-      $response["cours"]["prix"] = $cours["prix"];
-      echo json_encode($response);
-    }
-    else{
-      $response["error"] = TRUE;
-      $response["error_msg"] = "Les informations entrées sont incorrects. Veuillez réessayer.";
-      echo json_encode($response);
-    }
-  }
-  else {
-    $response["error"] = TRUE;
-    $response["error_msg"] = "Veuillez remplir les champs qui sont vides.";
+    if($result != null){
+      $response["cours"] = array();
+
+      while($row = $result->fetch_assoc()){
+        $cours = array();
+        $cours["id"] = $row["id"];
+        $cours["modele"] = $row["nom"];
+        $cours["description"] = $row["description"];
+        $cours["jour"] = $row["nom_jour"];
+        $cours["identifiant_employe"] = $row["identifiant_employe"];
+        $cours["date"] = $row["date"];
+        $cours["heure"] = $row["heure"];
+        $cours["duree"] = $row["duree"];
+        $cours["prix"] = $row["prix"];
+
+        array_push($response["cours"], $cours);
+      }
+    //reussi
+    $response["success"] = 1;
+
+    echo json_encode($response);
+  } else {
+
+    //aucun cours trouver
+    $response["success"] = 0;
+    $response["message"] = "Aucun cours trouvé.";
+
     echo json_encode($response);
   }
-
 ?>

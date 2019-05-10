@@ -110,18 +110,19 @@ public class LoginActivity extends AppCompatActivity {
                     // Check for error node in json
                     if (!error) {
                         // L'utilisateur a reussi a se connecter
-                        // Creer la session
-                        session.setLogin(true);
 
                         // Mettre le client dans SQLite
                         JSONObject client = jObj.getJSONObject("client");
                         String identifiant = client.getString("identifiant");
                         String nom = client.getString("nom");
                         String prenom = client.getString("prenom");
-                        String idForfait = client.getString("id_forfait");
+                        int    idForfait = client.getInt("id_forfait");
                         String dateNaissance = client.getString("date_naissance");
                         String courriel = client.getString("courriel");
                         String telephone = client.getString("telephone");
+
+                        // Creer la session
+                        session.setLogin(true,identifiant);
 
                         // Insérer le client dans la table client
                         db.ajouterClient(identifiant,nom,prenom,courriel,idForfait,dateNaissance,telephone);

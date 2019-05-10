@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.projetgym.Cours_list;
 import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
@@ -35,15 +34,6 @@ public class AccueilActivity extends AppCompatActivity {
         btnPref = findViewById(R.id.btnPreference);
         btnDeconnexion = findViewById(R.id.btnDeconnexion);
 
-        btnCours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
-                startActivity(newActivity);
-                finish();
-            }
-        });
-
         // SQLite databse
         db = new SQLiteHandler(getApplicationContext());
 
@@ -54,6 +44,20 @@ public class AccueilActivity extends AppCompatActivity {
             logoutUser();
         }
 
+        btnCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                startActivity(newActivity);
+                finish();
+            }
+        });
+
+        boutonEvenement();
+    }
+
+    private void boutonEvenement(){
+
         //Evenement du click sur le bouton se déconnecter
         btnDeconnexion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +65,16 @@ public class AccueilActivity extends AppCompatActivity {
                 logoutUser();
             }
         });
+
+//        //Evenement sur le click de rendez-vous
+//        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 
     /**
@@ -68,7 +82,7 @@ public class AccueilActivity extends AppCompatActivity {
      * et enlève les données de la base de donnée local SQLite de la table client
      * */
     private void logoutUser() {
-        session.setLogin(false);
+        session.setLogin(false,null);
 
         db.deleteClients();
 

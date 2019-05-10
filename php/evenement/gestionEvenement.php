@@ -54,29 +54,29 @@ class GestionEvenement{
          $conn = $tempconn->getConnexion();
          $evenement = null;
 
-         $requete= "SELECT * FROM evenement WHERE id_type = 1;";
+         $requete = "SELECT evenement.id, modele_cours.nom, modele_cours.description,jour_semaine.nom_jour, identifiant_employe, date, heure, duree, prix
+                       FROM evenement
+                          INNER JOIN modele_cours ON modele_cours.id = evenement.id_modele
+                          INNER JOIN type_evenement ON type_evenement.id = evenement.id_type
+                          INNER JOIN jour_semaine ON jour_semaine.id = evenement.id_jour
+                       WHERE id_type = 1;";
 
-                    /*
-                    "SELECT evenement.id, modele_cours.nom, type_evenement.nom, jour_semaine.nom_jour, identifiant_employe, date, heure, duree, prix
-                               FROM evenement
-                                  INNER JOIN modele_cours ON modele_cours.id = evenement.id_modele
-                                  INNER JOIN type_evenement ON type_evenement.id = evenement.id_type
-                                  INNER JOIN jour_semaine ON jour_semaine.id = evenement.id_jour
-                               WHERE id_type = 1;";
-                    */
 
-       $result = $conn->query($requete);
-       if(!$result){
-         trigger_error($conn->error);
-       }
+         $result = $conn->query($requete);
 
-       if ($result->num_rows > 0) {
-         while($row = $result->fetch_assoc()) {
-          $evenement[] = new Evenement($row['id'], $row['id_modele'], $row['id_type'], $row['id_jour'], $row['identifiant_employe'], $row['date'], $row['heure'], $row['duree'], $row['prix']);
+         if(!$result){
+           trigger_error($conn->error);
          }
+
+         if(mysqli_num_rows($result)==0){
+           $evenement = null;
+         }
+         else{
+           $evenement = $result;
+         }
+
+         return $evenement;
        }
-       return $evenement;
-     }
 }
 
 ?>
