@@ -21,10 +21,10 @@ package com.example.projetgym.app;
 public class AppConfig {
 
     // Server user login url
-    public static String URL_LOGIN = "http://10.0.2.2/ProjetGymAndroid/php/authentification/login.php";
+    public static String URL_LOGIN = "http://10.0.2.2/gymandroid/php/authentification/login.php";
 
     // Server user register url
-    public static String URL_REGISTER = "http://10.0.2.2/ProjetGymAndroid/php/authentification/register.php";
+    public static String URL_REGISTER = "http://10.0.2.2/gymandroid/php/authentification/register.php";
 
-    public static String URL_RENDEZVOUS = "http://10.0.2.2/ProjetGymAndroid/php/rendezvous/rendezVousClient.php";
+    public static String URL_RENDEZVOUS = "http://10.0.2.2/gymandroid/php/rendezvous/rendezVousClient.php";
 }

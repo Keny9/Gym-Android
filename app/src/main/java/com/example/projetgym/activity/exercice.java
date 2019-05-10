@@ -33,6 +33,11 @@ public class exercice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercice);
+
+        Intent intentCategorie=getIntent();
+        Bundle extras= intentCategorie.getExtras();
+        TextView titres=(TextView) findViewById(R.id.textView);
+        titres.setText(extras.getString("categorie", "Les exercices"));
         configureBackButton();
 
 
