@@ -37,11 +37,12 @@ public class AccueilActivity extends AppCompatActivity {
         // SQLite databse
         db = new SQLiteHandler(getApplicationContext());
 
-    private void boutonEvenement(){
+        // La session
+        session = new SessionManager(getApplicationContext());
 
-       /* if (!session.isLoggedIn()) {
+        if (!session.isLoggedIn()) {
             logoutUser();
-        }*/
+        }
 
         boutonEvenement();
     }
