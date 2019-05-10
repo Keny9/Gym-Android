@@ -45,8 +45,21 @@ public class categorie extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 if(position == 0){
-                    Toast.makeText(categorie.this, "Ca marche", Toast.LENGTH_LONG).show();
+                    Intent intentHaut =new Intent(categorie.this, exercice.class);
+                    intentHaut.putExtra("categorie","Haut du Corps");
+                    startActivity(intentHaut);
                 }
+                else if(position == 1){
+                    Intent intentBas =new Intent(categorie.this, exercice.class);
+                    intentBas.putExtra("categorie","Bas du corps");
+                    startActivity(intentBas);
+                }
+                else if(position == 2){
+                    Intent intentTout =new Intent(categorie.this, exercice.class);
+                    intentTout.putExtra("categorie","Tout les exercices");
+                    startActivity(intentTout);
+                }
+
             }
         });
     }
