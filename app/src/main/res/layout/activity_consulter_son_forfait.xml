@@ -52,7 +52,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_forfait_renouveler"
+            android:id="@+id/consulter_son_forfait_renouveler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_forfait_renouveler"
@@ -67,7 +67,7 @@
 
 
         <Button
-            android:id="@+id/btn_forfait_consulter_les_forfaits"
+            android:id="@+id/btn_consulter_son_forfait_consulter_les_forfaits"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_forfait_consulter_les_forfaits"
@@ -81,7 +81,7 @@
             android:layout_width="1dp"></Space>
 
         <Button
-            android:id="@+id/btn_forfait_retour"
+            android:id="@+id/btn_consulter_son_forfait_retour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_forfait_retour"
