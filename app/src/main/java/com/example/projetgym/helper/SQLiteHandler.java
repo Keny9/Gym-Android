@@ -36,7 +36,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database Name
     private static final String DATABASE_NAME = "gymlocal";
@@ -103,7 +103,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 KEY_TELEPHONE + " TEXT," + KEY_IDFORFAIT + " INTEGER," + "FOREIGN KEY (id_forfait) REFERENCES forfait(id));";
         db.execSQL(CREATE_CLIENT_TABLE);
 
-        String CREATE_TAFORFSERV_TABLE = "CREATE TABLE ta_forfait_service (id_service INTEGER PRIMARY KEY, id_forfait INTEGER PRIMARY KEY," +
+        String CREATE_TAFORFSERV_TABLE = "CREATE TABLE ta_forfait_service (id_service INTEGER, id_forfait INTEGER," +
                 "FOREIGN KEY (id_service) REFERENCES service(id), FOREIGN KEY (id_forfait) REFERENCES forfait(id));";
         db.execSQL(CREATE_TAFORFSERV_TABLE);
 
@@ -113,7 +113,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         //Créer la table exercice
         String CREATE_EXERCICE_TABLE = "CREATE TABLE exercice (id INTEGER PRIMARY KEY, id_type INTEGER, nom TEXT, description TEXT, image TEXT," +
-                "FOREIGN KEY (id_type) REFERENCES type_exercice(id);";
+                "FOREIGN KEY (id_type) REFERENCES type_exercice(id));";
         db.execSQL(CREATE_EXERCICE_TABLE);
 
         //Creer la table des plans personnalisé
@@ -126,15 +126,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TAPLANEXERCICE_TABLE);
 
         //Créer la table ta client evenement
-        String CREATE_TACLIENTEVENEMENT_TABLE = "CREATE TABLE ta_client_evenement (id_evenement TEXT PRIMARY KEY, id_client TEXT PRIMARY KEY," +
+        String CREATE_TACLIENTEVENEMENT_TABLE = "CREATE TABLE ta_client_evenement (id_evenement TEXT, id_client TEXT," +
                 "FOREIGN KEY (id_evenement) REFERENCES evenement(id), FOREIGN KEY (id_client) REFERENCES client(identifiant));";
         db.execSQL(CREATE_TACLIENTEVENEMENT_TABLE);
 
         Log.d(TAG, "Tables de la base de données créés");
 
         //Ajout des evenements possibles dans la base de donnee
-        ajouterTypeEvenement(1,"Cours","Les clients s\'inscrivent dans un cours de groupe");
-        ajouterTypeEvenement(2,"Rendez-vous","Le client prend un rendez-vous avec un employe pour plusieurs raison, par exemple se faire aider par un nutritioniste");
+        ajouterTypeEvenement(db,1,"Cours","Les clients s\'inscrivent dans un cours de groupe");
+        ajouterTypeEvenement(db,2,"Rendez-vous","Le client prend un rendez-vous avec un employe pour plusieurs raison, par exemple se faire aider par un nutritioniste");
     }
 
     /**
@@ -273,8 +273,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      *  Ajouter les types d'evenements possibles a la bd local
      */
-    public void ajouterTypeEvenement(int id, String nom, String description){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void ajouterTypeEvenement(SQLiteDatabase db,int id, String nom, String description){
 
         ContentValues values = new ContentValues();
         values.put("id",id);
@@ -282,16 +281,25 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("description",description);
 
         db.insert("type_evenement",null,values);
-        db.close();
 
         Log.d(TAG, "Nouveau type d'evenement inséré dans sqlite: " + id);
     }
 
     /**
+     * Supprimer toutes les tables
+     */
+    public void deleteTables(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        deleteClients(db);
+        //deleteEvenement(db);
+    }
+
+    /**
      * Supprime la table client
      */
-    public void deleteClients(){
-        SQLiteDatabase db = this.getWritableDatabase();
+    private void deleteClients(SQLiteDatabase db){
+
         // Delete All Rows
         db.delete(TABLE_CLIENT, null, null);
         db.close();
@@ -302,8 +310,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Supprime la table evenement
      */
-    public void deleteEvenement(){
-        SQLiteDatabase db = this.getWritableDatabase();
+    private void deleteEvenement(SQLiteDatabase db){
 
         //Supprimer toutes les lignes
         db.delete("evenement",null,null);
