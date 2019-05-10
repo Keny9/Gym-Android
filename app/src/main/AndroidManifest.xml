@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.exerciceprecis">
+        <activity android:name=".activity.exercice">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity android:name=".activity.AccueilActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.categorie"/>
-        <activity android:name=".activity.exercice"/>
+        <activity android:name=".activity.exerciceprecis"/>
         <activity android:name=".activity.planentrainement"/>
         <activity android:name=".activity.preferences"/>
     </application>

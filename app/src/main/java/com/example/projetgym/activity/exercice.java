@@ -2,6 +2,7 @@ package com.example.projetgym.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.projetgym.R;
 
+import java.util.Locale;
+
 public class exercice extends AppCompatActivity {
 
     ListView liste;
@@ -31,6 +34,21 @@ public class exercice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercice);
         configureBackButton();
+
+
+        Button button = (Button) findViewById(R.id.button3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?daddr=%f,%f (%s)", 28.385233, -81.563873, "Disney's Weightland");
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
+
+
+
 
         liste = findViewById(R.id.listView);
 
@@ -49,6 +67,7 @@ public class exercice extends AppCompatActivity {
             }
         });
     }
+
 
     class MyAdapter extends ArrayAdapter<String> {
         Context context;
