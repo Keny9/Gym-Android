@@ -116,6 +116,7 @@ public class AccueilActivity extends AppCompatActivity {
         session.setLogin(false,null);
 
         db.deleteClients();
+        //db.deleteEvenement();
 
         // Launching the login activity
         Intent intent = new Intent(AccueilActivity.this, LoginActivity.class);

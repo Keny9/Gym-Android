@@ -25,6 +25,11 @@ import android.content.Context;
 import android.util.Log;
 import java.util.HashMap;
 
+/**
+ * Classe permettant la création de la base de donnée et les différentes manipulation de la
+ * bd local
+ */
+
 public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String TAG = SQLiteHandler.class.getSimpleName();
@@ -57,20 +62,79 @@ public class SQLiteHandler extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CLIENT_TABLE = "CREATE TABLE " + TABLE_CLIENT + "(" + KEY_ID + " TEXT PRIMARY KEY," +
-                KEY_NAME + " TEXT," + KEY_PRENOM + " TEXT," + KEY_EMAIL + " TEXT UNIQUE," + KEY_DATENAISSANCE + " TEXT," +
-                KEY_TELEPHONE + " TEXT," + KEY_IDFORFAIT + " INTEGER" + ")";
 
-        db.execSQL(CREATE_CLIENT_TABLE);
+        //Créer la table poste employé
+        String CREATE_POSTEEMPLOYE_TABLE = "CREATE TABLE poste_employe (id INTEGER PRIMARY KEY, nom TEXT);";
+        db.execSQL(CREATE_POSTEEMPLOYE_TABLE);
+
+        //Créer la table employé(pour les spécialistes)
+        String CREATE_EMPLOYE_TABLE = "CREATE TABLE employe (identifiant TEXT PRIMARY KEY, nom TEXT, prenom TEXT, id_poste INTEGER," +
+                                        "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
+        db.execSQL(CREATE_EMPLOYE_TABLE);
+
+        //Créer la table type d'événement
+        String CREATE_TYPEEVENEMENT_TABLE = "CREATE TABLE type_evenement (id INTEGER PRIMARY KEY," +
+                " nom TEXT, description TEXT);";
+        db.execSQL(CREATE_TYPEEVENEMENT_TABLE);
+
+        //Créer la table modele de cours
+        String CREATE_MODELECOURS_TABLE = "CREATE TABLE modele_cours (id INTEGER PRIMARY KEY, nom TEXT);";
+        db.execSQL(CREATE_MODELECOURS_TABLE);
 
         //Créer la table evenement
         String CREATE_EVENEMENT_TABLE = "CREATE TABLE evenement" + "(" + "id" + " TEXT PRIMARY KEY," +
-                "id_modele" + " INTEGER," + "id_type" + " INTEGER," + "id_jour" + " INTEGER," + "identifiant_employe" + " TEXT," +
-                "heure" + " INTEGER," + "duree" + " INTEGER," + "prix" + " REAL" + ")";
-
+                "id_modele" + " INTEGER," + "id_type" + " INTEGER," + " INTEGER," + "identifiant_employe" + " TEXT," +
+                "heure" + " INTEGER," + "duree" + " INTEGER," + "prix" + " REAL" + "," +
+                "FOREIGN KEY (id_modele) REFERENCES modele_cours(id));";
         db.execSQL(CREATE_EVENEMENT_TABLE);
 
+        //Créer la table de service
+        String CREATE_SERVICE_TABLE = "CREATE TABLE service (id INTEGER PRIMARY KEY, nom TEXT, description TEXT);";
+        db.execSQL(CREATE_SERVICE_TABLE);
+
+        //Créer la table forfait
+        String CREATE_FORFAIT_TABLE = "CREATE TABLE forfait (id INTEGER PRIMARY KEY, nom TEXT, prix REAL, description TEXT, duree INTEGER," +
+                "heure_debut_semaine INTEGER, heure_fin_semaine INTEGER, heure_debut_fds INTEGER, heure_fin_fds INTEGER);";
+        db.execSQL(CREATE_FORFAIT_TABLE);
+
+        //Créer la table client
+        String CREATE_CLIENT_TABLE = "CREATE TABLE " + TABLE_CLIENT + "(" + KEY_ID + " TEXT PRIMARY KEY," +
+                KEY_NAME + " TEXT," + KEY_PRENOM + " TEXT," + KEY_EMAIL + " TEXT UNIQUE," + KEY_DATENAISSANCE + " TEXT," +
+                KEY_TELEPHONE + " TEXT," + KEY_IDFORFAIT + " INTEGER," + "FOREIGN KEY (id_forfait) REFERENCES forfait(id));";
+        db.execSQL(CREATE_CLIENT_TABLE);
+
+        String CREATE_TAFORFSERV_TABLE = "CREATE TABLE ta_forfait_service (id_service INTEGER PRIMARY KEY, id_forfait INTEGER PRIMARY KEY," +
+                "FOREIGN KEY (id_service) REFERENCES service(id), FOREIGN KEY (id_forfait) REFERENCES forfait(id));";
+        db.execSQL(CREATE_TAFORFSERV_TABLE);
+
+        //Créer la table type exercice
+        String CREATE_TYPEEXERCICE_TABLE = "CREATE TABLE type_exercice (id INTEGER PRIMARY KEY, nom TEXT);";
+        db.execSQL(CREATE_TYPEEXERCICE_TABLE);
+
+        //Créer la table exercice
+        String CREATE_EXERCICE_TABLE = "CREATE TABLE exercice (id INTEGER PRIMARY KEY, id_type INTEGER, nom TEXT, description TEXT, image TEXT," +
+                "FOREIGN KEY (id_type) REFERENCES type_exercice(id);";
+        db.execSQL(CREATE_EXERCICE_TABLE);
+
+        //Creer la table des plans personnalisé
+        String CREATE_PLANPERSO_TABLE = "CREATE TABLE plan_personnalise (id INTEGER PRIMARY KEY, identifiant_client TEXT, FOREIGN KEY (identifiant_client) REFERENCES client(identifiant));";
+        db.execSQL(CREATE_PLANPERSO_TABLE);
+
+        //Créer la table ta plan exercice
+        String CREATE_TAPLANEXERCICE_TABLE = "CREATE TABLE ta_exercice_plan_personnalise (id_plan INTEGER, id_exercice INTEGER, ordre INTEGER," +
+                "FOREIGN KEY (id_plan) REFERENCES plan_personnalise(id), FOREIGN KEY (id_exercice) REFERENCES exercice(id));";
+        db.execSQL(CREATE_TAPLANEXERCICE_TABLE);
+
+        //Créer la table ta client evenement
+        String CREATE_TACLIENTEVENEMENT_TABLE = "CREATE TABLE ta_client_evenement (id_evenement TEXT PRIMARY KEY, id_client TEXT PRIMARY KEY," +
+                "FOREIGN KEY (id_evenement) REFERENCES evenement(id), FOREIGN KEY (id_client) REFERENCES client(identifiant));";
+        db.execSQL(CREATE_TACLIENTEVENEMENT_TABLE);
+
         Log.d(TAG, "Tables de la base de données créés");
+
+        //Ajout des evenements possibles dans la base de donnee
+        ajouterTypeEvenement(1,"Cours","Les clients s\'inscrivent dans un cours de groupe");
+        ajouterTypeEvenement(2,"Rendez-vous","Le client prend un rendez-vous avec un employe pour plusieurs raison, par exemple se faire aider par un nutritioniste");
     }
 
     /**
@@ -80,6 +144,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //Si la vielle table existe on la drop
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLIENT);
+        db.execSQL("DROP TABLE IF EXISTS evenement");
 
         //Créer les tables à nouveau
         onCreate(db);
@@ -137,8 +202,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return client;
     }
 
-
-    //Ajouter les cours dans la base de donnée local
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     * @param id
+     * @param id_modele
+     * @param id_type
+     * @param id_jour
+     * @param identifiant_employe
+     * @param date
+     * @param heure
+     * @param duree
+     * @param prix
+     */
     public void ajouterCours(int id, int id_modele, int id_type, int id_jour, String identifiant_employe, String date, int heure, int duree, double prix ){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -153,13 +228,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("duree", duree);
         values.put("prix", prix);
 
-        db.insert(TABLE_CLIENT,null,values);
+        db.insert("evenement",null,values);
         db.close();
 
         Log.d(TAG, "Nouveau cours inséré dans sqlite: " + id);
     }
 
-    //Get all cours
+    /**
+     * Obtenir tous les cours
+     * @return les cours existant dans la base de donnee local en lien avec le client
+     */
     private HashMap<String, String> getCours(){
         String selectQuery = "SELECT * FROM evenement WHERE id_type = 1";
 
@@ -192,6 +270,26 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return event;
     }
 
+    /**
+     *  Ajouter les types d'evenements possibles a la bd local
+     */
+    public void ajouterTypeEvenement(int id, String nom, String description){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id",id);
+        values.put("nom",nom);
+        values.put("description",description);
+
+        db.insert("type_evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouveau type d'evenement inséré dans sqlite: " + id);
+    }
+
+    /**
+     * Supprime la table client
+     */
     public void deleteClients(){
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
@@ -199,5 +297,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
 
         Log.d(TAG, "Deleted all client info from sqlite");
+    }
+
+    /**
+     * Supprime la table evenement
+     */
+    public void deleteEvenement(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //Supprimer toutes les lignes
+        db.delete("evenement",null,null);
+        db.close();
+
+        Log.d(TAG,"Tous les evenements du client ont ete supprimés");
     }
 }
