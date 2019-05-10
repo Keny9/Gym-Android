@@ -3,8 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.projetgym">
 
-    <dist:module dist:instant="true" />
 
+    <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.InscriptionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.InscriptionActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan"/>
@@ -58,8 +58,8 @@
             android:label="@string/app_name"
             android:launchMode="singleTop"/>
 
-        <activity
-            android:name=".activity.ConsulterForfaitActivity"
+       <activity
+            android:name=".activity.ConsulterSonForfaitActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"/>
 

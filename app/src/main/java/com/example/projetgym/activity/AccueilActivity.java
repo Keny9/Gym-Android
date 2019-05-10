@@ -40,9 +40,9 @@ public class AccueilActivity extends AppCompatActivity {
         // La session
         session = new SessionManager(getApplicationContext());
 
-        if (!session.isLoggedIn()) {
+       /* if (!session.isLoggedIn()) {
             logoutUser();
-        }
+        }*/
 
         boutonEvenement();
     }
@@ -81,7 +81,7 @@ public class AccueilActivity extends AppCompatActivity {
         btnForfait.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), ConsulterForfaitsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
                 startActivity(intent);
                 finish();
             }

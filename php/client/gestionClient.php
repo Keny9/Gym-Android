@@ -49,7 +49,9 @@ class GestionClient{
 
     return $client;
   }
-
+  public function ajouterClient(){
+    
+  }
 }
 
 ?>
