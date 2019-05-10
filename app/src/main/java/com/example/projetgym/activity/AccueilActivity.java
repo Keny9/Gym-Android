@@ -34,15 +34,6 @@ public class AccueilActivity extends AppCompatActivity {
         btnPref = findViewById(R.id.btnPreference);
         btnDeconnexion = findViewById(R.id.btnDeconnexion);
 
-        btnCours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
-                startActivity(newActivity);
-                finish();
-            }
-        });
-
         // SQLite databse
         db = new SQLiteHandler(getApplicationContext());
 
@@ -71,6 +62,46 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller a la page des cours
+        btnCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                startActivity(newActivity);
+                finish();
+            }
+        });
+
+        //Consulter les forfaits
+        btnForfait.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), ConsulterForfaitsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller au plan d'entrainement
+        btnPlan.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //Aller a la page des preferences
+        btnPref.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), preferences.class);
                 startActivity(intent);
                 finish();
             }

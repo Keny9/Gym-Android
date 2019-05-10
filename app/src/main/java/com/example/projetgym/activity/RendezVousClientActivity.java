@@ -23,9 +23,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.projetgym.Maquette_liste;
 import com.example.projetgym.R;
-import com.example.projetgym.RendezVous;
+import com.example.projetgym.object.RendezVous;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
@@ -37,7 +36,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
