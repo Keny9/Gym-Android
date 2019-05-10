@@ -207,21 +207,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
      * @param id
      * @param id_modele
      * @param id_type
-     * @param id_jour
      * @param identifiant_employe
      * @param date
      * @param heure
      * @param duree
      * @param prix
      */
-    public void ajouterCours(int id, int id_modele, int id_type, int id_jour, String identifiant_employe, String date, int heure, int duree, double prix ){
+    public void ajouterCours(int id, int id_modele, int id_type, String identifiant_employe, String date, int heure, int duree, double prix ){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("id", id);
         values.put("id_modele", id_modele);
         values.put("id_type", id_type);
-        values.put("id_jour", id_jour);
         values.put("identifiant_employe", identifiant_employe);
         values.put("date", date);
         values.put("heure", heure);

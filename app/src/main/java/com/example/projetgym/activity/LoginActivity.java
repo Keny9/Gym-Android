@@ -89,6 +89,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Tenter de connecter le client si c'est le bon
+     * @param identifiant
+     * @param password
+     */
     private void checkLogin(final String identifiant, final String password){
         // Tag used to cancel the request
         String tag_string_req = "req_login";
