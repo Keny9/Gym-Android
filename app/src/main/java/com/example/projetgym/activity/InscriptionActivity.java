@@ -18,6 +18,13 @@ import android.widget.Toast;
 import com.example.projetgym.MainActivity;
 import com.example.projetgym.R;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class InscriptionActivity extends AppCompatActivity {
 
     @Override
@@ -33,6 +40,32 @@ public class InscriptionActivity extends AppCompatActivity {
         //enlève le focus
         View current = getCurrentFocus();
         if (current != null) current.clearFocus();
+    }
+
+
+
+    private void inscrire(){
+        try{
+            String myUrl = "jdbc:mysql://127.0.0.1/gymcentral?useTimezone=true&serverTimezone=EST";
+            ArrayList client = new ArrayList<>();
+            Connection c = DriverManager.getConnection(myUrl, "root",
+                    "");
+            Statement statement = c.createStatement();
+
+            String identifiant = ((TextView)findViewById(R.id.identifiant)).getText().toString();
+            String motDePasse = ((TextView)findViewById(R.id.mot_de_passe)).getText().toString();
+            String prenom = ((TextView)findViewById(R.id.prenom)).getText().toString();
+            String nom = ((TextView)findViewById(R.id.nom)).getText().toString();
+            String dateNaissance = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
+            String courriel = ((TextView)findViewById(R.id.courriel)).getText().toString();
+            String noTel = ((TextView)findViewById(R.id.telephone)).getText().toString();
+
+            String s = "INSERT INTO client VALUES('"+identifiant+"', '"+nom+"', '"+prenom+"', '"+dateNaissance+"', '"+courriel+"', '"+noTel+"', '"+motDePasse+"');";
+            ResultSet rs = statement.executeQuery(s);
+        } catch (SQLException e) {
+            Toast toast = Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     /**
@@ -204,6 +237,10 @@ public class InscriptionActivity extends AppCompatActivity {
                     //TODO Insérer client dans la BD centrale et retour à la page login
                     Toast toast = Toast.makeText(getApplicationContext(), valide, Toast.LENGTH_SHORT);
                     toast.show();
+
+                }
+                else{
+                    inscrire();
                 }
             }
         });
