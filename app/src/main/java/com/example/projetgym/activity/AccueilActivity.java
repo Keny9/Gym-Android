@@ -1,7 +1,9 @@
 package com.example.projetgym.activity;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,8 +11,7 @@ import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
 
-
-public class AccueilActivity extends BaseActivity {
+public class AccueilActivity extends AppCompatActivity {
 
     private Button btnForfait;
     private Button btnCours;
@@ -44,15 +45,6 @@ public class AccueilActivity extends BaseActivity {
             logoutUser();
         }
 
-        btnCours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
-                startActivity(newActivity);
-                finish();
-            }
-        });
-
         boutonEvenement();
     }
 
@@ -75,6 +67,46 @@ public class AccueilActivity extends BaseActivity {
 //                finish();
 //            }
 //        });
+
+        //Aller a la page des cours
+        btnCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                startActivity(newActivity);
+                finish();
+            }
+        });
+
+//        //Consulter les forfaits
+//        btnForfait.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        //Aller au plan d'entrainement
+//        btnPlan.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+        //Aller a la page des preferences
+        btnPref.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), preferences.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     /**
@@ -84,7 +116,7 @@ public class AccueilActivity extends BaseActivity {
     private void logoutUser() {
         session.setLogin(false,null);
 
-        db.deleteClients();
+        db.deleteTables();
 
         // Launching the login activity
         Intent intent = new Intent(AccueilActivity.this, LoginActivity.class);

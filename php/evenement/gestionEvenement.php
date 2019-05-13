@@ -78,35 +78,39 @@ class GestionEvenement{
          return $evenement;
        }
 
-/*
-  Ajoute un Evenement à la BD ainsi que son adresse
-*/
-public function ajouterEvenement($evenement){
-if (!is_a($evenement, 'Evenement')){
-  trigger_error("L'objet en paramètre doit être un evenement");
-  return;
-}
-else{
-  $tempconn = new Connexion();
-  $conn = $tempconn->getConnexion();
+  /*
+    Inscrire un client à un cours
+  */
+  public function inscrireCours($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
 
-  //Crée l'evenement
-  $requete= "INSERT INTO evenement VALUES(
-              '".$evenement->getId()."',
-              '".$evenement->getIdModele()."',
-              '".$evenement->getIdType()."',
-              null,
-              '".$evenement->getIdEmploye()."',
-              '".$evenement->getDate()."',
-              '".$evenement->getHeure()."',
-              '".$evenement->getDuree()."',
-              '".$evenement->getPrix()."');";
-  $result = $conn->query($requete);
-  if(!$result){
-    trigger_error($conn->error);
+    $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
+    $result = $conn->query($query);
+
+    if(!$result){
+      trigger_error($conn->error);
+    }
+
   }
-}
-}
+
+  /*
+    Vérifie si un client fait deja partie d'un cours
+  */
+  public function verifierInscription($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+    $evenement = null;
+
+    $requete = "SELECT COUNT(*) FROM `ta_client_evenement` WHERE `id_evenement` = '.$id_evenement.' AND `id_client` = '.$id_client.';";
+    $result = $conn->query($requete);
+
+     if(!$result){
+       trigger_error($conn->error);
+     }
+    return mysqli_num_rows($result);
+  }
+
 }
 
 ?>

@@ -28,4 +28,8 @@ public class AppConfig {
 
     // Server user login url
     public static String URL_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/cours.php";
+
+    public static String URL_INSCRIRE_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/inscrireCours.php";
+
+    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscription.php";
 }

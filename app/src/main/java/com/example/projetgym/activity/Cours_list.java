@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,20 +40,18 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.projetgym.Cours;
 import com.example.projetgym.R;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
+import com.example.projetgym.object.Evenement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Cours_list extends BaseActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -70,7 +67,7 @@ public class Cours_list extends BaseActivity {
     int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};     //Liste des images des cours
 
     JSONArray cours = null;                                                //Array JSON
-    private ArrayList<Cours> eventCours = new ArrayList<>();               //liste de tous les cours
+    private ArrayList<Evenement> eventCours = new ArrayList<>();           //liste de tous les cours
 
     /**
      * Création de la page
@@ -109,7 +106,7 @@ public class Cours_list extends BaseActivity {
             Log.d(TAG, "Cours : " + i);
             hideDialog();
 
-            titre.add(eventCours.get(i).getModele());
+            titre.add(eventCours.get(i).getModeleCours());
             description.add("Le " + eventCours.get(i).getDate() + " à " + eventCours.get(i).getHeure()+ "h");
         }
 
@@ -150,16 +147,19 @@ public class Cours_list extends BaseActivity {
                         for(int i = 0; i < cours.length(); i++){
                             JSONObject r = cours.getJSONObject(i);
 
-                             String id = r.getString("id");
-                             String modele = r.getString("modele");
-                             String jour = r.getString("jour");
-                             String identifiant_employe = r.getString("identifiant_employe");
-                             String date = r.getString("date");
-                             int heure = r.getInt("heure");
-                             int duree= r.getInt("duree");
-                             double prix = r.getDouble("prix");
+                            String idEvent = r.getString("id");
+                            String modele = r.getString("modele");
+                            int heure = r.getInt("heure");
+                            int duree = r.getInt("duree");
+                            String date = r.getString("date");
+                            double prix = r.getDouble("prix");
 
-                            Cours rv = new Cours(id, modele, jour, identifiant_employe, date, heure, duree, prix);
+                            String idEmploye = "";
+                            String nom = "";
+                            String prenom = "";
+                            String poste = "";
+
+                            Evenement rv = new Evenement(idEvent,modele,1,idEmploye,date,heure,duree,prix,nom,prenom, poste);
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             eventCours.add(rv);
@@ -218,7 +218,7 @@ public class Cours_list extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent intent = new Intent(Cours_list.this, infoCours.class);
-                intent.putExtra("Cours", eventCours.get(position));
+                intent.putExtra("Evenement", eventCours.get(position));
                 startActivity(intent);
                 finish();
             }
