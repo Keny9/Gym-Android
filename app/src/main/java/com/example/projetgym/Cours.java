@@ -7,7 +7,6 @@ import android.os.Parcelable;
 public class Cours implements Parcelable {
     private String id;
     private String modele;
-    private String description;
     private String jour;
     private String identifiant_employe;
     private String date;
@@ -15,10 +14,9 @@ public class Cours implements Parcelable {
     private int duree;
     private double prix;
 
-    public Cours(String id, String modele, String description, String jour, String identifiant_employe, String date, int heure, int duree, double prix){
+    public Cours(String id, String modele, String jour, String identifiant_employe, String date, int heure, int duree, double prix){
         setId(id);
         setModele(modele);
-        setDescription(description);
         setJour(jour);
         setIdentifiant_employe(identifiant_employe);
         setDate(date);
@@ -31,7 +29,6 @@ public class Cours implements Parcelable {
     protected Cours(Parcel in) {
         id = in.readString();
         modele = in.readString();
-        description = in.readString();
         jour = in.readString();
         identifiant_employe = in.readString();
         date = in.readString();
@@ -125,20 +122,11 @@ public class Cours implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(modele);
-        dest.writeString(description);
         dest.writeString(jour);
         dest.writeString(identifiant_employe);
         dest.writeString(date);
         dest.writeInt(heure);
         dest.writeInt(duree);
         dest.writeDouble(prix);
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
