@@ -48,12 +48,17 @@ public class Cours_list extends AppCompatActivity {
     private SessionManager session;
     private SQLiteHandler db;
 
-    private ArrayList<String> titre = new ArrayList<>();
-    private ArrayList<String> description = new ArrayList<>();
-    int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};
-    JSONArray cours = null;
-    private ArrayList<Cours> eventCours = new ArrayList<>();
+    private ArrayList<String> titre = new ArrayList<>();                   //Liste des titres
+    private ArrayList<String> description = new ArrayList<>();             //Liste des descriptions
+    int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};     //Liste des images des cours
 
+    JSONArray cours = null;                                                //Array JSON
+    private ArrayList<Cours> eventCours = new ArrayList<>();               //liste de tous les cours
+
+    /**
+     * Création de la page
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,18 +175,26 @@ public class Cours_list extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
+    /**
+     * Afficher le dialog
+     */
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
     }
 
+    /**
+     * Cacher le dialog
+     */
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
 
 
-    //Gere tous clicks possibles sur la page
+    /**
+     * Générer les clicks listeners pour les boutons de la page
+     */
     private void clickEvenement(){
         //Créer le click listener
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -224,6 +237,13 @@ class MyAdapter extends ArrayAdapter<String> {
         this.rImgs = imgs;
     }
 
+    /**
+     * Retoure la view d'un cours
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

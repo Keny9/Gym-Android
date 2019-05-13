@@ -14,6 +14,17 @@ public class Cours implements Parcelable {
     private int duree;
     private double prix;
 
+    /**
+     * Constructeur d'un cours
+     * @param id
+     * @param modele
+     * @param jour
+     * @param identifiant_employe
+     * @param date
+     * @param heure
+     * @param duree
+     * @param prix
+     */
     public Cours(String id, String modele, String jour, String identifiant_employe, String date, int heure, int duree, double prix){
         setId(id);
         setModele(modele);
@@ -25,7 +36,10 @@ public class Cours implements Parcelable {
         setPrix(prix);
     }
 
-
+    /**
+     * Fonction qui permet de transférer un cours facilement d'une activité à une autre
+     * @param in
+     */
     protected Cours(Parcel in) {
         id = in.readString();
         modele = in.readString();
@@ -118,6 +132,11 @@ public class Cours implements Parcelable {
         return 0;
     }
 
+    /**
+     * Fonction qui permet de transférer un cours facilement d'une activité à une autre
+     * @param dest
+     * @param flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);

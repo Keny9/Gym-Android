@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +20,12 @@ import java.sql.Statement;
 public class infoCours extends AppCompatActivity {
     private Button btnRetour;
     private Button btnInscrire;
-    Cours event;
+    Cours event;                        //Object cours venant de l'activité : Cours_list
 
+    /**
+     * Création de l'activité
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,9 @@ public class infoCours extends AppCompatActivity {
         clickEvenement();
     }
 
-    //Gere tous clicks possibles sur la page
+    /**
+     * Génère les clicks listeners sur les boutons de l'Activité
+     */
     private void clickEvenement(){
 
         btnInscrire.setOnClickListener(new View.OnClickListener(){
@@ -69,7 +74,9 @@ public class infoCours extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Fonction permettant l'inscription à un cours
+     */
     private void inscrire(){
         try{
             String myUrl = "jdbc:mysql://127.0.0.1/gymcentral?useTimezone=true&serverTimezone=EST";
