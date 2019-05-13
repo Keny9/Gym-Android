@@ -3,6 +3,7 @@ package com.example.projetgym.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -48,6 +49,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    private SQLiteDatabase database;
 
     private ListView list;
     private Button btnRetour;
@@ -75,6 +77,8 @@ public class RendezVousClientActivity extends AppCompatActivity {
 
         //Session manager
         session = new SessionManager(getApplicationContext());
+
+        database = db.getWritableDatabase();
 
         list = findViewById(R.id.listRendezVousClient);
         btnRetour = findViewById(R.id.btnRetourRendezVous);
@@ -131,7 +135,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
 
                         for(int i = 0; i < rendezvous.length(); i++){
                             JSONObject r = rendezvous.getJSONObject(i);
-
+                            Log.d(TAG,rendezvous.toString(i)); //TODO: 3 fois les meeme elements dans le tableau
                             String date = r.getString("date");
                             int heure = r.getInt("heure");
                             int duree = r.getInt("duree");
@@ -188,7 +192,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
         //Créer le click listener
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){ //TODO: COMPLETER CE QUI ARRIVE SUR LE CLICK< RIEN OU QUELQUECHOSE
                 if(position == 0){
                     Toast.makeText(RendezVousClientActivity.this, "Ca marche", Toast.LENGTH_LONG).show();
                 }
@@ -223,6 +227,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
+
 }
 
 /**

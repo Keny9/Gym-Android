@@ -71,7 +71,7 @@ public class AccueilActivity extends AppCompatActivity {
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                Intent newActivity = new Intent(getApplicationContext(), camera.class);
                 startActivity(newActivity);
                 finish();
             }

@@ -24,6 +24,7 @@ import com.example.projetgym.R;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
+import com.example.projetgym.helper.SessionManager;
 import com.example.projetgym.object.Evenement;
 
 import org.json.JSONException;
@@ -37,6 +38,7 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
     private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private SQLiteHandler db;
+    private SessionManager session;
 
     private Spinner spinner;
     private Spinner spinnerHeure;
@@ -65,6 +67,9 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
 
         // SQLite database
         db = new SQLiteHandler(getApplicationContext());
+
+        // La session
+        session = new SessionManager(getApplicationContext());
 
         calendrier();
 
@@ -122,6 +127,9 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
                 if(!date.equals("")){
                     Evenement rdv = new Evenement(idRendezVous,modeleCours,idType,idEmploye,date,heure,duree,prix,nom,prenom,poste);
                     registerRendezVous(rdv);
+                    Intent intent = new Intent(PrendreRendezVousActivity.this, RendezVousClientActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Veuillez entrer toutes les informations de votre rendez-vous.", Toast.LENGTH_LONG).show();
@@ -155,6 +163,7 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
                     if (!error) {
                         // L'evenement fait parti de la base de donnee MySQL
                         db.ajouterEvenement(rdv);
+                        db.ajouterEventClient(rdv.getIdEvenement(), session.getIdentifiant());
 
                         Toast.makeText(getApplicationContext(), "Votre rendez-vous a été enregistré.", Toast.LENGTH_LONG).show();
 
@@ -192,10 +201,10 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
                 params.put("heure", Integer.toString(rdv.getHeure()));
                 params.put("duree", Integer.toString(rdv.getDuree()));
                 params.put("prix", Double.toString(rdv.getPrix()));
+                params.put("id_client", session.getIdentifiant());
 
                 return params;
             }
-
         };
 
         // Adding request to request queue

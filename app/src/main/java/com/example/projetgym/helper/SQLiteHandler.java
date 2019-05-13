@@ -198,6 +198,24 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * Creer le lien entre l'evenement et le client
+     * @param idEvent
+     * @param idClient
+     */
+    public void ajouterEventClient(String idEvent, String idClient){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", idEvent);
+        values.put("id_client", idClient);
+
+        db.insert("evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + idEvent);
+    }
+
+    /**
      * Retourner les informations du client
      * @return information du client dans un tableau
      */
@@ -285,14 +303,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void deleteTables(){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        deleteClients(db);
-        //deleteEvenement(db);
+        deleteClient(db);
+        deleteEvenement(db);
     }
 
     /**
      * Supprime la table client
      */
-    private void deleteClients(SQLiteDatabase db){
+    private void deleteClient(SQLiteDatabase db){
 
         // Delete All Rows
         db.delete(TABLE_CLIENT, null, null);
@@ -304,12 +322,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Supprime la table evenement
      */
-    private void deleteEvenement(SQLiteDatabase db){
+    public void deleteEvenement(SQLiteDatabase db){
 
         //Supprimer toutes les lignes
         db.delete("evenement",null,null);
+        deleteEventClient(db);
         db.close();
 
         Log.d(TAG,"Tous les evenements du client ont ete supprimés");
+    }
+
+    /**
+     * Supprimer les liens
+     * @param db
+     */
+    private void deleteEventClient(SQLiteDatabase db){
+
+        //Supprimer les liens clients et evenement
+        db.delete("ta_client_evenement",null,null);
     }
 }

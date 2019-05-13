@@ -28,7 +28,7 @@ public class Evenement {
      * @param poste
      */
     public Evenement(String idEvenement, String modeleCours, int type, String idEmploye, String date, int heure, int duree, double prix, String nom, String prenom, String poste){
-        setIdRendezVous(idEvenement);
+        setIdEvenement(idEvenement);
         setModeleCours(modeleCours);
         setType(type);
         setIdEmploye(idEmploye);
@@ -95,14 +95,6 @@ public class Evenement {
 
     public void setPoste(String poste) {
         this.poste = poste;
-    }
-
-    public String getIdRendezVous() {
-        return idEvenement;
-    }
-
-    public void setIdRendezVous(String idRendezVous) {
-        this.idEvenement = idRendezVous;
     }
 
     public String getModeleCours() {
