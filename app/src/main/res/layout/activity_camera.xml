@@ -8,6 +8,19 @@
     android:layout_gravity="center_horizontal"
     tools:context=".activity.camera">
 
-    
+    <!--Image View pour la photo-->
+    <ImageView
+        android:id="@+id/image_view_photo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_image_black_24dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp" />
+
+    <!--Button pour prendre la photo-->
+    <Button
+        android:id="@+id/capture_image_btn"
+        android:text="Prendre une photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
