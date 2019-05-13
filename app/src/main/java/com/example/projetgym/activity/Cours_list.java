@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cours_list extends AppCompatActivity {
+public class Cours_list extends BaseActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
 
     private ProgressDialog pDialog;

@@ -34,7 +34,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class infoCours extends AppCompatActivity {
+public class infoCours extends BaseActivity {
     private Button btnRetour;
     private Button btnInscrire;
     Cours event;                        //Object cours venant de l'activité : Cours_list

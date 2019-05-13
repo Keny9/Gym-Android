@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.example.projetgym.R;
 
-public class preferences extends AppCompatActivity {
+public class preferences extends BaseActivity {
 
     private Button btnRetour;
 
