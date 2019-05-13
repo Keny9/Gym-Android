@@ -49,7 +49,8 @@
     <string name="choisirUneDate">Cliquer pour choisir une date</string>
     <string name="choisirHeure">Heure du rendez-vous :</string>
     <string name="prix">Prix :</string>
-    <string name="argent">100 $</string>
+    <string name="argent">100</string>
+    <string name="signe">$</string>
 
     <string name="retour">Retour</string>
     <string name="titre_plan">Votre plan dentrainement</string>

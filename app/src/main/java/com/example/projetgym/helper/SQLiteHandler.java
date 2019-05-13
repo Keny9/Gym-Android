@@ -25,6 +25,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.projetgym.object.Client;
+import com.example.projetgym.object.Evenement;
 
 import java.util.HashMap;
 
@@ -86,7 +87,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         //Créer la table evenement
         String CREATE_EVENEMENT_TABLE = "CREATE TABLE evenement" + "(" + "id" + " TEXT PRIMARY KEY," +
-                "id_modele" + " INTEGER," + "id_type" + " INTEGER," + " INTEGER," + "identifiant_employe" + " TEXT," +
+                "id_modele" + " INTEGER," + "id_type" + " INTEGER," + "identifiant_employe" + " TEXT," +
                 "heure" + " INTEGER," + "duree" + " INTEGER," + "prix" + " REAL" + "," +
                 "FOREIGN KEY (id_modele) REFERENCES modele_cours(id));";
         db.execSQL(CREATE_EVENEMENT_TABLE);
@@ -175,6 +176,28 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void ajouterEvenement(Evenement evenement){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id", evenement.getIdEvenement());
+        values.put("id_modele", evenement.getModeleCours());
+        values.put("id_type", evenement.getType());
+        values.put("identifiant_employe", evenement.getIdEmploye());
+        values.put("date", evenement.getDate());
+        values.put("heure", evenement.getHeure());
+        values.put("duree",evenement.getDuree());
+        values.put("prix", evenement.getPrix());
+
+        db.insert("evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + evenement.getIdEvenement());
+    }
+
+    /**
      * Retourner les informations du client
      * @return information du client dans un tableau
      */
@@ -203,36 +226,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Fetching user from Sqlite: " + client.toString());
 
         return client;
-    }
-
-    /**
-     * Ajout des cours du client dans la base de donnee local
-     * @param id
-     * @param id_modele
-     * @param id_type
-     * @param identifiant_employe
-     * @param date
-     * @param heure
-     * @param duree
-     * @param prix
-     */
-    public void ajouterCours(int id, int id_modele, int id_type, String identifiant_employe, String date, int heure, int duree, double prix ){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("id", id);
-        values.put("id_modele", id_modele);
-        values.put("id_type", id_type);
-        values.put("identifiant_employe", identifiant_employe);
-        values.put("date", date);
-        values.put("heure", heure);
-        values.put("duree", duree);
-        values.put("prix", prix);
-
-        db.insert("evenement",null,values);
-        db.close();
-
-        Log.d(TAG, "Nouveau cours inséré dans sqlite: " + id);
     }
 
     /**

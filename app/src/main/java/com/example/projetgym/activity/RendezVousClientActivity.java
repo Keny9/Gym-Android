@@ -24,7 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.projetgym.R;
-import com.example.projetgym.object.RendezVous;
+import com.example.projetgym.object.Evenement;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
@@ -55,7 +55,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
 
     JSONArray rendezvous = null;
 
-    private ArrayList<RendezVous> rendez = new ArrayList<>();
+    private ArrayList<Evenement> rendez = new ArrayList<>();
 
     private ArrayList<String> titre = new ArrayList<>();
     private ArrayList<String> description = new ArrayList<>();
@@ -140,7 +140,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
                             String prenom = r.getString("prenom");
                             String poste = r.getString("poste");
 
-                            RendezVous rv = new RendezVous(date,heure,duree,prix,nom,prenom,poste);
+                            Evenement rv = new Evenement(null,null,2,null,date,heure,duree,prix,nom,prenom,poste);
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             rendez.add(rv);

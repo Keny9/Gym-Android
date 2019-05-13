@@ -91,22 +91,33 @@
 
         <TableRow android:layout_marginTop="50dp">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/prix"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/tvPrix"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/argent"
                 android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:layout_weight="0.3"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/signe"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_weight="0.5"/>
         </TableRow>
     </TableLayout>
 

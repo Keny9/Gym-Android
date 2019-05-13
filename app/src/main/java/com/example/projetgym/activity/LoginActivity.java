@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     /**
@@ -170,7 +169,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 return params;
             }
-
         };
 
         // Adding request to request queue
