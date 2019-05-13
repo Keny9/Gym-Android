@@ -23,9 +23,14 @@ import java.util.Calendar;
 public class PrendreRendezVousActivity extends AppCompatActivity {
     private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
 
+    private Spinner spinner;
+    private Spinner spinnerHeure;
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Button btnRetour;
+    private Button btnPrendreRendezVous;
+    private TextView tvDate;
+    private TextView tvPrix;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,11 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prendrerendezvous);
 
         btnRetour = findViewById(R.id.btnRetourPrendreRendezVous);
+        btnPrendreRendezVous = findViewById(R.id.btnPrendreRendezVous);
+        spinner = findViewById(R.id.spinnerSpecialiste);
+        spinnerHeure =  findViewById(R.id.spinnerHeure);
+        tvDate = findViewById(R.id.tvDate);
+        tvPrix = findViewById(R.id.tvPrix);
 
         calendrier();
 
@@ -53,6 +63,20 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
                 Intent intent = new Intent(PrendreRendezVousActivity.this,RendezVousClientActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        btnPrendreRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String poste = spinner.getSelectedItem().toString();
+                String heure = spinnerHeure.getSelectedItem().toString();
+                String date = tvDate.getText().toString();
+                int duree = 2;
+                String sPrix = tvPrix.getText().toString();
+                double prix = Double.parseDouble(sPrix);
+                String nom = "Rendez-vous";
+
             }
         });
     }
@@ -93,8 +117,6 @@ public class PrendreRendezVousActivity extends AppCompatActivity {
 
     //Creer la liste du spinner
     private void populateSpinner(){
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerSpecialiste);
-        Spinner spinnerHeure = findViewById(R.id.spinnerHeure);
 
         // Creer un ArrayAdapter qui utilise l'array de string avec le layout par defaut du spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.specialist,android.R.layout.simple_spinner_item);

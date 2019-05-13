@@ -27,6 +27,7 @@ import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
+import com.example.projetgym.object.Client;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -129,8 +130,10 @@ public class LoginActivity extends AppCompatActivity {
                         // Creer la session
                         session.setLogin(true,identifiant);
 
+                        Client utilisateur = new Client(identifiant,nom,prenom,courriel,idForfait,dateNaissance,telephone);
+
                         // Insérer le client dans la table client
-                        db.ajouterClient(identifiant,nom,prenom,courriel,idForfait,dateNaissance,telephone);
+                        db.ajouterClient(utilisateur);
 
                         // Aller à l'accueil
                         Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);
