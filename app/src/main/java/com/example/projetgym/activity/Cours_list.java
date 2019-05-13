@@ -130,7 +130,6 @@ public class Cours_list extends AppCompatActivity {
 
                              String id = r.getString("id");
                              String modele = r.getString("modele");
-                             String description = r.getString("description");
                              String jour = r.getString("jour");
                              String identifiant_employe = r.getString("identifiant_employe");
                              String date = r.getString("date");
@@ -138,7 +137,7 @@ public class Cours_list extends AppCompatActivity {
                              int duree= r.getInt("duree");
                              double prix = r.getDouble("prix");
 
-                            Cours rv = new Cours(id, modele, description, jour, identifiant_employe, date, heure, duree, prix);
+                            Cours rv = new Cours(id, modele, jour, identifiant_employe, date, heure, duree, prix);
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             eventCours.add(rv);
