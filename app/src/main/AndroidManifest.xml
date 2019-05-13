@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.camera"></activity>
+        <activity android:name=".activity.preferences"></activity>
+        <activity android:name=".activity.camera" />
         <activity android:name=".activity.infoCours" />
         <activity android:name=".activity.Cours_list" />
         <activity android:name=".activity.LoginActivity">

@@ -3,12 +3,16 @@ package com.example.projetgym.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
+
+import android.view.Menu;
+import android.widget.Toast;
 
 public class AccueilActivity extends AppCompatActivity {
 
@@ -47,13 +51,33 @@ public class AccueilActivity extends AppCompatActivity {
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), camera.class);
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
                 startActivity(newActivity);
                 finish();
             }
         });
 
         boutonEvenement();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.settings){
+            Intent newActivity = new Intent(getApplicationContext(), preferences.class);
+            startActivity(newActivity);
+            finish();
+        }else if(item.getItemId() == R.id.help){
+            Toast.makeText(this, "Helpppppppppp me", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void boutonEvenement(){

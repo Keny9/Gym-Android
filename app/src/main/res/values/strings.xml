@@ -38,6 +38,6 @@
     <string name="quantite">0</string>
     <string name="inscrireCours">S\'inscrire</string>
     <string name="LesCours">Les Cours</string>
-
-
+    <string name="help">Aide</string>
+    <string name="settings">Préférence</string>
 </resources>
