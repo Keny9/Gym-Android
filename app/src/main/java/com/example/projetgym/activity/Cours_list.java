@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : Cours_list.java
+ Auteur : Guillaume Côté
+ Fonctionnalité : Code de l'Activité Cours_liste. Affiche la liste des cours
+ Date : 2019-05-08
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package com.example.projetgym.activity;
 
 import android.content.Context;

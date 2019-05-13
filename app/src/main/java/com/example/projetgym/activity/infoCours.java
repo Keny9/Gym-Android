@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : infoCours.java
+ Auteur : Guillaume Côté
+ Fonctionnalité : Code de l'Activité infoCours. Affiche les infos d'un cours
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package com.example.projetgym.activity;
 
 import android.content.Intent;

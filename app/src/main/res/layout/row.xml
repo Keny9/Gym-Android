@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/****************************************
+Fichier : row.xml
+Auteur : Guillaume Côté
+Fonctionnalité : Affichage d'une row des listes views
+Date : 2019-05-09
+
+Vérification :
+Date               Nom                   Approuvé
+=========================================================
+
+
+Historique de modifications :
+Date               Nom                   Description
+=========================================================
+
+****************************************/-->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

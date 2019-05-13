@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/****************************************
+Fichier : cours_liste.xml
+Auteur : Guillaume Côté
+Fonctionnalité : Affichage de la liste des cours
+Date : 2019-05-08
+
+Vérification :
+Date               Nom                   Approuvé
+=========================================================
+
+
+Historique de modifications :
+Date               Nom                   Description
+=========================================================
+
+****************************************/-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

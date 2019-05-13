@@ -77,6 +77,36 @@ class GestionEvenement{
 
          return $evenement;
        }
+
+/*
+  Ajoute un Evenement à la BD ainsi que son adresse
+*/
+public function ajouterEvenement($evenement){
+if (!is_a($evenement, 'Evenement')){
+  trigger_error("L'objet en paramètre doit être un evenement");
+  return;
+}
+else{
+  $tempconn = new Connexion();
+  $conn = $tempconn->getConnexion();
+
+  //Crée l'evenement
+  $requete= "INSERT INTO evenement VALUES(
+              '".$evenement->getId()."',
+              '".$evenement->getIdModele()."',
+              '".$evenement->getIdType()."',
+              null,
+              '".$evenement->getIdEmploye()."',
+              '".$evenement->getDate()."',
+              '".$evenement->getHeure()."',
+              '".$evenement->getDuree()."',
+              '".$evenement->getPrix()."');";
+  $result = $conn->query($requete);
+  if(!$result){
+    trigger_error($conn->error);
+  }
+}
+}
 }
 
 ?>
