@@ -15,7 +15,6 @@
         $cours = array();
         $cours["id"] = $row["id"];
         $cours["modele"] = $row["nom"];
-        $cours["description"] = $row["description"];
         $cours["jour"] = $row["nom_jour"];
         $cours["identifiant_employe"] = $row["identifiant_employe"];
         $cours["date"] = $row["date"];

@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    private Button btnInscription;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.password);
         btnLogin = findViewById(R.id.btnLogin);
         btnInscrire = findViewById(R.id.btnInscrire);
+        btnInscription = findViewById(R.id.btnInscrire);
+
 
         //Progress dialog
         pDialog = new ProgressDialog(this);
@@ -68,23 +71,41 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
+        clickEvenement();
+    }
+
+    /**
+     * Click sur les boutons
+     */
+    private void clickEvenement(){
+
+        //Aller a la page d'inscription
+        btnInscription.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), InscriptionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         //Click event login button
         btnLogin.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view) {
-                String identifiant = inputIdentifiant.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+            String identifiant = inputIdentifiant.getText().toString().trim();
+            String password = inputPassword.getText().toString().trim();
 
-                // Check for empty data in the form
-                if (!identifiant.isEmpty() && !password.isEmpty()) {
-                    // login user
-                    checkLogin(identifiant, password);
-                } else {
-                    // Prompt user to enter credentials
-                    Toast.makeText(getApplicationContext(),
-                            "Veuillez remplir les champs.", Toast.LENGTH_LONG)
-                            .show();
-                }
+            // Check for empty data in the form
+            if (!identifiant.isEmpty() && !password.isEmpty()) {
+                // login user
+                checkLogin(identifiant, password);
+            } else {
+                // Prompt user to enter credentials
+                Toast.makeText(getApplicationContext(),
+                        "Veuillez remplir les champs.", Toast.LENGTH_LONG)
+                        .show();
+            }
             }
         });
     }
