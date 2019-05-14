@@ -216,6 +216,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     /**
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void inscrireCours(Evenement evenement, String id_client){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", evenement.getIdEvenement());
+        values.put("id_client", id_client);
+
+        db.insert("evenement",null,values);
+
+        db.close();
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + evenement.getIdEvenement());
+    }
+
+    /**
      * Retourner les informations du client
      * @return information du client dans un tableau
      */

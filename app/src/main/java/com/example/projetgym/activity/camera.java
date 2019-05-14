@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.projetgym.R;
 
-public class camera extends AppCompatActivity {
+public class camera extends BaseActivity {
 
     private static final int PERMISSION_CODE = 1000;
     private static final int IMAGE_CAPTURE_MODE = 1001;

@@ -1,9 +1,12 @@
 package com.example.projetgym.object;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Classe rendez-vous
  */
-public class Evenement {
+public class Evenement implements Parcelable {
 
     private String idEvenement;
     private String modeleCours;
@@ -28,7 +31,7 @@ public class Evenement {
      * @param poste
      */
     public Evenement(String idEvenement, String modeleCours, int type, String idEmploye, String date, int heure, int duree, double prix, String nom, String prenom, String poste){
-        setIdEvenement(idEvenement);
+        setIdRendezVous(idEvenement);
         setModeleCours(modeleCours);
         setType(type);
         setIdEmploye(idEmploye);
@@ -40,6 +43,32 @@ public class Evenement {
         setPrenom(prenom);
         setPoste(poste);
     }
+
+    protected Evenement(Parcel in) {
+        idEvenement = in.readString();
+        modeleCours = in.readString();
+        type = in.readInt();
+        idEmploye = in.readString();
+        date = in.readString();
+        heure = in.readInt();
+        duree = in.readInt();
+        prix = in.readDouble();
+        nom = in.readString();
+        prenom = in.readString();
+        poste = in.readString();
+    }
+
+    public static final Creator<Evenement> CREATOR = new Creator<Evenement>() {
+        @Override
+        public Evenement createFromParcel(Parcel in) {
+            return new Evenement(in);
+        }
+
+        @Override
+        public Evenement[] newArray(int size) {
+            return new Evenement[size];
+        }
+    };
 
     public String getDate() {
         return date;
@@ -97,6 +126,14 @@ public class Evenement {
         this.poste = poste;
     }
 
+    public String getIdRendezVous() {
+        return idEvenement;
+    }
+
+    public void setIdRendezVous(String idRendezVous) {
+        this.idEvenement = idRendezVous;
+    }
+
     public String getModeleCours() {
         return modeleCours;
     }
@@ -127,5 +164,25 @@ public class Evenement {
 
     public void setIdEvenement(String idEvenement) {
         this.idEvenement = idEvenement;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idEvenement);
+        dest.writeString(modeleCours);
+        dest.writeInt(type);
+        dest.writeString(idEmploye);
+        dest.writeString(date);
+        dest.writeInt(heure);
+        dest.writeInt(duree);
+        dest.writeDouble(prix);
+        dest.writeString(nom);
+        dest.writeString(prenom);
+        dest.writeString(poste);
     }
 }

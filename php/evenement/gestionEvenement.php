@@ -110,8 +110,42 @@ class GestionEvenement{
          $evenement = $result;
        }
 
-       return $evenement;
+         return $evenement;
+       }
+
+  /*
+    Inscrire un client à un cours
+  */
+  public function inscrireCours($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+
+    $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
+    $result = $conn->query($query);
+
+    if(!$result){
+      trigger_error($conn->error);
+    }
+
+  }
+
+  /*
+    Vérifie si un client fait deja partie d'un cours
+  */
+  public function verifierInscription($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+    $evenement = null;
+
+    $requete = "SELECT COUNT(*) FROM `ta_client_evenement` WHERE `id_evenement` = '.$id_evenement.' AND `id_client` = '.$id_client.';";
+    $result = $conn->query($requete);
+
+     if(!$result){
+       trigger_error($conn->error);
      }
+    return mysqli_num_rows($result);
+  }
+
 }
 
 ?>
