@@ -14,7 +14,7 @@
  =========================================================
 ****************************************/
 require_once '../Outils/connexion.php';
-require_once 'exercice.php';
+require_once 'exercice1.php';
 
 class gestionExercices
 {
@@ -91,12 +91,19 @@ La fonction qui sert a ajouter un exercice dans la base de donnee
       trigger_error($conn->error);
     }
 
-    if ($result->num_rows > 0) {
+    if(mysqli_num_rows($result)==0){
+      $exercices = null;
+    }
+    else{
+      $exercices = $result;
+    }
+
+  /*  if ($result->num_rows > 0) {
 
       while($row = $result->fetch_assoc()) {
           $exercices[] = new Exercice($row['id_type'], $row['nom'], $row['description'], $row['image']);
         }
-    }
+    }*/
 
 
     return $exercices;

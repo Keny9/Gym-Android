@@ -89,14 +89,14 @@ public class AccueilActivity extends AppCompatActivity {
 //        });
 //
 //        //Aller au plan d'entrainement
-//        btnPlan.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        btnPlan.setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //Aller a la page des preferences
         btnPref.setOnClickListener(new View.OnClickListener(){

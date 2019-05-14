@@ -95,7 +95,7 @@ public class exercice extends AppCompatActivity {
             }
         });
 
-        checkExercices();
+        checkExercices(extras.getString("categorie"));
 
 
 
@@ -124,12 +124,20 @@ public class exercice extends AppCompatActivity {
     /**
      * Ramasser les cours
      */
-    private void checkExercices() {
+    private void checkExercices(String choix) {
         // Tag used to cancel the request
         String tag_string_req = "req_exercices";
+       // String appConfig="AppConfig.URL_EXERCICES";
 
         pDialog.setMessage("Chargement en cours...");
         //showDialog();
+
+        //if(choix.equals("Haut du Corps"))
+        //    appConfig="AppConfig.URL_EXERCICESHAUT";
+       // else if(choix.equals("Bas du corps"))
+        //    appConfig="AppConfig.URL_EXERCICESBAS";
+       // else
+        //    appConfig="AppConfig.URL_EXERCICES";
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_EXERCICES, new Response.Listener<String>() {
 
@@ -151,7 +159,7 @@ public class exercice extends AppCompatActivity {
                         for(int i = 0; i < exercices.length(); i++){
                             JSONObject r = exercices.getJSONObject(i);
 
-                            int idExercice = r.getInt("id");
+                          //  int idExercice = r.getInt("id");
                             int type = r.getInt("type");
                             String nom = r.getString("nom");
                             String description = r.getString("description");
@@ -162,7 +170,7 @@ public class exercice extends AppCompatActivity {
                             String prenom = "";
                             String poste = "";*/
 
-                            Exercice ex = new Exercice(idExercice,type,nom,description,image);
+                            Exercice ex = new Exercice(type,nom,description,image);
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             eventExercices.add(ex);
@@ -209,12 +217,57 @@ public class exercice extends AppCompatActivity {
         }
 
         //Créer l'Adapteur
+        Log.d(TAG,"Cest dla merde");
         MyAdapter adapter = new MyAdapter(this, titre, description, image);
-
+        //Log.d(TAG,"Cest dla merde"+ adapter.toString());
         //Attribuer l'Adapteur à la liste
         list.setAdapter(adapter);
     }
 
+
+
+    /**
+     * Classe qui joue le role d'un adapteur pour le list view
+     */
+    class MyAdapter extends ArrayAdapter<String> {
+        Context context;
+        ArrayList<String> rTitle;
+        ArrayList<String> rDescription;
+        int rImgs[];
+
+        MyAdapter(Context c, ArrayList<String> title, ArrayList<String> description, int imgs[]) {
+            super(c, R.layout.row, R.id.textView1, title);
+            this.context = c;
+            this.rTitle = title;
+            this.rDescription = description;
+            this.rImgs = imgs;
+        }
+
+        /**
+         * Retoure la view d'un cours
+         *
+         * @param position
+         * @param convertView
+         * @param parent
+         * @return
+         */
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.row, parent, false);
+            ImageView images = row.findViewById(R.id.image);
+            TextView myTitle = row.findViewById(R.id.textView1);
+            TextView myDescription = row.findViewById(R.id.textView2);
+
+            images.setImageResource(rImgs[0]);
+            myTitle.setText(rTitle.get(position));
+            myDescription.setText(rDescription.get(position));
+
+
+            return row;
+        }
+    }
 /*
     class MyAdapter extends ArrayAdapter<String> {
         Context context;

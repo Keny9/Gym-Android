@@ -22,14 +22,14 @@
   //JSON response array
    $response = array();
 
-    $result = $gestionExercice->getAllExercices();
+    $result = $gestionExercice->getHautExercices();
 
     if($result != null){
       $response["exercices"] = array();
 
       while($row = $result->fetch_assoc()){
         $exercices = array();
-        //$exercices["id"] = $row["id"];
+        $exercices["id"] = $row["id"];
         $exercices["type"] = $row["id_type"];
         $exercices["nom"] = $row["nom"];
         $exercices["description"] = $row["description"];
@@ -45,7 +45,7 @@
 
     //aucun cours trouver
     $response["success"] = 0;
-    $response["message"] = "Aucun exercices trouvé.";
+    $response["message"] = "Aucun cours trouvé.";
 
     echo json_encode($response);
   }
