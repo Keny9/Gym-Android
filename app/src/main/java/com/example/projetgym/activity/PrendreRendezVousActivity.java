@@ -34,7 +34,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PrendreRendezVousActivity extends AppCompatActivity {
+public class PrendreRendezVousActivity extends BaseActivity {
     private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private SQLiteHandler db;

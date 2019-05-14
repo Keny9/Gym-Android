@@ -34,7 +34,7 @@ import android.widget.Button;
 import com.example.projetgym.R;
 
 
-public class planentrainement extends AppCompatActivity {
+public class planentrainement extends BaseActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
 
     ListView liste;

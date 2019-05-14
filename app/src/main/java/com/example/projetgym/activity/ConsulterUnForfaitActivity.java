@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.example.projetgym.R;
 
 // Classe pour l'affichage d'UN forfait
-public class ConsulterUnForfaitActivity extends AppCompatActivity {
+public class ConsulterUnForfaitActivity extends BaseActivity {
     private String nomForfait;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

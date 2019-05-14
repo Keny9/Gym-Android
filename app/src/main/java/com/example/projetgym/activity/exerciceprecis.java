@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.projetgym.R;
 
-public class exerciceprecis extends AppCompatActivity {
+public class exerciceprecis extends BaseActivity {
 
 
     TextView showValueSer;

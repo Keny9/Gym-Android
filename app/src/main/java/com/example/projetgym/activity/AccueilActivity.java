@@ -11,7 +11,7 @@ import com.example.projetgym.R;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
 
-public class AccueilActivity extends AppCompatActivity {
+public class AccueilActivity extends BaseActivity {
 
     private Button btnForfait;
     private Button btnCours;

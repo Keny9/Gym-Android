@@ -42,7 +42,7 @@ import java.util.Map;
 /**
  * Classe de l'activite qui montre tous les rendez-vous du client
  */
-public class RendezVousClientActivity extends AppCompatActivity {
+public class RendezVousClientActivity extends BaseActivity {
 
     private static final String TAG = RendezVousClientActivity.class.getSimpleName();
 

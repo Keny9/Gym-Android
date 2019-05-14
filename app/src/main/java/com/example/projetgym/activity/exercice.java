@@ -22,7 +22,7 @@ import com.example.projetgym.R;
 
 import java.util.Locale;
 
-public class exercice extends AppCompatActivity {
+public class exercice extends BaseActivity {
 
     ListView liste;
     String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};

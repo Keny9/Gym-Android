@@ -25,7 +25,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class InscriptionActivity extends AppCompatActivity {
+public class InscriptionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

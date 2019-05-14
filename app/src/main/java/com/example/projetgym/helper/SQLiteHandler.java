@@ -331,7 +331,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         // Delete All Rows
         db.delete(TABLE_CLIENT, null, null);
-        db.close();
 
         Log.d(TAG, "Deleted all client info from sqlite");
     }

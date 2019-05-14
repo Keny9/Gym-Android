@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.example.projetgym.R;
 
 //Classe pour l'affichage de TOUS les forfaits
-public class ConsulterForfaitsActivity extends AppCompatActivity {
+public class ConsulterForfaitsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
