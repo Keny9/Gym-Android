@@ -3,6 +3,7 @@ package com.example.projetgym.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -57,15 +58,15 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
-        //Evenement sur le click de rendez-vous
-        btnRendezVous.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        //Evenement sur le click de rendez-vous
+//        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         //Aller a la page des cours
         btnCours.setOnClickListener(new View.OnClickListener() {
@@ -77,25 +78,25 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
-        //Consulter les forfaits
-        btnForfait.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        //Aller au plan d'entrainement
-        btnPlan.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        //Consulter les forfaits
+//        btnForfait.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        //Aller au plan d'entrainement
+//        btnPlan.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getApplicationContext(), planentrainement.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         //Aller a la page des preferences
         btnPref.setOnClickListener(new View.OnClickListener(){
@@ -115,7 +116,7 @@ public class AccueilActivity extends AppCompatActivity {
     private void logoutUser() {
         session.setLogin(false,null);
 
-        db.deleteClients();
+        db.deleteTables();
 
         // Launching the login activity
         Intent intent = new Intent(AccueilActivity.this, LoginActivity.class);

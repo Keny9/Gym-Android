@@ -54,29 +54,63 @@ class GestionEvenement{
          $conn = $tempconn->getConnexion();
          $evenement = null;
 
-         $requete= "SELECT * FROM evenement WHERE id_type = 1;";
+         $requete = "SELECT evenement.id, modele_cours.nom,jour_semaine.nom_jour, identifiant_employe, date, heure, duree, prix
+                       FROM evenement
+                          INNER JOIN modele_cours ON modele_cours.id = evenement.id_modele
+                          INNER JOIN type_evenement ON type_evenement.id = evenement.id_type
+                          INNER JOIN jour_semaine ON jour_semaine.id = evenement.id_jour
+                       WHERE id_type = 1;";
 
-                    /*
-                    "SELECT evenement.id, modele_cours.nom, type_evenement.nom, jour_semaine.nom_jour, identifiant_employe, date, heure, duree, prix
-                               FROM evenement
-                                  INNER JOIN modele_cours ON modele_cours.id = evenement.id_modele
-                                  INNER JOIN type_evenement ON type_evenement.id = evenement.id_type
-                                  INNER JOIN jour_semaine ON jour_semaine.id = evenement.id_jour
-                               WHERE id_type = 1;";
-                    */
 
-       $result = $conn->query($requete);
-       if(!$result){
-         trigger_error($conn->error);
-       }
+         $result = $conn->query($requete);
 
-       if ($result->num_rows > 0) {
-         while($row = $result->fetch_assoc()) {
-          $evenement[] = new Evenement($row['id'], $row['id_modele'], $row['id_type'], $row['id_jour'], $row['identifiant_employe'], $row['date'], $row['heure'], $row['duree'], $row['prix']);
+         if(!$result){
+           trigger_error($conn->error);
          }
+
+         if(mysqli_num_rows($result)==0){
+           $evenement = null;
+         }
+         else{
+           $evenement = $result;
+         }
+
+         return $evenement;
        }
-       return $evenement;
+
+  /*
+    Inscrire un client à un cours
+  */
+  public function inscrireCours($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+
+    $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
+    $result = $conn->query($query);
+
+    if(!$result){
+      trigger_error($conn->error);
+    }
+
+  }
+
+  /*
+    Vérifie si un client fait deja partie d'un cours
+  */
+  public function verifierInscription($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+    $evenement = null;
+
+    $requete = "SELECT COUNT(*) FROM `ta_client_evenement` WHERE `id_evenement` = '.$id_evenement.' AND `id_client` = '.$id_client.';";
+    $result = $conn->query($requete);
+
+     if(!$result){
+       trigger_error($conn->error);
      }
+    return mysqli_num_rows($result);
+  }
+
 }
 
 ?>
