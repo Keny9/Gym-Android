@@ -36,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,7 +97,7 @@ public class RendezVousClientActivity extends BaseActivity {
 
         for(int i = 0; i < rendez.size();i++){
             titre.add(rendez.get(i).getPoste());
-            description.add(rendez.get(i).getDate() + " " + rendez.get(i).getHeure());
+            description.add(rendez.get(i).getDate() + " " + rendez.get(i).getHeure() + "h");
         }
 
         //Créer l'Adapteur
@@ -120,7 +121,7 @@ public class RendezVousClientActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response){
-                Log.d(TAG, "Rendez-vous Response: " + response.toString());
+                Log.d(TAG, "Rendez-vous Response: " + response);
                 hideDialog();
 
                 try {
@@ -135,7 +136,7 @@ public class RendezVousClientActivity extends BaseActivity {
 
                         for(int i = 0; i < rendezvous.length(); i++){
                             JSONObject r = rendezvous.getJSONObject(i);
-                            Log.d(TAG,rendezvous.toString(i)); //TODO: 3 fois les meeme elements dans le tableau
+
                             String date = r.getString("date");
                             int heure = r.getInt("heure");
                             int duree = r.getInt("duree");
@@ -148,9 +149,8 @@ public class RendezVousClientActivity extends BaseActivity {
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             rendez.add(rv);
-
-                            remplirTable();
                         }
+                        remplirTable();
 
                     } else {
                         //Erreur dans le chargement, obtenir le message d'erreur

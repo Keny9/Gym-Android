@@ -63,7 +63,6 @@ public class planentrainement extends BaseActivity {
             @Override
             public void onClick(View arg0) {
 
-
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:8732005820"));
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -82,6 +83,28 @@ public class PrendreRendezVousActivity extends BaseActivity {
      * Evenement lors d'un clic
      */
     private void clickEvenement(){
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+
+                if(item.toString().equals("Entraineur")){
+                    tvPrix.setText("50");
+                }
+                else if(item.toString().equals("Nutritioniste")){
+                    tvPrix.setText("75");
+                }
+                else if(item.toString().equals("Massothérapeute")){
+                    tvPrix.setText("60");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //Retour en arriere
         btnRetour.setOnClickListener(new View.OnClickListener(){

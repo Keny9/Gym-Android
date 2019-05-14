@@ -28,6 +28,7 @@ class GestionEvenement{
   public function getAllRendezVousOfClient($identifiant){
     $tempconn = new Connexion();
     $conn = $tempconn->getConnexion();
+    $evenement = null;
 
     $query = "SELECT e.date, e.heure, e.duree, e.prix, em.nom, em.prenom, pe.nom as poste FROM evenement AS e
               INNER JOIN employe as em ON e.identifiant_employe = em.identifiant
