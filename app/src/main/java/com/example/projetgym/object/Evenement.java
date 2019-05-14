@@ -3,8 +3,12 @@ package com.example.projetgym.object;
 /**
  * Classe rendez-vous
  */
-public class RendezVous {
+public class Evenement {
 
+    private String idEvenement;
+    private String modeleCours;
+    private int type;
+    private String idEmploye;
     private String date; //date du rendez-vous
     private int heure; //L'heure du rendez-vous
     private int duree; //La durée du rendez-vous
@@ -23,7 +27,11 @@ public class RendezVous {
      * @param prenom
      * @param poste
      */
-    public RendezVous(String date, int heure, int duree, double prix, String nom, String prenom, String poste){
+    public Evenement(String idEvenement, String modeleCours, int type, String idEmploye, String date, int heure, int duree, double prix, String nom, String prenom, String poste){
+        setIdRendezVous(idEvenement);
+        setModeleCours(modeleCours);
+        setType(type);
+        setIdEmploye(idEmploye);
         setDate(date);
         setHeure(heure);
         setDuree(duree);
@@ -87,5 +95,45 @@ public class RendezVous {
 
     public void setPoste(String poste) {
         this.poste = poste;
+    }
+
+    public String getIdRendezVous() {
+        return idEvenement;
+    }
+
+    public void setIdRendezVous(String idRendezVous) {
+        this.idEvenement = idRendezVous;
+    }
+
+    public String getModeleCours() {
+        return modeleCours;
+    }
+
+    public void setModeleCours(String modeleCours) {
+        this.modeleCours = modeleCours;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getIdEmploye() {
+        return idEmploye;
+    }
+
+    public void setIdEmploye(String idEmploye) {
+        this.idEmploye = idEmploye;
+    }
+
+    public String getIdEvenement() {
+        return idEvenement;
+    }
+
+    public void setIdEvenement(String idEvenement) {
+        this.idEvenement = idEvenement;
     }
 }

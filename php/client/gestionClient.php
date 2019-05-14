@@ -49,7 +49,7 @@ class GestionClient{
 
     return $client;
   }
-
+  
 }
 
 ?>

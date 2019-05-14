@@ -41,8 +41,17 @@
     <string name="plan">Plan d\'entrainement</string>
     <string name="preference">Préférences</string>
     <string name="deconnexion">Se déconnecter</string>
+
     <string name="titreVosRendezVous">Vos rendez-vous</string>
     <string name="prendreRendezVous">Prendre un rendez-vous</string>
+    <string name="rendezvous">Rendez-vous</string>
+    <string name="detail">Détails</string>
+    <string name="choisirUneDate">Cliquer pour choisir une date</string>
+    <string name="choisirHeure">Heure du rendez-vous :</string>
+    <string name="prix">Prix :</string>
+    <string name="argent">100</string>
+    <string name="signe">$</string>
+
     <string name="retour">Retour</string>
     <string name="titre_plan">Votre plan dentrainement</string>
     <string name="plus">+</string>
@@ -70,4 +79,29 @@
     <string name="LesCours">Les Cours</string>
     <string name="help">Aide</string>
     <string name="settings">Préférence</string>
+
+    <string-array name="specialist">
+        <item>Entraineur</item>
+        <item>Nutritioniste</item>
+        <item>Massothérapeute</item>
+    </string-array>
+
+    <string-array name="heure">
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+    </string-array>
+
+
 </resources>

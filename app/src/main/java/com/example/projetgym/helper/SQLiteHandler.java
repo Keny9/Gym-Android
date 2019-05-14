@@ -73,7 +73,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         //Créer la table employé(pour les spécialistes)
         String CREATE_EMPLOYE_TABLE = "CREATE TABLE employe (identifiant TEXT PRIMARY KEY, nom TEXT, prenom TEXT, id_poste INTEGER," +
-                "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
+                                        "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
         db.execSQL(CREATE_EMPLOYE_TABLE);
 
         //Créer la table type d'événement
@@ -190,22 +190,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("heure", evenement.getHeure());
         values.put("duree",evenement.getDuree());
         values.put("prix", evenement.getPrix());
-
-        db.insert("evenement",null,values);
-        db.close();
-
-        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + evenement.getIdEvenement());
-    }
-
-    /**
-     * Ajout des cours du client dans la base de donnee local
-     */
-    public void inscrireCours(Evenement evenement, String id_client){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("id_evenement", evenement.getIdEvenement());
-        values.put("id_client", id_client);
 
         db.insert("evenement",null,values);
         db.close();

@@ -41,9 +41,9 @@ public class AccueilActivity extends AppCompatActivity {
         // La session
         session = new SessionManager(getApplicationContext());
 
-       /* if (!session.isLoggedIn()) {
+        if (!session.isLoggedIn()) {
             logoutUser();
-        }*/
+        }
 
         boutonEvenement();
     }
@@ -58,21 +58,21 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
-//        //Evenement sur le click de rendez-vous
-//        btnRendezVous.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        //Evenement sur le click de rendez-vous
+        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //Aller a la page des cours
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                Intent newActivity = new Intent(getApplicationContext(), camera.class);
                 startActivity(newActivity);
                 finish();
             }

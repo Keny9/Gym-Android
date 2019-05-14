@@ -3,8 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.projetgym">
 
-    <dist:module dist:instant="true" />
 
+    <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -61,7 +61,7 @@
             android:label="@string/app_name"
             android:launchMode="singleTop"/>
 
-       <activity
+        <activity
             android:name=".activity.ConsulterSonForfaitActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"/>
@@ -72,9 +72,9 @@
             android:launchMode="singleTop"/>
 
         <activity
-        android:name=".activity.exercice"
-        android:label="@string/app_name"
-        android:launchMode="singleTop"/>
+            android:name=".activity.exercice"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"/>
 
         <activity
             android:name=".activity.exerciceprecis"

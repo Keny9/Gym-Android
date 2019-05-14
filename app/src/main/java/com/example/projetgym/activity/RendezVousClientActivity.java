@@ -24,7 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.projetgym.R;
-import com.example.projetgym.object.RendezVous;
+import com.example.projetgym.object.Evenement;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
@@ -51,10 +51,11 @@ public class RendezVousClientActivity extends AppCompatActivity {
 
     private ListView list;
     private Button btnRetour;
+    private Button btnPrendreRendezVous;
 
     JSONArray rendezvous = null;
 
-    private ArrayList<RendezVous> rendez = new ArrayList<>();
+    private ArrayList<Evenement> rendez = new ArrayList<>();
 
     private ArrayList<String> titre = new ArrayList<>();
     private ArrayList<String> description = new ArrayList<>();
@@ -77,6 +78,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
 
         list = findViewById(R.id.listRendezVousClient);
         btnRetour = findViewById(R.id.btnRetourRendezVous);
+        btnPrendreRendezVous = findViewById(R.id.btnPrendreRendezVous);
 
         checkRendezvous(session.getIdentifiant());
 
@@ -94,7 +96,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
         }
 
         //Créer l'Adapteur
-        MyAdapter adapter = new MyAdapter(this, titre, description, image);
+        AdapterRendezVous adapter = new AdapterRendezVous(this, titre, description, image);
 
         //Attribuer l'Adapteur à la liste
         list.setAdapter(adapter);
@@ -138,7 +140,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
                             String prenom = r.getString("prenom");
                             String poste = r.getString("poste");
 
-                            RendezVous rv = new RendezVous(date,heure,duree,prix,nom,prenom,poste);
+                            Evenement rv = new Evenement(null,null,2,null,date,heure,duree,prix,nom,prenom,poste);
 
                             //Ajoute chaque rendez-vous dans un arrayList
                             rendez.add(rv);
@@ -201,6 +203,15 @@ public class RendezVousClientActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnPrendreRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(RendezVousClientActivity.this,PrendreRendezVousActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void showDialog() {
@@ -217,13 +228,13 @@ public class RendezVousClientActivity extends AppCompatActivity {
 /**
  * Classe qui joue le role d'un adapteur pour le list view
  */
-class MyAdapter extends ArrayAdapter<String> {
+class AdapterRendezVous extends ArrayAdapter<String> {
     Context context;
     ArrayList<String> rTitle;
     ArrayList<String> rDescription;
     int rImgs[];
 
-    MyAdapter(Context c, ArrayList<String> title, ArrayList<String> description, int imgs[]) {
+    AdapterRendezVous(Context c, ArrayList<String> title, ArrayList<String> description, int imgs[]) {
         super(c, R.layout.row, R.id.textView1, title);
         this.context = c;
         this.rTitle = title;
