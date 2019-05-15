@@ -70,7 +70,7 @@ public class exercice extends AppCompatActivity {
         Intent intentCategorie=getIntent();
         Bundle extras= intentCategorie.getExtras();
         TextView titres=(TextView) findViewById(R.id.textView);
-        titres.setText(extras.getString("categorie", "Les exercices"));
+        titres.setText(extras.getString("categorie", "Tout les exercices"));
 
         //Progress dialog
         pDialog = new ProgressDialog(this);
@@ -83,17 +83,6 @@ public class exercice extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         configureBackButton();
 
-
-        Button button = (Button) findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?daddr=%f,%f (%s)", 28.385233, -81.563873, "Disney's Weightland");
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                intent.setPackage("com.google.android.apps.maps");
-                startActivity(intent);
-            }
-        });
 
         checkExercices(extras.getString("categorie"));
 
