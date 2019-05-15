@@ -31,5 +31,5 @@ public class AppConfig {
 
     public static String URL_INSCRIRE_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/inscrireCours.php";
 
-    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscription.php";
+    public static String URL_COURS_CLIENT = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscrire.php";
 }
