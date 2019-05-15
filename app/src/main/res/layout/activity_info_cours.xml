@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_regulier"
-                android:text="@string/inscrireCours"
+                android:text="@string/inscrire"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="22sp"

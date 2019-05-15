@@ -144,9 +144,9 @@ public class infoCours extends BaseActivity {
 
                         // Check for error node in json
                         if (success == 1) {
-                            btnInscrire.setText("Se désinscrire");
+                            btnInscrire.setText(R.string.desinscrireCours);
                         } else {
-                            btnInscrire.setText("S'inscrire");
+                            btnInscrire.setText(R.string.inscrire);
                         }
                     } else {
 
