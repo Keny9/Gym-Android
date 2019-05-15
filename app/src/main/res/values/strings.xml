@@ -75,9 +75,10 @@
     <string name="nbrep">Nombre de répétitions :</string>
     <string name="nbpau">Temps de pause entre séries(min) :</string>
     <string name="quantite">0</string>
-    <string name="inscrireCours">S\'inscrire</string>
     <string name="LesCours">Les Cours</string>
     <string name="help">Aide</string>
+    <string name="settings">Préférence</string>
+    <string name="desinscrireCours">Se désinscrire</string>
 
     <string-array name="specialist">
         <item>Entraineur</item>

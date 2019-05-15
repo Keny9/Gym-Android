@@ -114,6 +114,33 @@ class GestionEvenement{
          return $evenement;
        }
 
+       /*
+          Retourne un tableau contenant tous les cours contenus dans la BD (evenement)
+        */
+        public function getAllCoursClient($id_evenement, $id_client){
+            $tempconn = new Connexion();
+            $conn = $tempconn->getConnexion();
+            $evenement = null;
+
+            $requete = "SELECT * from ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
+
+
+            $result = $conn->query($requete);
+
+            if(!$result){
+              trigger_error($conn->error);
+            }
+
+            if(mysqli_num_rows($result)==0){
+              $evenement = null;
+            }
+            else{
+              $evenement = $result;
+            }
+
+            return $evenement;
+          }
+
   /*
     Inscrire un client à un cours
   */
@@ -121,30 +148,45 @@ class GestionEvenement{
     $tempconn = new Connexion();
     $conn = $tempconn->getConnexion();
 
-    $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
+    $estInscrit = $this->verifierInscription($id_evenement, $id_client);
+
+    if($estInscrit == "faux"){
+      $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
+      $result = $conn->query($query);
+
+      if(!$result){
+        trigger_error($conn->error);
+      }
+      return false;
+    }else{
+      $query = "DELETE FROM ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
+      $result = $conn->query($query);
+
+      if(!$result){
+        trigger_error($conn->error);
+      }
+      return true;
+    }
+
+  }
+
+
+  public function verifierInscription($id_evenement, $id_client){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+
+    $query = "SELECT * from ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
     $result = $conn->query($query);
 
     if(!$result){
       trigger_error($conn->error);
     }
 
-  }
-
-  /*
-    Vérifie si un client fait deja partie d'un cours
-  */
-  public function verifierInscription($id_evenement, $id_client){
-    $tempconn = new Connexion();
-    $conn = $tempconn->getConnexion();
-    $evenement = null;
-
-    $requete = "SELECT COUNT(*) FROM `ta_client_evenement` WHERE `id_evenement` = '.$id_evenement.' AND `id_client` = '.$id_client.';";
-    $result = $conn->query($requete);
-
-     if(!$result){
-       trigger_error($conn->error);
-     }
-    return mysqli_num_rows($result);
+    if(mysqli_num_rows($result)==0){
+      return "faux";
+    }else{
+      return "vrai";
+    }
   }
 
 }
