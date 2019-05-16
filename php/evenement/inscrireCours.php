@@ -27,7 +27,6 @@ if(isset($_POST['id_event'],$_POST['id_client'])){
   $id_client = $_POST['id_client'];
 
  $gestionCours->inscrireCours($id_event, $id_client);
- 
 } else {
   $response["error"] = TRUE;
   $response["error_msg"] = "Des paramètres sont manquants";
