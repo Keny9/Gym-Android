@@ -6,7 +6,8 @@
 
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.AppController"
@@ -15,8 +16,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.InscriptionActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.preferences"></activity>
+        <activity android:name=".activity.camera" />
+        <activity android:name=".activity.infoCours" />
+        <activity android:name=".activity.Cours_list" />
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,57 +42,7 @@
         <activity
             android:name=".activity.AccueilActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.RendezVousClientActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.infoCours"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.Cours_list"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.categorie"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-       <activity
-            android:name=".activity.ConsulterSonForfaitActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.ConsulterForfaitsActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-        android:name=".activity.exercice"
-        android:label="@string/app_name"
-        android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.exerciceprecis"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.planentrainement"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
-
-        <activity
-            android:name=".activity.preferences"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
