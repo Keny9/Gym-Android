@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InscriptionActivity extends AppCompatActivity {
-    private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
+    //private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     @Override
@@ -75,7 +75,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                //Log.d(TAG, "Register Response: " + response.toString());
                 hideDialog();
 
                 try {
@@ -102,7 +102,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Registration Error: " + error.getMessage());
+               // Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                 hideDialog();
             }
