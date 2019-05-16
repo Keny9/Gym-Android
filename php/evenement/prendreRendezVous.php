@@ -22,7 +22,7 @@ $gestionRendezVous = new GestionEvenement();
 // JSON response array
 $response = array("error" => FALSE);
 
-if(isset($_POST['id'],$_POST['id_modele'],$_POST['id_type'],$_POST['identifiant_employe'],$_POST['date'],$_POST['heure'],$_POST['duree'],$_POST['prix'])){
+if(isset($_POST['id'],$_POST['id_modele'],$_POST['id_type'],$_POST['identifiant_employe'],$_POST['date'],$_POST['heure'],$_POST['duree'],$_POST['prix'],$_POST['id_client'])){
   $id = $_POST['id'];
   $id_modele = $_POST['id_modele'];
   $id_type = $_POST['id_type'];
@@ -31,14 +31,15 @@ if(isset($_POST['id'],$_POST['id_modele'],$_POST['id_type'],$_POST['identifiant_
   $heure = $_POST['heure'];
   $duree = $_POST['duree'];
   $prix = $_POST['prix'];
+  $idClient = $_POST['id_client'];
 
   $gestionRendezVous->registerRendezVous($id,$id_modele,$id_type,$identifiant_employe,$date,$heure,$duree,$prix);
-} else {
+  $gestionRendezVous->registerRendezVousClient($id, $idClient);
+}
+else {
   $response["error"] = TRUE;
   $response["error_msg"] = "Des paramètres sont manquants";
   echo json_encode($response);
 }
-
-
 
 ?>

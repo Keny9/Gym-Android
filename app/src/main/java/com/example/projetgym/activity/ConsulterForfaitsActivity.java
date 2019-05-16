@@ -73,18 +73,11 @@ public class ConsulterForfaitsActivity extends AppCompatActivity {
         list = findViewById(R.id.listView);
 
 
-        Button button = (Button) findViewById(R.id.btn_forfaits_retour);
+        btnRetour = findViewById(R.id.btn_forfaits_retour);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Retour à l'interface des forfaits
-                Intent intent = new Intent(ConsulterForfaitsActivity.this, ConsulterSonForfaitActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         getForfait();
+        clickEvenement();
     }
 
 
