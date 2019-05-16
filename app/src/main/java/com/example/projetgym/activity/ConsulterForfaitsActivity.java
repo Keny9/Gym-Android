@@ -38,7 +38,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 //Classe pour l'affichage de TOUS les forfaits
-public class ConsulterForfaitsActivity extends BaseActivity {
+public class ConsulterForfaitsActivity extends AppCompatActivity {
+
+    private static final String TAG = LoginActivity.class.getSimpleName();
+
+    private ProgressDialog pDialog;
+    private ListView list;
+    private Button btnRetour;
+    private SessionManager session;
+    private SQLiteHandler db;
+
+    private ArrayList<String> titre = new ArrayList<>();                   //Liste des titres
+    private ArrayList<String> description = new ArrayList<>();             //Liste des descriptions
+    int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};     //Liste des images des forfatis
+
+    JSONArray forfaits = null;                                               //Array JSON
+    private ArrayList<Forfait> eventForfait = new ArrayList<>();           //liste de tous les forfatis
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,18 +73,11 @@ public class ConsulterForfaitsActivity extends BaseActivity {
         list = findViewById(R.id.listView);
 
 
-        Button button = (Button) findViewById(R.id.btn_forfaits_retour);
+        btnRetour = findViewById(R.id.btn_forfaits_retour);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Retour à l'interface des forfaits
-                Intent intent = new Intent(ConsulterForfaitsActivity.this, ConsulterSonForfaitActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         getForfait();
+        clickEvenement();
     }
 
 
