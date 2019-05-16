@@ -2,7 +2,7 @@
 /****************************************
  Fichier : gestionExercices.php
  Auteur : William Gonin
- Fonctionnalité : W-07 Classe requise pour faire Gestion des Exercices
+ Fonctionnalité : Classe requise pour faire le Gestion des Exercices
  Date : Lundi 15 Avril 2019
  Vérification :
  Date                  Nom                       Approuvé
