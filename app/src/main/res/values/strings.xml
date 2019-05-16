@@ -80,8 +80,6 @@
     <string name="settings">Préférence</string>
     <string name="direction">Obtenir litineraire vers le gym</string>
     <string name="appel">Appeler le centre doperation</string>
-    <string name="help">Aide</string>
-    <string name="settings">Préférence</string>
     <string name="desinscrireCours">Se désinscrire</string>
 
     <string-array name="specialist">

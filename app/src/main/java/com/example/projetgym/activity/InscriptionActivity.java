@@ -68,8 +68,8 @@ public class InscriptionActivity extends AppCompatActivity {
         // Tag utilisé pour annuler la requête
         String tag_string_req = "req_register";
 
-        pDialog.setMessage("Registering ...");
-        showDialog();
+        //pDialog.setMessage("Registering ...");
+        //showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_INSCRIRE_CLIENT, new Response.Listener<String>() {
 

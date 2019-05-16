@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                         Client utilisateur = new Client(identifiant,nom,prenom,courriel,idForfait,dateNaissance,telephone);
 
                         // Insérer le client dans la table client
-                        db.ajouterClient(utilisateur);
+                        //db.ajouterClient(utilisateur);
 
                         // Aller à l'accueil
                         Intent intent = new Intent(LoginActivity.this, AccueilActivity.class);

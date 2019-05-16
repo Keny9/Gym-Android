@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : preferences.java
+ Auteur : William Gonin
+ Fonctionnalité : Code de l'Activité preferences. A plusieurs options comme obtenir litineraire vers le gym
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ 2019-05-15         Guillaume               Approuve
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
 package com.example.projetgym.activity;
 
 import android.Manifest;

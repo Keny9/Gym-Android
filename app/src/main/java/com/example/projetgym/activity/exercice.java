@@ -1,3 +1,21 @@
+/****************************************
+ Fichier : exercice.java
+ Auteur : William Gonin
+ Fonctionnalité : Code de l'Activité exercice. Affiche les exercice dependament du choix de lutilisateur
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ 2019-05-15         Guillaume               Approuve
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package com.example.projetgym.activity;
 
 import android.app.ProgressDialog;

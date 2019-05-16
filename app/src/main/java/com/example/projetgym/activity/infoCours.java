@@ -17,16 +17,29 @@
 
 package com.example.projetgym.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.projetgym.Cours;
 import com.example.projetgym.R;
+import com.example.projetgym.app.AppConfig;
+import com.example.projetgym.app.AppController;
+import com.example.projetgym.helper.SQLiteHandler;
+import com.example.projetgym.helper.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,6 +61,7 @@ public class infoCours extends BaseActivity {
 
     /**
      * Création de l'activité
+     *
      * @param savedInstanceState
      */
     @Override
@@ -91,19 +105,19 @@ public class infoCours extends BaseActivity {
     /**
      * Génère les clicks listeners sur les boutons de l'Activité
      */
-    private void clickEvenement(){
+    private void clickEvenement() {
 
-        btnInscrire.setOnClickListener(new View.OnClickListener(){
+        btnInscrire.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 inscrire();
                 checkInscription();
             }
         });
 
-        btnRetour.setOnClickListener(new View.OnClickListener(){
+        btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(infoCours.this, Cours_list.class);
                 startActivity(intent);
                 finish();
@@ -114,26 +128,26 @@ public class infoCours extends BaseActivity {
     /**
      * Vérifie si l'utilisateur est inscrit au cours
      */
-    private void checkInscription(){
+    private void checkInscription() {
         // Tag used to cancel the request
         String tag_string_req = "req_cours";
 
         pDialog.setMessage("Chargement en cours...");
-        showDialog();
+        //showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_COURS_CLIENT, new Response.Listener<String>() {
 
             @Override
-            public void onResponse(String response){
-                hideDialog();
+            public void onResponse(String response) {
+                //hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int success = jObj.getInt("success");
                     boolean error = jObj.getBoolean("error");
 
-                    if(!error){
-                        db.verifierInscrire(event.getIdEvenement(), session.getIdentifiant());
+                    if (!error) {
+                        // db.verifierInscrire(event.getIdEvenement(), session.getIdentifiant());
 
                         // Check for error node in json
                         if (success == 1) {
@@ -154,11 +168,11 @@ public class infoCours extends BaseActivity {
                     Toast.makeText(getApplicationContext(), "Json erreur: 2222 " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
-        }, new Response.ErrorListener(){
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
+                //hideDialog();
             }
         }) {
 
@@ -166,7 +180,7 @@ public class infoCours extends BaseActivity {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id_event", event.getIdEvenement());
+                //params.put("id_event", event.getIdEvenement());
                 params.put("id_client", session.getIdentifiant());
 
                 return params;
@@ -181,8 +195,8 @@ public class infoCours extends BaseActivity {
     /**
      * Enregistrer l'inscription du client dans la BD dans la base de donnee centrale
      */
-    private void inscrire(){
-        try{
+    private void inscrire() {
+        try {
             String myUrl = "jdbc:mysql://127.0.0.1/gymcentral?useTimezone=true&serverTimezone=EST";
             Connection c = DriverManager.getConnection(myUrl, "root",
                     "");
@@ -191,62 +205,65 @@ public class infoCours extends BaseActivity {
             String id_evenement = event.getId();
             String id_client = "Marie1";
 
-        pDialog.setMessage("Registering ...");
-        showDialog();
+            pDialog.setMessage("Registering ...");
+            //showDialog();
 
-        session = new SessionManager(getApplicationContext());
+            session = new SessionManager(getApplicationContext());
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_INSCRIRE_COURS, new Response.Listener<String>() {
+            StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_INSCRIRE_COURS, new Response.Listener<String>() {
 
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Success response 2: " + response);
-                hideDialog();
+                @Override
+                public void onResponse(String response) {
+                    Log.d(TAG, "Success response 2: " + response);
+                    //hideDialog();
 
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
+                    try {
+                        JSONObject jObj = new JSONObject(response);
+                        boolean error = jObj.getBoolean("error");
 
-                    if (!error) {
-                        // L'evenement fait parti de la base de donnee MySQL
-                        db.inscrireCours(event, session.getIdentifiant());
+                        if (!error) {
+                            // L'evenement fait parti de la base de donnee MySQL
+                            // db.inscrireCours(event, session.getIdentifiant());
 
-                        Toast.makeText(getApplicationContext(), "Vous vous etes inscrit au cours de " + event.getModeleCours(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Vous vous etes inscrit au cours de " + event.getModeleCours(), Toast.LENGTH_LONG).show();
 
-                    } else {
+                        } else {
 
-                        // Error occurred in registration. Get the error
-                        // message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                            // Error occurred in registration. Get the error
+                            // message
+                            String errorMsg = jObj.getString("error_msg");
+                            Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e(TAG, "Registration Error: " + error.getMessage());
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    //hideDialog();
+                }
+            }) {
+
+                @Override
+                protected Map<String, String> getParams() {
+                    // Posting params to register url
+                    Map<String, String> params = new HashMap<String, String>();
+                    //params.put("id_event", event.getIdEvenement());
+                    params.put("id_client", session.getIdentifiant());
+
+                    return params;
                 }
 
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Registration Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("id_event", event.getIdEvenement());
-                params.put("id_client", session.getIdentifiant());
-
-                return params;
-            }
-
-        };
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+            };
+            // Adding request to request queue
+            //AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
