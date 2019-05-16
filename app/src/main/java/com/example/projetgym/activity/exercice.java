@@ -1,3 +1,21 @@
+/****************************************
+ Fichier : exercice.java
+ Auteur : William Gonin
+ Fonctionnalité : Code de l'Activité exercice. Affiche les exercice dependament du choix de lutilisateur
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ 2019-05-15         Guillaume               Approuve
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package com.example.projetgym.activity;
 
 import android.app.ProgressDialog;
@@ -40,10 +58,10 @@ import java.util.Locale;
 
 public class exercice extends BaseActivity {
 
-    ListView liste;
+    //ListView liste;
    // String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};
     //String description[] = {"Cliquer pour voir les exercices du haut du corps (En haut des hanches)", "Cliquer pour voir les exercices du bas du corps (En bas des hanches)", "Cliquer pour voir tout les exercices"};
-    int image[] = {R.drawable.bicep, R.drawable.legpress, R.drawable.toutexercice};
+    int image[] = {R.drawable.bicep, R.drawable.legpress, R.drawable.toutexercice,R.drawable.toutexercice,R.drawable.toutexercice};
 
 
 
@@ -83,9 +101,10 @@ public class exercice extends BaseActivity {
         session = new SessionManager(getApplicationContext());
         configureBackButton();
 
+        list = findViewById(R.id.listView);
 
         checkExercices(extras.getString("categorie"));
-
+        //extras.getString("categorie")
 
 
 /*
@@ -113,27 +132,28 @@ public class exercice extends BaseActivity {
     /**
      * Ramasser les cours
      */
+    //String choix
     private void checkExercices(String choix) {
         // Tag used to cancel the request
         String tag_string_req = "req_exercices";
-       // String appConfig="AppConfig.URL_EXERCICES";
+        String appConfig=AppConfig.URL_EXERCICES;
 
         pDialog.setMessage("Chargement en cours...");
         //showDialog();
 
-        //if(choix.equals("Haut du Corps"))
-        //    appConfig="AppConfig.URL_EXERCICESHAUT";
-       // else if(choix.equals("Bas du corps"))
-        //    appConfig="AppConfig.URL_EXERCICESBAS";
-       // else
-        //    appConfig="AppConfig.URL_EXERCICES";
+        if(choix.equals("Haut du Corps"))
+            appConfig=AppConfig.URL_EXERCICESHAUT;
+        else if(choix.equals("Bas du corps"))
+            appConfig=AppConfig.URL_EXERCICESBAS;
+        else
+            appConfig=AppConfig.URL_EXERCICES;
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_EXERCICES, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, appConfig, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response){
                 Log.d(TAG, "Exercices Response: " + response.toString());
-                //hideDialog();
+                hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -182,7 +202,7 @@ public class exercice extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Erreur de chargement: " + error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                //hideDialog();
+                hideDialog();
             }
         }) {
 
@@ -199,7 +219,7 @@ public class exercice extends BaseActivity {
 
         for(int i = 0; i < eventExercices.size();i++){
             Log.d(TAG, "Exercices : " + i);
-            //hideDialog();
+            hideDialog();
 
             titre.add(eventExercices.get(i).getNom());
             description.add(eventExercices.get(i).getDescription());
@@ -208,12 +228,26 @@ public class exercice extends BaseActivity {
         //Créer l'Adapteur
         Log.d(TAG,"Cest dla merde");
         MyAdapter adapter = new MyAdapter(this, titre, description, image);
-        //Log.d(TAG,"Cest dla merde"+ adapter.toString());
+        Log.d(TAG,"Cest dla merde 1 "+ adapter.toString());
         //Attribuer l'Adapteur à la liste
         list.setAdapter(adapter);
     }
 
+    /**
+     * Afficher le dialog
+     */
+    private void showDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
 
+    /**
+     * Cacher le dialog
+     */
+    private void hideDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+    }
 
     /**
      * Classe qui joue le role d'un adapteur pour le list view

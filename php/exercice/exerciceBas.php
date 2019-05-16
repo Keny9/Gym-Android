@@ -29,7 +29,7 @@
 
       while($row = $result->fetch_assoc()){
         $exercices = array();
-        $exercices["id"] = $row["id"];
+        //$exercices["id"] = $row["id"];
         $exercices["type"] = $row["id_type"];
         $exercices["nom"] = $row["nom"];
         $exercices["description"] = $row["description"];

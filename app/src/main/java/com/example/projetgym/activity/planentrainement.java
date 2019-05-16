@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : planentrainement.java
+ Auteur : William Gonin
+ Fonctionnalité : Code de l'Activité planentrainement. Affiche le plan d'entrainement de l'utilisateur
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ 2019-05-15         Guillaume               Approuve
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
 package com.example.projetgym.activity;
 
 import android.Manifest;
@@ -38,7 +55,7 @@ public class planentrainement extends AppCompatActivity {
 
 
     ListView liste;
-    String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};
+    String titre[] = {"Curl", "Legpress", "Machine 13"};
     String description[] = {"Cliquer pour voir les exercices du haut du corps (En haut des hanches)", "Cliquer pour voir les exercices du bas du corps (En bas des hanches)", "Cliquer pour voir tout les exercices"};
     int image[] = {R.drawable.bicep, R.drawable.legpress, R.drawable.toutexercice};
 

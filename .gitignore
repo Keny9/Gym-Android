@@ -27,3 +27,13 @@ app/src/main/java/com/example/projetgym/Cours\.java~Guillaume
 app/src/main/java/com/example/projetgym/helper/SQLiteHandler\.java
 
 php/client/gestionClient\.php
+
+php/evenement/gestionEvenement\.php
+
+app/src/main/java/com/example/projetgym/activity/RendezVousClientActivity\.java
+
+app/src/main/java/com/example/projetgym/activity/LoginActivity\.java
+
+app/src/main/java/com/example/projetgym/activity/InscriptionActivity\.java
+
+app/src/main/java/com/example/projetgym/activity/AccueilActivity\.java

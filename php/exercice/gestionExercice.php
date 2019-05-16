@@ -2,7 +2,7 @@
 /****************************************
  Fichier : gestionExercices.php
  Auteur : William Gonin
- Fonctionnalité : W-07 Classe requise pour faire Gestion des Exercices
+ Fonctionnalité : Classe requise pour faire le Gestion des Exercices
  Date : Lundi 15 Avril 2019
  Vérification :
  Date                  Nom                       Approuvé
@@ -125,12 +125,18 @@ La fonction qui sert a ajouter un exercice dans la base de donnee
       trigger_error($conn->error);
     }
 
-    if ($result->num_rows > 0) {
+    if(mysqli_num_rows($result)==0){
+      $exercices = null;
+    }
+    else{
+      $exercices = $result;
+    }
+  /*  if ($result->num_rows > 0) {
 
       while($row = $result->fetch_assoc()) {
           $exercices[] = new Exercice($row['id_type'], $row['nom'], $row['description'], $row['image']);
         }
-    }
+    }*/
 
 
     return $exercices;
@@ -152,12 +158,19 @@ La fonction qui sert a ajouter un exercice dans la base de donnee
       trigger_error($conn->error);
     }
 
-    if ($result->num_rows > 0) {
+    if(mysqli_num_rows($result)==0){
+      $exercices = null;
+    }
+    else{
+      $exercices = $result;
+    }
+
+    /*if ($result->num_rows > 0) {
 
       while($row = $result->fetch_assoc()) {
           $exercices[] = new Exercice($row['id_type'], $row['nom'], $row['description'], $row['image']);
         }
-    }
+    }*/
 
 
     return $exercices;
