@@ -42,4 +42,5 @@ public class AppConfig {
     public static String URL_EXERCICESHAUT = "http://10.0.2.2/gymandroid/php/exercice/exerciceHaut.php";
     public static String URL_EXERCICESBAS = "http://10.0.2.2/gymandroid/php/exercice/exerciceBas.php";
     public static String URL_REGISTER_RDV = "http://10.0.2.2/ProjetGymAndroid/php/evenement/prendreRendezVous.php";
+    public static String URL_GET_FORFAITS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/forfait/afficherForfaits.php";
 }

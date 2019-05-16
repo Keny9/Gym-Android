@@ -14,7 +14,6 @@ package com.example.projetgym.helper;
  Historique de modifications :
  Date               Nom                   Description
  =========================================================
- 2019-05-14         Guillaume Côté        Ajouts pour les cours
 
  ****************************************/
 
