@@ -56,7 +56,7 @@ public class planentrainement extends AppCompatActivity {
 
     ListView liste;
     String titre[] = {"Curl", "Legpress", "Machine 13"};
-    String description[] = {"Cliquer pour voir les exercices du haut du corps (En haut des hanches)", "Cliquer pour voir les exercices du bas du corps (En bas des hanches)", "Cliquer pour voir tout les exercices"};
+    String description[] = {"Serie:3, Repetition:10, Pause:2", "Serie:4, Repetition:8, Pause:4", "Serie:3, Repetition:10, Pause:3"};
     int image[] = {R.drawable.bicep, R.drawable.legpress, R.drawable.toutexercice};
 
     @Override

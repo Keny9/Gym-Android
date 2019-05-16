@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Fichier : activity_categorie.xml
+    Auteur : William Gonin
+    Fonctionnalité : Le layout de categorie
+    Date : 2019-05-09
+
+    Vérification :
+    Date               Nom                   Approuvé
+    2019-05-15         Guillaume               Approuve
+    =========================================================
+
+
+    Historique de modifications :
+    Date               Nom                   Description
+    =========================================================
+
+    -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
