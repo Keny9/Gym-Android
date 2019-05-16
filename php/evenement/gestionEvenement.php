@@ -114,7 +114,7 @@ class GestionEvenement{
          return $evenement;
        }
 
-       /*
+     /*
           Retourne un tableau contenant tous les cours contenus dans la BD (evenement)
         */
         public function getAllCoursClient($id_evenement, $id_client){
@@ -141,54 +141,52 @@ class GestionEvenement{
             return $evenement;
           }
 
-  /*
-    Inscrire un client à un cours
-  */
-  public function inscrireCours($id_evenement, $id_client){
-    $tempconn = new Connexion();
-    $conn = $tempconn->getConnexion();
+/*
+  Inscrire un client à un cours
+*/
+public function inscrireCours($id_evenement, $id_client){
+  $tempconn = new Connexion();
+  $conn = $tempconn->getConnexion();
 
-    $estInscrit = $this->verifierInscription($id_evenement, $id_client);
+  $estInscrit = $this->verifierInscription($id_evenement, $id_client);
 
-    if($estInscrit == "faux"){
-      $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
-      $result = $conn->query($query);
-
-      if(!$result){
-        trigger_error($conn->error);
-      }
-      return false;
-    }else{
-      $query = "DELETE FROM ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
-      $result = $conn->query($query);
-
-      if(!$result){
-        trigger_error($conn->error);
-      }
-      return true;
-    }
-
-  }
-
-
-  public function verifierInscription($id_evenement, $id_client){
-    $tempconn = new Connexion();
-    $conn = $tempconn->getConnexion();
-
-    $query = "SELECT * from ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
+  if($estInscrit == "faux"){
+    $query = "INSERT INTO ta_client_evenement(id_client, id_evenement) VALUES ('".$id_client."', '".$id_evenement."');";
     $result = $conn->query($query);
 
     if(!$result){
       trigger_error($conn->error);
     }
+    return false;
+  }else{
+    $query = "DELETE FROM ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
+    $result = $conn->query($query);
 
-    if(mysqli_num_rows($result)==0){
-      return "faux";
-    }else{
-      return "vrai";
+    if(!$result){
+      trigger_error($conn->error);
     }
+    return true;
   }
 
+}
+
+ public function verifierInscription($id_evenement, $id_client){
+  $tempconn = new Connexion();
+  $conn = $tempconn->getConnexion();
+
+  $query = "SELECT * from ta_client_evenement WHERE id_evenement = '".$id_evenement."' AND id_client = '".$id_client."'";
+  $result = $conn->query($query);
+
+  if(!$result){
+    trigger_error($conn->error);
+  }
+
+  if(mysqli_num_rows($result)==0){
+    return "faux";
+  }else{
+    return "vrai";
+  }
+}
 }
 
 ?>

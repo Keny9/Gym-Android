@@ -3,7 +3,6 @@ package com.example.projetgym.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -72,7 +71,7 @@ public class AccueilActivity extends BaseActivity {
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), camera.class);
+                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
                 startActivity(newActivity);
                 finish();
             }

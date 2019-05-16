@@ -14,6 +14,7 @@ package com.example.projetgym.helper;
  Historique de modifications :
  Date               Nom                   Description
  =========================================================
+ 2019-05-14         Guillaume Côté        Ajouts pour les cours
 
  ****************************************/
 
@@ -73,7 +74,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         //Créer la table employé(pour les spécialistes)
         String CREATE_EMPLOYE_TABLE = "CREATE TABLE employe (identifiant TEXT PRIMARY KEY, nom TEXT, prenom TEXT, id_poste INTEGER," +
-                                        "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
+                "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
         db.execSQL(CREATE_EMPLOYE_TABLE);
 
         //Créer la table type d'événement

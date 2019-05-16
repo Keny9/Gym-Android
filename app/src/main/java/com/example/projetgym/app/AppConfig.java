@@ -24,18 +24,24 @@ public class AppConfig {
     public static String URL_LOGIN = "http://10.0.2.2/ProjetGymAndroid/php/authentification/login.php";
 
     // Server user register url
-    public static String URL_REGISTER = "http://10.0.2.2/ProjetGymAndroid/php/authentification/register.php";
+    public static String URL_REGISTER = "http://10.170.11.115/ProjetGymAndroid/php/authentification/register.php";
 
     // Server user login url
     public static String URL_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/cours.php";
 
-    public static String URL_REGISTER_RDV = "http://10.0.2.2/ProjetGymAndroid/php/evenement/prendreRendezVous.php";
-
     public static String URL_INSCRIRE_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/inscrireCours.php";
 
-    public static String URL_EXERCICES = "http://10.0.2.2/gymandroid/php/exercice/exercice.php";
-    public static String URL_EXERCICESHAUT = "http://10.0.2.2/gymandroid/php/exercice/exerciceHaut.php";
-    public static String URL_EXERCICESBAS = "http://10.0.2.2/gymandroid/php/exercice/exerciceBas.php";
+    public static String URL_COURS_CLIENT = "http://10.0.2.2/ProjetGymAndroid/php/evenement/verifierInscrire.php";
+
+    public static String URL_RENDEZVOUS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/rendezVousClient.php";
+
     public static String URL_REGISTER_RDV = "http://10.0.2.2/ProjetGymAndroid/php/evenement/prendreRendezVous.php";
-    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscription.php";
+
+    public static String URL_EXERCICES = "http://10.0.2.2/ProjetGymAndroid/php/exercice/exercice.php";
+
+    public static String URL_EXERCICESHAUT = "http://10.0.2.2/ProjetGymAndroid/php/exercice/exerciceHaut.php";
+
+    public static String URL_EXERCICESBAS = "http://10.0.2.2/ProjetGymAndroid/php/exercice/exerciceBas.php";
+
+    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/verifierInscription.php";
 }
