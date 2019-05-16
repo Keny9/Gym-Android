@@ -3,7 +3,7 @@
 Fichier : gestionClient.php
 Auteur : Karl Boutin
 Fonctionnalité : Classe qui va gérer les clients d'un gym dans la bd
-Date : 2019-04-15
+Date : 2019-05-08
 
 Vérification :
 Date                  Nom                       Approuvé
@@ -49,7 +49,7 @@ class GestionClient{
 
     return $client;
   }
-
+  
 }
 
 ?>

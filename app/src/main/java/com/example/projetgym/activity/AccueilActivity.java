@@ -43,7 +43,11 @@ public class AccueilActivity extends AppCompatActivity {
 
         if (!session.isLoggedIn()) {
             logoutUser();
+<<<<<<< HEAD
+        }*/
+=======
         }
+>>>>>>> Karl
 
         boutonEvenement();
     }
@@ -58,6 +62,7 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 //        //Evenement sur le click de rendez-vous
 //        btnRendezVous.setOnClickListener(new View.OnClickListener(){
 //            @Override
@@ -67,12 +72,23 @@ public class AccueilActivity extends AppCompatActivity {
 //                finish();
 //            }
 //        });
+=======
+        //Evenement sur le click de rendez-vous
+        btnRendezVous.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(AccueilActivity.this,RendezVousClientActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+>>>>>>> Karl
 
         //Aller a la page des cours
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newActivity = new Intent(getApplicationContext(), Cours_list.class);
+                Intent newActivity = new Intent(getApplicationContext(), camera.class);
                 startActivity(newActivity);
                 finish();
             }
