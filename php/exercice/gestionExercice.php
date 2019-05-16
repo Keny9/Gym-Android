@@ -16,12 +16,12 @@ Date                  Nom                     Description
 ****************************************/
   require_once '../outils/connexion.php';
 
-  class GestionRendezVous{
+  class GestionExercice{
     /**
     * Obtenir tous les rendez-vous d'un client
     * @param identifiant du client
     */
-    public function getAllRendezVousOfClient($identifiant){
+    public function getAllExerciceOfClient($identifiant){
       $tempconn = new Connexion();
       $conn = $tempconn->getConnexion();
 

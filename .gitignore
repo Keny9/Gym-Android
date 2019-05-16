@@ -13,3 +13,7 @@
 .externalNativeBuild
 
 mysql-connector-java-8\.0\.15/
+
+php/rendezvous/rendezvousClient\.php
+
+php/exercice/rendezVousClient\.php
