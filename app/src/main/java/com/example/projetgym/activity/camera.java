@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : camera.java
+ Auteur : Guillaume
+ Fonctionnalité : Prise de photo avec la caméra
+ Date : 2019-05-0
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+ 2019-05-16          William                 Approuvé
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+ 2019-05-16          Guillaume             Rendre fonctionnel avec BD
+ ****************************************/
+
 package com.example.projetgym.activity;
 
 import android.Manifest;

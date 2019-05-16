@@ -40,6 +40,7 @@ import java.util.Locale;
 public class preferences extends BaseActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
     private Button btnRetour;
+    private Button btnCam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,16 @@ public class preferences extends BaseActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
+            }
+        });
+
+
+        btnCam.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(),camera.class);
+                startActivity(intent);
+                finish();
             }
         });
 

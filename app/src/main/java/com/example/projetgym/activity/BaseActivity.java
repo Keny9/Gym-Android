@@ -1,3 +1,19 @@
+/****************************************
+ Fichier : BaseActivity.java
+ Auteur : Guillaume
+ Fonctionnalité : Activité permettant d'ajouter facilement le menu a toute les autres activités
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+ 2019-05-16          William                 Approuvé
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+ 2019-05-16          Guillaume             Rendre fonctionnel avec BD
+ ****************************************/
 package com.example.projetgym.activity;
 
 import android.content.Intent;
