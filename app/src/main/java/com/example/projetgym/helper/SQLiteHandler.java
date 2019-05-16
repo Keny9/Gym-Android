@@ -14,6 +14,7 @@ package com.example.projetgym.helper;
  Historique de modifications :
  Date               Nom                   Description
  =========================================================
+ 2019-05-14         Guillaume Côté        Ajouts pour les cours
 
  ****************************************/
 
@@ -73,7 +74,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         //Créer la table employé(pour les spécialistes)
         String CREATE_EMPLOYE_TABLE = "CREATE TABLE employe (identifiant TEXT PRIMARY KEY, nom TEXT, prenom TEXT, id_poste INTEGER," +
-                                        "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
+                "FOREIGN KEY (id_poste) REFERENCES poste_employe(id));";
         db.execSQL(CREATE_EMPLOYE_TABLE);
 
         //Créer la table type d'événement
@@ -157,22 +158,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      *  Ajoute le client (utilisateur actuel) dans la base de donnée local
      */
-    public void ajouterClient(Client client){
+    public void ajouterClient(String identifiant, String nom, String prenom, String courriel, String dateNaissance, Long telephone){
         SQLiteDatabase db = this.getWritableDatabase();
+        String forfait = null;
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, client.getIdentifiant());
-        values.put(KEY_NAME, client.getNom());
-        values.put(KEY_PRENOM, client.getPrenom());
-        values.put(KEY_EMAIL, client.getEmail());
-        values.put(KEY_IDFORFAIT, client.getIdForfait());
-        values.put(KEY_DATENAISSANCE,client.getDateNaissance());
-        values.put(KEY_TELEPHONE, client.getTelephone());
+        values.put(KEY_ID, identifiant);
+        values.put(KEY_NAME, nom);
+        values.put(KEY_PRENOM, prenom);
+        values.put(KEY_EMAIL, courriel);
+        values.put(KEY_IDFORFAIT, forfait);
+        values.put(KEY_DATENAISSANCE,dateNaissance);
+        values.put(KEY_TELEPHONE, telephone);
 
         db.insert(TABLE_CLIENT,null,values);
         db.close();
 
-        Log.d(TAG, "Nouveau client inséré dans sqlite: " + client.getIdentifiant());
+        Log.d(TAG, "Nouveau client inséré dans sqlite: " + identifiant);
     }
 
     /**
@@ -195,6 +197,38 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
 
         Log.d(TAG, "Nouvel événement inséré dans sqlite: " + evenement.getIdEvenement());
+    }
+
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void inscrireCours(Evenement evenement, String id_client){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", evenement.getIdEvenement());
+        values.put("id_client", id_client);
+
+        db.insert("evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + evenement.getIdEvenement());
+    }
+
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void verifierInscrire(String id_event, String id_client){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", id_event);
+        values.put("id_client", id_client);
+
+        db.insert("ta_client_evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + id_event);
     }
 
     /**

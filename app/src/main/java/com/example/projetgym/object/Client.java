@@ -14,7 +14,7 @@ package com.example.projetgym.object;
  Date               Nom                   Description
  =========================================================
 
-/**
+ /**
  * Classe qui represente un client du gym
  */
 public class Client {

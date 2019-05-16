@@ -49,7 +49,30 @@ class GestionClient{
 
     return $client;
   }
-  
-}
+
+  /*
+  Ajoute un employe à la BD ainsi que son adresse
+  */
+  public function ajouterClient($identifiant, $idForfait, $nom, $prenom, $dateNaissance, $courriel, $telephone, $motDePasse){
+    $tempconn = new Connexion();
+    $conn = $tempconn->getConnexion();
+
+    //Crée l'employé
+    $requete= "INSERT INTO employe VALUES(
+      '".$identifiant."',
+      '".$idForfait."',
+      '".$nom."',
+      '".$prenom."',
+      '".$dateNaissance."',
+      '".$courriel."',
+      '".$telephone."',
+      '".$motDePasse."');";
+      $result = $conn->query($requete);
+      if(!$result){
+        trigger_error($conn->error);
+
+      }
+    }
+  }
 
 ?>
