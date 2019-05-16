@@ -26,8 +26,6 @@ public class AppConfig {
     // Server user register url
     public static String URL_REGISTER = "http://10.0.2.2/ProjetGymAndroid/php/authentification/register.php";
 
-    public static String URL_RENDEZVOUS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/rendezVousClient.php";
-
     // Server user login url
     public static String URL_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/cours.php";
 
@@ -35,9 +33,9 @@ public class AppConfig {
 
     public static String URL_INSCRIRE_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/inscrireCours.php";
 
-<<<<<<< HEAD
-    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/php/evenement/verifierInscription.php";
-=======
-    public static String URL_COURS_CLIENT = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscrire.php";
->>>>>>> Guillaume
+    public static String URL_EXERCICES = "http://10.0.2.2/gymandroid/php/exercice/exercice.php";
+    public static String URL_EXERCICESHAUT = "http://10.0.2.2/gymandroid/php/exercice/exerciceHaut.php";
+    public static String URL_EXERCICESBAS = "http://10.0.2.2/gymandroid/php/exercice/exerciceBas.php";
+    public static String URL_REGISTER_RDV = "http://10.0.2.2/ProjetGymAndroid/php/evenement/prendreRendezVous.php";
+    public static String URL_VERIFIER_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/verifierInscription.php";
 }
