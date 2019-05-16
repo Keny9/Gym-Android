@@ -40,4 +40,8 @@ public class AppConfig {
     public static String URL_REGISTER_RDV = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/prendreRendezVous.php";
 
     public static String URL_GET_FORFAITS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/forfait/afficherForfaits.php";
+
+    public static String URL_INSCRIRE_FORFAIT = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/forfait/inscrireForfait.php";
+
+    public static String URL_FORFAIT_CLIENT = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/forfait/verifierInscrire.php";
 }
