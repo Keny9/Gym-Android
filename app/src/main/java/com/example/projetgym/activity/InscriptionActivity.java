@@ -25,6 +25,7 @@ import com.example.projetgym.R;
 import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
+import com.example.projetgym.object.Client;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +41,13 @@ public class InscriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
+
+        //SQLite base de donnée gestion
+        db = new SQLiteHandler(getApplicationContext());
+
+        //Progress dialog
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
 
         setInterfaceInscription();
         setInputs();
@@ -58,12 +66,9 @@ public class InscriptionActivity extends AppCompatActivity {
         final String nom = ((TextView)findViewById(R.id.nom)).getText().toString();
         final String prenom = ((TextView)findViewById(R.id.prenom)).getText().toString();
         final String date_naissance = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
-        final String courriel = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
-        final Long telephone = Long.parseLong(((TextView)findViewById(R.id.telephone)).getText().toString());
+        final String courriel = ((TextView)findViewById(R.id.courriel)).getText().toString();
+        final String telephone = ((TextView)findViewById(R.id.telephone)).getText().toString();
         final String mot_de_passe = ((TextView)findViewById(R.id.mot_de_passe)).getText().toString();
-
-
-
 
         // Tag utilisé pour annuler la requête
         String tag_string_req = "req_register";
@@ -82,9 +87,13 @@ public class InscriptionActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        db.ajouterClient(identifiant,nom,prenom,courriel,date_naissance,telephone);
+
+                        Client client = new Client(identifiant,nom,prenom,courriel,0,date_naissance,telephone);
+
+                        db.ajouterClient(client);
 
                         Toast.makeText(getApplicationContext(), "Votre inscription a été UN SUCCES!!!!!!!!.", Toast.LENGTH_LONG).show();
+                        
 
                     } else {
 
@@ -113,12 +122,11 @@ public class InscriptionActivity extends AppCompatActivity {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("identifiant", identifiant);
-                params.put("idForfait", null);
                 params.put("nom", nom);
                 params.put("prenom", prenom);
                 params.put("dateNaissance",date_naissance );
                 params.put("courriel", courriel);
-                params.put("telephone", telephone.toString());
+                params.put("telephone", telephone);
                 params.put("motDePasse", mot_de_passe);
 
                 return params;
