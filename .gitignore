@@ -23,3 +23,7 @@ app/src/main/java/com/example/projetgym/object/Client\.java
 app/src/main/java/com/example/projetgym/Cours\.java~HEAD
 
 app/src/main/java/com/example/projetgym/Cours\.java~Guillaume
+
+app/src/main/java/com/example/projetgym/helper/SQLiteHandler\.java
+
+php/client/gestionClient\.php

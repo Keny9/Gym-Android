@@ -1,5 +1,6 @@
 package com.example.projetgym.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.support.design.widget.TextInputLayout;
@@ -15,18 +16,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.projetgym.MainActivity;
 import com.example.projetgym.R;
+import com.example.projetgym.app.AppConfig;
+import com.example.projetgym.app.AppController;
+import com.example.projetgym.helper.SQLiteHandler;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class InscriptionActivity extends BaseActivity {
+import java.util.HashMap;
+import java.util.Map;
 
+public class InscriptionActivity extends AppCompatActivity {
+    private static final String TAG = PrendreRendezVousActivity.class.getSimpleName();
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,27 +54,80 @@ public class InscriptionActivity extends BaseActivity {
 
 
     private void inscrire(){
-        try{
-            String myUrl = "jdbc:mysql://127.0.0.1/gymcentral?useTimezone=true&serverTimezone=EST";
-            ArrayList client = new ArrayList<>();
-            Connection c = DriverManager.getConnection(myUrl, "root",
-                    "");
-            Statement statement = c.createStatement();
+        final String identifiant = ((TextView)findViewById(R.id.identifiant)).getText().toString();
+        final String nom = ((TextView)findViewById(R.id.nom)).getText().toString();
+        final String prenom = ((TextView)findViewById(R.id.prenom)).getText().toString();
+        final String date_naissance = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
+        final String courriel = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
+        final Long telephone = Long.parseLong(((TextView)findViewById(R.id.telephone)).getText().toString());
+        final String mot_de_passe = ((TextView)findViewById(R.id.mot_de_passe)).getText().toString();
 
-            String identifiant = ((TextView)findViewById(R.id.identifiant)).getText().toString();
-            String motDePasse = ((TextView)findViewById(R.id.mot_de_passe)).getText().toString();
-            String prenom = ((TextView)findViewById(R.id.prenom)).getText().toString();
-            String nom = ((TextView)findViewById(R.id.nom)).getText().toString();
-            String dateNaissance = ((TextView)findViewById(R.id.date_naissance)).getText().toString();
-            String courriel = ((TextView)findViewById(R.id.courriel)).getText().toString();
-            String noTel = ((TextView)findViewById(R.id.telephone)).getText().toString();
 
-            String s = "INSERT INTO client VALUES('"+identifiant+"', '"+nom+"', '"+prenom+"', '"+dateNaissance+"', '"+courriel+"', '"+noTel+"', '"+motDePasse+"');";
-            ResultSet rs = statement.executeQuery(s);
-        } catch (SQLException e) {
-            Toast toast = Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
-            toast.show();
-        }
+
+
+        // Tag utilisé pour annuler la requête
+        String tag_string_req = "req_register";
+
+        pDialog.setMessage("Registering ...");
+        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_INSCRIRE_CLIENT, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Register Response: " + response.toString());
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        db.ajouterClient(identifiant,nom,prenom,courriel,date_naissance,telephone);
+
+                        Toast.makeText(getApplicationContext(), "Votre inscription a été UN SUCCES!!!!!!!!.", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Registration Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("identifiant", identifiant);
+                params.put("idForfait", null);
+                params.put("nom", nom);
+                params.put("prenom", prenom);
+                params.put("dateNaissance",date_naissance );
+                params.put("courriel", courriel);
+                params.put("telephone", telephone.toString());
+                params.put("motDePasse", mot_de_passe);
+
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
     /**
@@ -354,5 +416,15 @@ public class InscriptionActivity extends BaseActivity {
             return "Le mot de passe entré dans la validation n'est pas le même que lui entré précédement. \n";
         }
         return "";
+    }
+
+    private void showDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    private void hideDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
     }
 }
