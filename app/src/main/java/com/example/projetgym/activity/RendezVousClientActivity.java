@@ -109,7 +109,7 @@ public class RendezVousClientActivity extends AppCompatActivity {
         // Tag used to cancel the request
         String tag_string_req = "req_rendezvous";
 
-        pDialog.setMessage("Chargement en cours...");
+        pDialog.setMessage("Chargement en forfaits...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_RENDEZVOUS, new Response.Listener<String>() {
@@ -204,14 +204,14 @@ public class RendezVousClientActivity extends AppCompatActivity {
             }
         });
 
-        btnPrendreRendezVous.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(RendezVousClientActivity.this,PrendreRendezVousActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        btnPrendreRendezVous.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(RendezVousClientActivity.this,PrendreRendezVousActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 
     private void showDialog() {

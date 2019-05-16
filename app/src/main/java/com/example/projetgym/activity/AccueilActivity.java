@@ -67,7 +67,7 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
-        //Aller a la page des cours
+        //Aller a la page des forfaits
         btnCours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +81,7 @@ public class AccueilActivity extends AppCompatActivity {
         btnForfait.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), ConsulterSonForfaitActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ConsulterForfaitsActivity.class);
                 startActivity(intent);
                 finish();
             }
