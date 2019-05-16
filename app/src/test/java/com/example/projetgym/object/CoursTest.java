@@ -1,15 +1,13 @@
 package com.example.projetgym.object;
 
-import com.example.projetgym.Cours;
-
-import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import com.example.projetgym.Cours;
 
-public class CoursTest extends TestCase {
-    private Cours cours;
+public class CoursTest/* extends TestCase*/ {
+    private Cours cours = new Cours("a","a","a","a","a",1,1,1);
     @Test
     public void idValidator(){
         String id = "C00006";
@@ -65,6 +63,6 @@ public class CoursTest extends TestCase {
         double prix = 12.12;
         cours.setPrix(prix);
 
-        assertEquals(prix, cours.getPrix());
+        assertEquals(prix, cours.getPrix(), 0);
     }
 }

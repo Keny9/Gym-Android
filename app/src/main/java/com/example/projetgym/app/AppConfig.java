@@ -26,6 +26,8 @@ public class AppConfig {
     // Server user register url
     public static String URL_REGISTER = "http://10.170.11.115/ProjetGymAndroid/php/authentification/register.php";
 
+    public static String URL_INSCRIRE_CLIENT = "http://10.170.11.115/ProjetGymAndroid/php/client/inscrireClient.php";
+
     // Server user login url
     public static String URL_COURS = "http://10.0.2.2/ProjetGymAndroid/gymandroid/php/evenement/cours.php";
 

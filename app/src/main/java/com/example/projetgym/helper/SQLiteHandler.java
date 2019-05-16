@@ -158,22 +158,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      *  Ajoute le client (utilisateur actuel) dans la base de donnée local
      */
-    public void ajouterClient(Client client){
+    public void ajouterClient(String identifiant, String nom, String prenom, String courriel, String dateNaissance, Long telephone){
         SQLiteDatabase db = this.getWritableDatabase();
+        String forfait = null;
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, client.getIdentifiant());
-        values.put(KEY_NAME, client.getNom());
-        values.put(KEY_PRENOM, client.getPrenom());
-        values.put(KEY_EMAIL, client.getEmail());
-        values.put(KEY_IDFORFAIT, client.getIdForfait());
-        values.put(KEY_DATENAISSANCE,client.getDateNaissance());
-        values.put(KEY_TELEPHONE, client.getTelephone());
+        values.put(KEY_ID, identifiant);
+        values.put(KEY_NAME, nom);
+        values.put(KEY_PRENOM, prenom);
+        values.put(KEY_EMAIL, courriel);
+        values.put(KEY_IDFORFAIT, forfait);
+        values.put(KEY_DATENAISSANCE,dateNaissance);
+        values.put(KEY_TELEPHONE, telephone);
 
         db.insert(TABLE_CLIENT,null,values);
         db.close();
 
-        Log.d(TAG, "Nouveau client inséré dans sqlite: " + client.getIdentifiant());
+        Log.d(TAG, "Nouveau client inséré dans sqlite: " + identifiant);
     }
 
     /**
