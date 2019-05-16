@@ -224,7 +224,6 @@ public class ConsulterForfaitsActivity extends AppCompatActivity {
             }
         });
     }
-
 }
 
 /**

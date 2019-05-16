@@ -1,7 +1,7 @@
 /****************************************
  Fichier : Cours_list.java
  Auteur : Guillaume Côté
- Fonctionnalité : Code de l'Activité Cours_liste. Affiche la liste des forfaits
+ Fonctionnalité : Code de l'Activité Cours_liste. Affiche la liste des cours
  Date : 2019-05-08
 
  Vérification :
@@ -64,10 +64,10 @@ public class Cours_list extends BaseActivity {
 
     private ArrayList<String> titre = new ArrayList<>();                   //Liste des titres
     private ArrayList<String> description = new ArrayList<>();             //Liste des descriptions
-    int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};     //Liste des images des forfaits
+    int image[] = {R.drawable.test, R.drawable.test, R.drawable.test};     //Liste des images des cours
 
     JSONArray cours = null;                                                //Array JSON
-    private ArrayList<Evenement> eventCours = new ArrayList<>();           //liste de tous les forfaits
+    private ArrayList<Evenement> eventCours = new ArrayList<>();           //liste de tous les cours
 
     /**
      * Création de la page
@@ -118,13 +118,13 @@ public class Cours_list extends BaseActivity {
     }
 
     /**
-     * Ramasser les forfaits
+     * Ramasser les cours
      */
     private void checkCours() {
         // Tag used to cancel the request
         String tag_string_req = "req_cours";
 
-        pDialog.setMessage("Chargement en forfaits...");
+        pDialog.setMessage("Chargement en cours...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_COURS, new Response.Listener<String>() {
@@ -141,8 +141,8 @@ public class Cours_list extends BaseActivity {
                     // Check for error node in json
                     if (success == 1) {
 
-                        //Obtenir les tableaux de forfaits
-                        cours = jObj.getJSONArray("forfaits");
+                        //Obtenir les tableaux de cours
+                        cours = jObj.getJSONArray("cours");
 
                         for(int i = 0; i < cours.length(); i++){
                             JSONObject r = cours.getJSONObject(i);
@@ -255,7 +255,7 @@ class MyAdapter extends ArrayAdapter<String> {
     }
 
     /**
-     * Retoure la view d'un forfaits
+     * Retoure la view d'un cours
      * @param position
      * @param convertView
      * @param parent

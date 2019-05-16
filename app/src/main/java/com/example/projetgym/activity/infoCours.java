@@ -1,7 +1,7 @@
 /****************************************
  Fichier : infoCours.java
  Auteur : Guillaume Côté
- Fonctionnalité : Code de l'Activité infoCours. Affiche les infos d'un forfaits et permet l'inscription
+ Fonctionnalité : Code de l'Activité infoCours. Affiche les infos d'un cours et permet l'inscription
  Date : 2019-05-09
 
  Vérification :
@@ -50,7 +50,7 @@ public class infoCours extends BaseActivity {
     private SQLiteHandler db;
     private Button btnRetour;
     private Button btnInscrire;
-    Evenement event;                        //Object forfaits venant de l'activité : Cours_list
+    Evenement event;                        //Object cours venant de l'activité : Cours_list
 
     /**
      * Création de l'activité
@@ -68,7 +68,7 @@ public class infoCours extends BaseActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        //Récupérer le forfaits cliqué sur la page précédente
+        //Récupérer le cours cliqué sur la page précédente
         Intent intent = getIntent();
         event = intent.getParcelableExtra("Evenement");
 
@@ -119,13 +119,13 @@ public class infoCours extends BaseActivity {
     }
 
     /**
-     * Vérifie si l'utilisateur est inscrit au forfaits
+     * Vérifie si l'utilisateur est inscrit au cours
      */
     private void checkInscription(){
         // Tag used to cancel the request
         String tag_string_req = "req_cours";
 
-        pDialog.setMessage("Chargement en forfaits...");
+        pDialog.setMessage("Chargement en cours...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_COURS_CLIENT, new Response.Listener<String>() {
@@ -213,7 +213,7 @@ public class infoCours extends BaseActivity {
                         // L'evenement fait parti de la base de donnee MySQL
                         db.inscrireCours(event, session.getIdentifiant());
 
-                        Toast.makeText(getApplicationContext(), "Vous vous etes inscrit au forfaits de " + event.getModeleCours(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Vous vous etes inscrit au cours de " + event.getModeleCours(), Toast.LENGTH_LONG).show();
 
                     } else {
 
