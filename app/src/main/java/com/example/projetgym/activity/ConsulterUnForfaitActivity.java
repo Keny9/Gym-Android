@@ -75,7 +75,7 @@ public class ConsulterUnForfaitActivity extends BaseActivity {
         txt.setText(forfait.getNom());
 
         txt = findViewById(R.id.description);
-        txt.setText("Tous les " + forfait.getDescription());
+        txt.setText(forfait.getDescription());
 
 
 

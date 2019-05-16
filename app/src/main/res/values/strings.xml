@@ -53,7 +53,7 @@
     <string name="signe">$</string>
 
     <string name="retour">Retour</string>
-    <string name="titre_plan">Votre plan dentrainement</string>
+    <string name="titre_plan">Votre plan d\'entrainement</string>
     <string name="plus">+</string>
     <string name="preferences">Préférences</string>
     <string name="politique">Politique de contenu</string>
@@ -61,12 +61,12 @@
     <string name="logo">Logo</string>
     <string name="notif">Notifications(ON/OFF)</string>
     <string name="afficher">Afficher Mickey Mouse</string>
-    <string name="categorie">Catégories dexercice</string>
+    <string name="categorie">Catégories d\'exercice</string>
     <string name="exercice">Les exercices</string>
     <string name="exerciceprecis">Flexion des avant-bras</string>
-    <string name="exercicesauver">Sauvegarder lexercice</string>
+    <string name="exercicesauver">Sauvegarder l\'exercice</string>
     <string name="flexion">Image de bicep</string>
-    <string name="description">Pour accomplir cet exercice, vous devez prendre des dumbells et les soulever comme limage le suggeste.</string>
+    <string name="description">Pour accomplir cet exercice, vous devez prendre des dumbells et les soulever comme l\'image le suggeste.</string>
     <string name="serie">Séries</string>
     <string name="repetition">Répétitions</string>
     <string name="pause">Pause</string>
@@ -79,8 +79,9 @@
     <string name="help">Aide</string>
     <string name="settings">Préférence</string>
     <string name="desinscrireCours">Se désinscrire</string>
-    <string name="direction">Obtenir litineraire vers le gym</string>
-    <string name="appel">Appeler le centre doperation</string>
+    <string name="direction">Obtenir l\'itinéraire vers le gym</string>
+    <string name="appel">Appeler le centre d\'opération</string>
+    <string name="photo">Prendre une photo</string>
 
     <string-array name="specialist">
         <item>Entraineur</item>

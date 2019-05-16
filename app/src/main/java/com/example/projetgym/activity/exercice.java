@@ -60,7 +60,7 @@ public class exercice extends BaseActivity {
 
     //ListView liste;
    // String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};
-    //String description[] = {"Cliquer pour voir les exercices du haut du corps (En haut des hanches)", "Cliquer pour voir les exercices du bas du corps (En bas des hanches)", "Cliquer pour voir tout les exercices"};
+    //String description[] = {"Cliquer pour voir les exercices du haut du corps (En haut des hanches)", "Cliquer pour voir les exercices du bas du corps (En bas des hanches)", "Cliquer pour voir tous les exercices"};
     int image[] = {R.drawable.bicep, R.drawable.legpress, R.drawable.toutexercice,R.drawable.toutexercice,R.drawable.toutexercice};
 
 
@@ -88,7 +88,7 @@ public class exercice extends BaseActivity {
         Intent intentCategorie=getIntent();
         Bundle extras= intentCategorie.getExtras();
         TextView titres=(TextView) findViewById(R.id.textView);
-        titres.setText(extras.getString("categorie", "Tout les exercices"));
+        titres.setText(extras.getString("categorie", "Tous les exercices"));
 
         //Progress dialog
         pDialog = new ProgressDialog(this);

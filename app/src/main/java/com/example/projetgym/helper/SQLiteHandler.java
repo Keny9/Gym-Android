@@ -26,6 +26,7 @@ import android.util.Log;
 
 import com.example.projetgym.object.Client;
 import com.example.projetgym.object.Evenement;
+import com.example.projetgym.object.Forfait;
 
 import java.util.HashMap;
 
@@ -198,6 +199,24 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * Creer le lien entre l'evenement et le client
+     * @param idEvent
+     * @param idClient
+     */
+    public void ajouterEventClient(String idEvent, String idClient){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", idEvent);
+        values.put("id_client", idClient);
+
+        db.insert("evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + idEvent);
+    }
+
+    /**
      * Ajout des cours du client dans la base de donnee local
      */
     public void inscrireCours(Evenement evenement, String id_client){
@@ -227,6 +246,38 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
 
         Log.d(TAG, "Nouvel événement inséré dans sqlite: " + id_event);
+    }
+
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void inscrireForfait(Forfait forfait, String id_client){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_evenement", forfait.getId());
+        values.put("id_client", id_client);
+
+        db.insert("evenement",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + forfait.getId());
+    }
+
+    /**
+     * Ajout des cours du client dans la base de donnee local
+     */
+    public void verifierInscrireForfait(int id_forfait, String id_client){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_forfait", id_forfait);
+        values.put("id_client", id_client);
+
+        db.insert("ta_forfait_client",null,values);
+        db.close();
+
+        Log.d(TAG, "Nouvel événement inséré dans sqlite: " + id_forfait);
     }
 
     /**

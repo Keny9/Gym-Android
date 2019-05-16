@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 import com.example.projetgym.R;
 
-public class categorie extends AppCompatActivity {
+public class categorie extends BaseActivity {
 
     ListView liste;
     String titre[] = {"Haut du Corps", "Bas du Corps", "Tous les exercices"};

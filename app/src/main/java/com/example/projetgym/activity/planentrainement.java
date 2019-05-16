@@ -51,7 +51,7 @@ import android.widget.Button;
 import com.example.projetgym.R;
 
 
-public class planentrainement extends AppCompatActivity {
+public class planentrainement extends BaseActivity {
 
 
     ListView liste;

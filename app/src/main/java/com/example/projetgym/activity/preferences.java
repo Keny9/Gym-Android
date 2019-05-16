@@ -47,7 +47,7 @@ public class preferences extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
-
+        btnCam = findViewById(R.id.button5);
         Button button = (Button) findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

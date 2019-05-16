@@ -1,6 +1,7 @@
-DROP DATABASE IF EXISTS GymLocal;
-CREATE DATABASE GymLocal CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE GymLocal;
+DROP DATABASE IF EXISTS GymCentral;
+CREATE DATABASE GymCentral;
+USE GymCentral;
+
 
 CREATE TABLE poste_employe (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -14,12 +15,24 @@ etat  VARCHAR(30) NOT NULL,
 description VARCHAR(50)
 );
 
+CREATE TABLE ville (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nom  VARCHAR(30) NOT NULL
+);
+
 CREATE TABLE employe (
 identifiant VARCHAR(30) PRIMARY KEY,
 nom VARCHAR(30) NOT NULL,
 prenom VARCHAR(30) NOT NULL,
 courriel VARCHAR(50) NOT NULL,
+date_naissance  DATE NOT NULL,
+date_embauche  DATE NOT NULL,
 telephone BIGINT NOT NULL,
+nas INTEGER NOT NULL,
+mot_passe VARCHAR(30) NOT NULL,
+ville VARCHAR(30) NOT NULL,
+nom_rue VARCHAR(30) NOT NULL,
+no_porte VARCHAR(30) NOT NULL,
 id_poste INTEGER NOT NULL,
 id_etat INTEGER NOT NULL,
 FOREIGN KEY (id_poste) REFERENCES poste_employe(id),
@@ -43,7 +56,7 @@ nom VARCHAR(30)
 );
 
 CREATE TABLE evenement (
-id VARCHAR(6) NOT NULL  PRIMARY KEY,
+id VARCHAR(30) NOT NULL  PRIMARY KEY,
 id_modele INTEGER,
 id_type INTEGER NOT NULL,
 id_jour INTEGER,
@@ -82,7 +95,6 @@ CREATE TABLE etat_forfait_client (
     etat VARCHAR(30),
     description VARCHAR(50)
 );
-
 CREATE TABLE client (
   identifiant VARCHAR(30) NOT NULL PRIMARY KEY,
   id_forfait INT,
@@ -94,7 +106,6 @@ CREATE TABLE client (
   mot_de_passe VARCHAR(30) NOT NULL,
   FOREIGN KEY (id_forfait) REFERENCES forfait(id)
 );
-
 CREATE TABLE ta_forfait_client (
 	identifiant_client VARCHAR(30) NOT NULL,
     id_forfait INTEGER NOT NULL,
@@ -120,6 +131,7 @@ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 nom VARCHAR(30)
 );
 
+
 CREATE TABLE exercice (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	id_type INTEGER NOT NULL,
@@ -144,17 +156,27 @@ CREATE TABLE ta_exercice_plan_personnalise (
 );
 
 CREATE TABLE ta_client_evenement (
-	id_evenement VARCHAR(6) NOT NULL,
+	id_evenement VARCHAR(30) NOT NULL,
 	id_client VARCHAR(30) NOT NULL,
     PRIMARY KEY (id_evenement, id_client),
     FOREIGN KEY (id_evenement) REFERENCES evenement(id),
     FOREIGN KEY (id_client) REFERENCES client(identifiant)
 );
 
+CREATE TABLE backup (
+	id_backup INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nom VARCHAR(30),
+  date_backup DATE,
+  script VARCHAR(200)
+);
+
+INSERT INTO backup(id_backup, nom, date_backup, script) VALUES (1,'Backup du debut', '2019-04-16', 'Le chemin du premier backup');
+
 INSERT INTO forfait(id, nom, prix, description, duree, heure_debut_semaine, heure_fin_semaine, heure_debut_fds, heure_fin_fds) VALUES (1,'Winnie', 100, 'Le plus petit forfait. Vous avez droit que au gym de base',1,8,17,8,17);
 INSERT INTO forfait(id, nom, prix, description, duree, heure_debut_semaine, heure_fin_semaine, heure_debut_fds, heure_fin_fds) VALUES (2,'Ariel', 150, 'Accès au gym de base et à la piscine.',6,8,22,11,17);
 INSERT INTO forfait(id, nom, prix, description, duree, heure_debut_semaine, heure_fin_semaine, heure_debut_fds, heure_fin_fds) VALUES (3,'Prince Charmant', 200, 'Accès à tous les jours de la semaine.',12,8,22,8,20);
 INSERT INTO forfait(id, nom, prix, description, duree, heure_debut_semaine, heure_fin_semaine, heure_debut_fds, heure_fin_fds) VALUES (4,'Hercule', 240, 'Notre plus gros forfait, acces à presque tout',12,8,22,8,20);
+INSERT INTO forfait(id, nom, prix, description, duree, heure_debut_semaine, heure_fin_semaine, heure_debut_fds, heure_fin_fds) VALUES (5,'Sans-forfait', 0, 'Rien',0,0,0,0,0);
 
 
 INSERT INTO client(identifiant, id_forfait, nom, prenom, date_naissance, courriel,telephone, mot_de_passe) VALUES ('george1',1, 'Gonin','Georges', '2001-07-01','george@hotmail.ca', '8102319302', 'abc123');
@@ -210,6 +232,10 @@ INSERT INTO etat_employe(etat) VALUES ('actif');
 INSERT INTO etat_employe(etat) VALUES ('vacance');
 INSERT INTO etat_employe(etat) VALUES ('inactif');
 
+INSERT INTO ville(nom) VALUES ('Sherbrooke');
+INSERT INTO ville(nom) VALUES ('Montréal');
+INSERT INTO ville(nom) VALUES ('Weedon');
+
 INSERT INTO type_evenement(nom, description) VALUES ('Cours','Les clients sinscrivent dans un cours de groupe');
 INSERT INTO type_evenement(nom, description) VALUES ('Rendez-Vous','Le client prend un rendez-vous avec un employe pour plusieurs raison, par exemple se faire aider par un nutritioniste');
 
@@ -228,12 +254,12 @@ INSERT INTO modele_cours(nom) VALUES ('Relaxation avec Winnie');
 INSERT INTO modele_cours(nom) VALUES ('Introduction a la musculation avec Hercules');
 
 
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('jocelyn1','Lapalme', 'Jocelyn', 'jocelyn@gmail.com', 819999203, 1, 1);
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('hugo1','Boucher', 'Hugo', 'hugo@gmail.com', 819382202, 2, 1);
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('elsa1','Snow', 'Elsa', 'elsa@gmail.com', 5324546636, 3, 1);
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('raiponse1','Hair', 'Raiponse', 'raiponse@gmail.com', 819374202, 1, 2);
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('belle1','Bete', 'Belle', 'belle@gmail.com', 819345102, 2, 3);
-INSERT INTO employe(identifiant, nom, prenom, courriel, telephone, id_poste, id_etat) VALUES ('nemo1','Doris', 'Nemo', 'nemo@gmail.com', 264321115, 2, 3);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('jocelyn1','Lapalme', 'Jocelyn', 'jocelyn@gmail.com', '1987-09-23', ' 2010-01-01', 819999203, 555999777, 'abc123', 'Sherbrooke','Magloire', '234', 1, 1);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('hugo1','Boucher', 'Hugo', 'hugo@gmail.com', '1998-01-01', '2011-01-01', 819382202, 123454213, 'abc123', 'Sherbrooke', 'Rickey', '32B', 2, 1);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('elsa1','Snow', 'Elsa', 'elsa@gmail.com', '1985-11-16', '2012-04-22', 5324546636, 654658953, 'abc123', 'Montreal', 'Boom-boom', '123456778', 3, 1);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('raiponse1','Hair', 'Raiponse', 'raiponse@gmail.com', '1990-03-02', '2018-11-29', 819374202, 451256845, 'abc123', 'Laval','Paw king kong HEY', '3009', 1, 2);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('belle1','Bete', 'Belle', 'belle@gmail.com', '1977-10-01', '2019-01-01', 819345102, 975310644, 'abc123', 'Bromont', 'Gwosseruesale','999', 2, 3);
+INSERT INTO employe(identifiant, nom, prenom, courriel, date_naissance, date_embauche, telephone, nas, mot_passe, ville, nom_rue, no_porte, id_poste, id_etat) VALUES ('nemo1','Doris', 'Nemo', 'nemo@gmail.com', '1999-10-01',  '2010-12-12', 264321115, 653214445, 'abc123', 'Kikiboom', 'La Rue Des Poètes', 'app3no4', 2, 3);
 
 
 INSERT INTO evenement(id, id_modele, id_type, id_jour, identifiant_employe, date, heure, duree, prix) VALUES ('C00001', 1, 1, 2, 'jocelyn1', '2019-05-01', 14, 1, 5);
