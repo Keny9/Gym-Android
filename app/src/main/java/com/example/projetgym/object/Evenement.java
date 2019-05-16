@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : Evenement.java
+ Auteur : Karl Boutin
+ Fonctionnalité : Object contenant les informations d'un evenement
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+ 2019-05-16          Guillaume                 Approuvé
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package com.example.projetgym.object;
 
 import android.os.Parcel;

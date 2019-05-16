@@ -1,3 +1,19 @@
+/****************************************
+ Fichier : ConsulterForfaitsActivity.java
+ Auteur : Maxime
+ Fonctionnalité : Consulter tous les forfaits
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+ 2019-05-16          William                 Approuvé
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+ 2019-05-16          Guillaume             Rendre fonctionnel avec BD
+ ****************************************/
 package com.example.projetgym.activity;
 
 import android.app.ProgressDialog;
@@ -6,7 +22,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +43,6 @@ import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
-import com.example.projetgym.object.Evenement;
 import com.example.projetgym.object.Forfait;
 
 import org.json.JSONArray;
@@ -38,7 +52,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 //Classe pour l'affichage de TOUS les forfaits
-public class ConsulterForfaitsActivity extends AppCompatActivity {
+public class ConsulterForfaitsActivity extends BaseActivity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 

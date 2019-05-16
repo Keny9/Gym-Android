@@ -1,9 +1,24 @@
+/****************************************
+ Fichier : ConsulterUnForfaitActivity.java
+ Auteur : Maxime
+ Fonctionnalité : Consulter les informations d'un forfait
+ Date : 2019-05-09
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+2019-05-16          William                 Approuvé
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+2019-05-16          Guillaume             Rendre fonctionnel avec BD
+ ****************************************/
 package com.example.projetgym.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +34,6 @@ import com.example.projetgym.app.AppConfig;
 import com.example.projetgym.app.AppController;
 import com.example.projetgym.helper.SQLiteHandler;
 import com.example.projetgym.helper.SessionManager;
-import com.example.projetgym.object.Evenement;
 import com.example.projetgym.object.Forfait;
 
 import org.json.JSONException;
@@ -29,7 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Classe pour l'affichage d'UN forfait
-public class ConsulterUnForfaitActivity extends AppCompatActivity {
+public class ConsulterUnForfaitActivity extends BaseActivity {
     private String nomForfait;
     private static final String TAG = infoCours.class.getSimpleName();
     SessionManager session;
